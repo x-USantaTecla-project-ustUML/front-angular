@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderViewComponent } from './header-view.component';
 
-describe('HeaderComponent', () => {
+describe('HeaderViewComponent', () => {
   let component: HeaderViewComponent;
   let fixture: ComponentFixture<HeaderViewComponent>;
 

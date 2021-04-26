@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterViewComponent } from './footer-view.component';
 
-describe('FooterComponent', () => {
+describe('FooterViewComponent', () => {
   let component: FooterViewComponent;
   let fixture: ComponentFixture<FooterViewComponent>;
 

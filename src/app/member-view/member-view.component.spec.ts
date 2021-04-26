@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MemberViewComponent } from './member-view.component';
 
-describe('OnProjectComponent', () => {
+describe('MemberViewComponent', () => {
   let component: MemberViewComponent;
   let fixture: ComponentFixture<MemberViewComponent>;
 

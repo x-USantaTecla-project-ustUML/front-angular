@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotFoundViewComponent } from './not-found-view.component';
 
-describe('NotFoundComponent', () => {
+describe('NotFoundViewComponent', () => {
   let component: NotFoundViewComponent;
   let fixture: ComponentFixture<NotFoundViewComponent>;
 
