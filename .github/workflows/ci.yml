@@ -22,3 +22,5 @@ jobs:
       - run: ng lint
       - run: npm run-script build-prod
       - run: npm run-script test-headless
+      - run: npm install karma-sonarqube-reporter --save-dev
+      - run: sonar-scanner
