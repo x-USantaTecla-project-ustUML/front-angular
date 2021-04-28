@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.packageView {
+  grid-column: 2;
+  grid-row: 1;
+}
+.repositoryView {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+.diagramView {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+.commandView {
+  grid-column: 2;
+  grid-row: 2;
+}
