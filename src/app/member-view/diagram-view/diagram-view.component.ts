@@ -10,16 +10,13 @@ export class DiagramViewComponent implements OnInit {
 
   diagramRoute: string;
 
-  constructor() {
-    this.diagramRoute = 'https://support.bizzdesign.com/download/attachments/39814392/uml_model_class_diagr4_en.png?version=1&modificationDate=1560268351730&api=v2';
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.generateDiagram();
   }
 
   encode64(data): string {
-    console.log(data);
     let r = '';
     for (let i = 0; i < data.length; i += 3) {
       if (i + 2 === data.length) {

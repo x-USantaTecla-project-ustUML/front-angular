@@ -1,4 +1,64 @@
-textarea {
+#terminal {
+  position: absolute;
   height: 10em;
-  width: 37em;
+  width: 31em;
+  background-color: black;
+  color: white;
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  border-radius: 11px;
+}
+#handle {
+  width: 31em;
+  height: 30px;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: rgb(104,103,101);
+  background: -moz-linear-gradient(top,  rgba(104,103,101,1) 0%, rgba(60,59,55,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(104,103,101,1)), color-stop(100%,rgba(60,59,55,1)));
+  background: -webkit-linear-gradient(top,  rgba(104,103,101,1) 0%,rgba(60,59,55,1) 100%);
+  background: -o-linear-gradient(top,  rgba(104,103,101,1) 0%,rgba(60,59,55,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(104,103,101,1) 0%,rgba(60,59,55,1) 100%);
+  background: linear-gradient(to bottom,  rgba(104,103,101,1) 0%,rgba(60,59,55,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#686765', endColorstr='#3c3b37',GradientType=0 );
+
+}
+#handle p {
+  line-height: 30px;
+  color: #DFDBD2;
+  padding-left: 15px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+p, span {
+  margin-top: 1px;
+  color: white;
+}
+.terminal {
+  padding-left: 5px;
+  padding-top: 2px;
+  height: 365px;
+  overflow: auto;
+}
+.info p, .terminal {
+  display: none;
+  word-wrap: break-word;
+  font-size: 0.9em;
+}
+input {
+  border: none;
+  outline: none;
+  width: 1px;
+  background: transparent;
+  color: transparent;
+}
+.blink {
+  width: 5px;
+  height: 13px;
+  display: inline-block;
+  background-color: white;
 }
