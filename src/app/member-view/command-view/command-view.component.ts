@@ -8,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class CommandViewComponent implements OnInit {
 
-  declare previousCommand;
+  previousCommand = '';
   declare case;
   cases = ['clear', 'help', 'resumen', 'cv', 'portafolio', 'contacto'];
   commands = {
