@@ -60,6 +60,7 @@ export class CommandViewComponent implements OnInit {
       (document.getElementById('user') as HTMLInputElement).value = '';
     }else if (e.keyCode === 38){
       $('.clone').text(this.previousCommand);
+      (document.getElementById('user') as HTMLInputElement).value = this.previousCommand;
     }
   }
 
