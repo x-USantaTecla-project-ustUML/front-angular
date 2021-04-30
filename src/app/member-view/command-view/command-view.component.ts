@@ -8,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class CommandViewComponent implements OnInit {
 
-  declare inputValue;
+  declare previousCommand;
   declare case;
   cases = ['clear', 'help', 'resumen', 'cv', 'portafolio', 'contacto'];
   commands = {
@@ -19,7 +19,7 @@ export class CommandViewComponent implements OnInit {
     5: 'Muestra Contacto.'
   }; // Respuesta a comandos
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit(): void {
     this.loadTerminal();
@@ -32,8 +32,7 @@ export class CommandViewComponent implements OnInit {
     $('.terminal').show();
     // tslint:disable-next-line:only-arrow-functions typedef
     $('#user').on('input', function(e){
-      // @ts-ignore
-      $('.clone').text($(this).val());
+      $('.clone').text((document.getElementById('user') as HTMLInputElement).value);
     });
   }
 
@@ -57,6 +56,10 @@ export class CommandViewComponent implements OnInit {
       } else {
         this.terminal(this.case);
       }
+      this.previousCommand = (document.getElementById('user') as HTMLInputElement).value;
+      (document.getElementById('user') as HTMLInputElement).value = '';
+    }else if (e.keyCode === 38){
+      $('.clone').text(this.previousCommand);
     }
   }
 
