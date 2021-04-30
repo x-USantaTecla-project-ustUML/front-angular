@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
+## Estado del código
+[![UST_UML build](https://github.com/USantaTecla-tool-ustUML/front-angular/actions/workflows/ci.yml/badge.svg)](https://github.com/USantaTecla-tool-ustUML/front-angular/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=USantaTecla-tool-ustUML_front-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=USantaTecla-tool-ustUML_front-angular)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
