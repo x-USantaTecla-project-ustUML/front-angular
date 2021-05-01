@@ -1,6 +1,8 @@
-<div class="wrapper">
-  <app-package-view class="packageView"></app-package-view>
-  <app-repository-view class="repositoryView"></app-repository-view>
-  <app-diagram-view class="diagramView"></app-diagram-view>
-  <app-command-view class="commandView"></app-command-view>
+<div class="d-lg-flex justify-content-around">
+  <app-repository-view class="flex-fill"></app-repository-view>
+  <div class="flex-fill">
+    <app-package-view></app-package-view>
+    <app-command-view></app-command-view>
+  </div>
+  <app-diagram-view class="flex-fill"></app-diagram-view>
 </div>
