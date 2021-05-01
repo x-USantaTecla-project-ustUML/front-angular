@@ -1,5 +1,5 @@
 #terminal {
-  position: absolute;
+  /*position: absolute;*/
   height: 10em;
   width: 31em;
   background-color: black;
@@ -41,7 +41,7 @@ p, span {
 .terminal {
   padding-left: 5px;
   padding-top: 2px;
-  height: 365px;
+  /*height: 365px;*/
   overflow: auto;
 }
 .info p, .terminal {
