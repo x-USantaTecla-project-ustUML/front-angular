@@ -1,4 +1,6 @@
 img{
-  height: 45em;
-  width: 15em;
+  min-height: 25em;
+  min-width: 10em;
+  max-height: 45em;
+  max-width: 15em;
 }

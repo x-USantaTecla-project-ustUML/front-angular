@@ -1,4 +1,6 @@
 textarea {
-  height: 41em;
-  width: 37em;
+  min-width: 27em;
+  min-height: 20em;
+  max-height: 41em;
+  max-width: 37em;
 }
