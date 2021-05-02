@@ -3,4 +3,5 @@ textarea {
   min-height: 50vh;
   max-width: 37em;
   margin-bottom: 1em;
+  resize: none;
 }

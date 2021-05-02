@@ -58,16 +58,26 @@ p, span {
   word-wrap: break-word;
   font-size: 0.9em;
 }
-input {
+textarea {
   border: none;
   outline: none;
   width: 1px;
   background: transparent;
   color: transparent;
+  overflow: hidden;
+  resize: none;
 }
 .blink {
   width: 5px;
   height: 13px;
-  display: inline-block;
+  display: -webkit-inline-box;
   background-color: white;
 }
+.clone {
+  white-space: pre-line;
+  display: -webkit-inline-box;
+}
+#sign {
+  display: contents;
+}
+
