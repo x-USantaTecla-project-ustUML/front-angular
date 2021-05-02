@@ -32,7 +32,7 @@ export class CommandViewComponent implements OnInit {
     $('.terminal').show();
     // tslint:disable-next-line:only-arrow-functions typedef
     $('#user').on('input', function(e){
-      $('.clone').text((document.getElementById('user') as HTMLInputElement).value);
+      $('.clone').html((document.getElementById('user') as HTMLInputElement).value);
     });
   }
 
@@ -66,9 +66,13 @@ export class CommandViewComponent implements OnInit {
       } else {
         this.terminal(this.case);
       }
-      this.previousCommand = (document.getElementById('user') as HTMLInputElement).value;
+      this.previousCommand = valorCase;
       (document.getElementById('user') as HTMLInputElement).value = '';
     }else if (e.keyCode === 38){
+      // tslint:disable-next-line:typedef
+      $('.blink').each(function() {
+        $(this).css('display', 'none');
+      });
       $('.clone').text(this.previousCommand);
       (document.getElementById('user') as HTMLInputElement).value = this.previousCommand;
     }else if (e.keyCode === 17){
@@ -77,6 +81,10 @@ export class CommandViewComponent implements OnInit {
       $('.blink').each(function() {
         $(this).css('display', 'none');
       });
+    }else if (e.keyCode === 9){
+      (document.getElementById('user') as HTMLInputElement).value += '&emsp;';
+      document.getElementsByClassName('clone')[0].innerHTML += '&emsp;';
+      $('#user').focus();
     }
   }
 
