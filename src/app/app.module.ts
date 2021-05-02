@@ -11,6 +11,8 @@ import { DiagramViewComponent } from './member-view/diagram-view/diagram-view.co
 import { RepositoryViewComponent } from './member-view/repository-view/repository-view.component';
 import { CommandViewComponent } from './member-view/command-view/command-view.component';
 import { PackageViewComponent } from './member-view/package-view/package-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DemoMaterialModule} from './material-module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PackageViewComponent } from './member-view/package-view/package-view.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
