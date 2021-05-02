@@ -9,3 +9,6 @@ main {
   padding-top: 10px;
   padding-bottom: 201px; /* this needs to be bigger than footer height*/
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
