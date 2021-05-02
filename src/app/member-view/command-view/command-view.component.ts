@@ -40,6 +40,10 @@ export class CommandViewComponent implements OnInit {
   // tslint:disable-next-line:typedef
   keyEvent(e: KeyboardEvent){
     if (e.keyCode === 13) {
+      // tslint:disable-next-line:typedef
+      $('.blink').each(function() {
+        $(this).css('display', '-webkit-inline-box');
+      });
       document.getElementById('respuesta').innerHTML = '';
       // @ts-ignore
       document.getElementById('respuesta').style = 'margin-block-start: -1em;';
@@ -48,8 +52,14 @@ export class CommandViewComponent implements OnInit {
       $(this).val('');
       $('.clone').text('');
       $('#respuesta').append('<p class="command">$ ' + valor + '</p>');
-      if (typeof valor === 'string') {
-        this.case = this.cases.indexOf(valor);
+      let valorCase;
+      if (this.previousCommand === ''){
+        valorCase = valor.replace(' ', '').substring(0, valor.length - 2);
+      } else{
+        valorCase = valor.replace(' ', '').substring(0, valor.length - 1);
+      }
+      if (typeof valorCase === 'string') {
+        this.case = this.cases.indexOf(valorCase);
       }
       if (this.case === -1) {
         $('#respuesta').append('<p class="respuesta">Comando "' + valor + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>');
@@ -61,6 +71,12 @@ export class CommandViewComponent implements OnInit {
     }else if (e.keyCode === 38){
       $('.clone').text(this.previousCommand);
       (document.getElementById('user') as HTMLInputElement).value = this.previousCommand;
+    }else if (e.keyCode === 17){
+      (document.getElementById('user') as HTMLInputElement).value += '\n';
+      // tslint:disable-next-line:typedef
+      $('.blink').each(function() {
+        $(this).css('display', 'none');
+      });
     }
   }
 
