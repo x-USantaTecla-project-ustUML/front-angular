@@ -1,7 +1,6 @@
 textarea {
   min-width: 27em;
-  min-height: 20em;
-  max-height: 41em;
+  min-height: 50vh;
   max-width: 37em;
   margin-bottom: 1em;
 }
