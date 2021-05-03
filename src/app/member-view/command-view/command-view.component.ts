@@ -1,117 +1,115 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import * as $ from 'jquery';
+import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-command-view',
   templateUrl: './command-view.component.html',
   styleUrls: ['./command-view.component.css']
 })
-export class CommandViewComponent implements OnInit {
+export class CommandViewComponent implements AfterViewInit {
 
-  previousCommand = '';
-  declare case;
-  cases = ['clear', 'help', 'resumen', 'cv', 'portafolio', 'contacto'];
+  @ViewChild('user') textAreaElement: ElementRef;
+  @ViewChild('clone') cloneElement: ElementRef;
+  blinkDiv: HTMLDivElement;
+  previousCommandText = '';
+  case: number;
+  cases = ['clear', 'help', 'add:', 'modify:', 'delete:', 'open:', 'close'];
   commands = {
-    1: 'Comandos disponibles:<br />clear<br />help<br />resumen<br />cv<br />portafolio<br />contacto',
-    2: 'Muestra Resumen.',
-    3: 'Muestra CV.',
-    4: 'Muestra Portafolio.',
-    5: 'Muestra Contacto.'
+    1: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+    2: 'Add implementation.',
+    3: 'Modify member.',
+    4: 'Delete member.',
+    5: 'Open member.',
+    6: 'Close member.'
   }; // Respuesta a comandos
 
-  constructor() {  }
+  userText: string;
+  cloneText: string;
+  response: {
+    content: string;
+    style: string;
+  };
 
-  ngOnInit(): void {
-    this.loadTerminal();
-    this.cursorBlink();
+  constructor(private renderer: Renderer2) {
+    this.userText = '';
+    this.cloneText = '';
+    this.response = {
+      content: '',
+      style: ''
+    };
   }
 
-  focus(): void { $('#user').focus(); }
-
-  loadTerminal(): void {
-    $('.terminal').show();
-    // tslint:disable-next-line:only-arrow-functions typedef
-    $('#user').on('input', function(e){
-      $('.clone').html((document.getElementById('user') as HTMLInputElement).value);
-    });
+  ngAfterViewInit(): void {
+    this.blinkDiv = this.renderer.createElement('div');
+    this.blinkDiv.className = 'blink';
+    this.blinkDiv.style.visibility = 'visible';
+    setInterval(() => {
+      this.blinkDiv.style.visibility === 'hidden' ? this.blinkDiv.style.visibility = 'visible' : this.blinkDiv.style.visibility = 'hidden';
+    }, 500);
+    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
   }
 
-  @HostListener('document:keyup', ['$event'])
-  // tslint:disable-next-line:typedef
-  keyEvent(e: KeyboardEvent){
-    if (e.keyCode === 13) {
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', '-webkit-inline-box');
-      });
-      document.getElementById('respuesta').innerHTML = '';
-      // @ts-ignore
-      document.getElementById('respuesta').style = 'margin-block-start: -1em;';
+  textAreaFocus(): void {
+    this.textAreaElement.nativeElement.focus();
+  }
+
+  keyEvent(e: KeyboardEvent): void {
+    if (e.ctrlKey && e.code === 'Enter') {
       e.preventDefault();
-      const valor = document.getElementsByClassName('clone')[0].innerHTML.valueOf();
-      $(this).val('');
-      $('.clone').text('');
-      $('#respuesta').append('<p class="command">$ ' + valor + '</p>');
-      let valorCase;
-      if (this.previousCommand === ''){
-        valorCase = valor.replace(' ', '').substring(0, valor.length - 2);
-      } else{
-        valorCase = valor.replace(' ', '').substring(0, valor.length - 1);
-      }
-      if (typeof valorCase === 'string') {
-        this.case = this.cases.indexOf(valorCase);
-      }
-      if (this.case === -1) {
-        $('#respuesta').append('<p class="respuesta">Comando "' + valor + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>');
-      } else {
-        this.terminal(this.case);
-      }
-      this.previousCommand = valorCase;
-      (document.getElementById('user') as HTMLInputElement).value = '';
-    }else if (e.keyCode === 38){
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', 'none');
-      });
-      $('.clone').text(this.previousCommand);
-      (document.getElementById('user') as HTMLInputElement).value = this.previousCommand;
-    }else if (e.keyCode === 17){
-      (document.getElementById('user') as HTMLInputElement).value += '\n';
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', 'none');
-      });
-    }else if (e.keyCode === 9){
-      (document.getElementById('user') as HTMLInputElement).value += '&emsp;';
-      document.getElementsByClassName('clone')[0].innerHTML += '&emsp;';
-      $('#user').focus();
+      this.executeCommand();
+    }else if (e.code === 'ArrowUp'){
+      e.preventDefault();
+      this.loadPreviousCommand();
+    }else if (e.code === 'Tab'){
+      e.preventDefault();
+      this.addTabulation();
     }
   }
 
-  terminal(caseNumber): void {
-      if (this.commands[caseNumber]) {
-        const x = this.commands[caseNumber];
-        $('#respuesta').append('<p class="respuesta">' + x + '</p>');
-      } else {
-        $('#respuesta, .info').empty();
-        // @ts-ignore
-        document.getElementById('respuesta').style = 'margin-block-start: 0em;';
-      }
+  cloneToHTML(): void {
+    this.cloneText = this.userText;
+    this.cloneText = this.cloneText.replace(/\t/g, '&emsp;');
+    this.cloneText = this.cloneText.replace(/\n/g, '<br/>');
+    this.cloneElement.nativeElement.innerHTML = this.cloneText;
+    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
   }
 
-  cursorBlink(): void {
-    // tslint:disable-next-line:typedef
-    $('.blink').each(function() {
-      const elem = $(this);
-      // tslint:disable-next-line:only-arrow-functions typedef
-      setInterval(function() {
-        if (elem.css('visibility') === 'hidden') {
-          elem.css('visibility', 'visible');
-        } else {
-          elem.css('visibility', 'hidden');
-        }
-      }, 500);
-    });
+  executeCommand(): void {
+    this.response.content = '';
+    this.response.style = 'margin-block-start: -1em;';
+    this.response.content += '<p class="command">$ ' + this.cloneText + '</p>';
+    if (typeof this.userText === 'string') {
+      this.case = this.cases.indexOf(this.userText);
+    }
+    if (this.case === -1) {
+      this.response.content += '<p class="respuesta">Comando "' + this.cloneText + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+    } else {
+      this.showResponse(this.case);
+    }
+    this.previousCommandText = this.userText;
+    this.userText = '';
+    this.cloneText = '';
+    this.cloneElement.nativeElement.innerHTML = '';
+    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
+  }
+
+  loadPreviousCommand(): void {
+    this.userText = this.previousCommandText;
+    this.cloneToHTML();
+  }
+
+  addTabulation(): void {
+    this.userText += '\t';
+    this.cloneToHTML();
+  }
+
+  showResponse(caseNumber): void {
+    if (this.commands[caseNumber]) {
+      const x = this.commands[caseNumber];
+      this.response.content += '<p class="respuesta">' + x + '</p>';
+    } else {
+      this.response.content = '';
+      this.response.style = 'margin-block-start: 0em;';
+    }
   }
 
 }

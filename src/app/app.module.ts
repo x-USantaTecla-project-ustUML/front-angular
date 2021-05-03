@@ -13,6 +13,7 @@ import { CommandViewComponent } from './member-view/command-view/command-view.co
 import { PackageViewComponent } from './member-view/package-view/package-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,11 @@ import {DemoMaterialModule} from './material-module';
     PackageViewComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    DemoMaterialModule
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      DemoMaterialModule,
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
