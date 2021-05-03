@@ -6,7 +6,6 @@
   -webkit-border-radius: 11px;
   -moz-border-radius: 11px;
   border-radius: 11px;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 #handle {

@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-command-view',
@@ -63,6 +64,7 @@ export class CommandViewComponent implements AfterViewInit {
       e.preventDefault();
       this.addTabulation();
     }
+    $('.terminal').animate({ scrollTop: $('.terminal')[0].scrollHeight}, 10);
   }
 
   cloneToHTML(): void {
