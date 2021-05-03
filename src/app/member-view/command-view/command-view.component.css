@@ -1,5 +1,4 @@
 #terminal {
-  /*position: absolute;*/
   height: 10em;
   width: 31em;
   background-color: black;
@@ -8,7 +7,6 @@
   -moz-border-radius: 11px;
   border-radius: 11px;
   overflow-y: scroll;
-  overflow-y: hidden;
   overflow-x: hidden;
 }
 #handle {
@@ -68,8 +66,8 @@ textarea {
 .blink {
   width: 5px;
   height: 13px;
-  display: -webkit-inline-box;
   background-color: white;
+  display: -webkit-inline-box;
 }
 .clone {
   /*white-space: pre-line;*/

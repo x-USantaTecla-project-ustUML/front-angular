@@ -3,8 +3,9 @@
     <div id="handle"><p id="title">USTUML's Terminal</p></div>
     <div class="terminal" (click)="textAreaFocus()">
       <div id="respuesta" [style]="response.style" [innerHTML]="response.content"></div>
-      <div id="sign">$ </div><div class="clone" [innerHTML]="userText"></div><div class="blink" [ngStyle]="{'visibility': blinkVisibility}"></div>
-      <textarea id="user" #user size="2" (keydown)="keyEvent($event)" [(ngModel)]="userText"></textarea>
+      <div id="sign">$ </div>
+      <div class="clone" #clone></div>
+      <textarea id="user" #user size="2" (keydown)="keyEvent($event)" [(ngModel)]="userText" (ngModelChange)="cloneToHTML()"></textarea>
     </div>
   </div>
 </div>
