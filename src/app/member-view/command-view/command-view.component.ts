@@ -1,5 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import * as $ from 'jquery';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-command-view',
@@ -8,110 +7,112 @@ import * as $ from 'jquery';
 })
 export class CommandViewComponent implements OnInit {
 
+  @ViewChild('user') textAreaElement: ElementRef;
   previousCommand = '';
-  declare case;
-  cases = ['clear', 'help', 'resumen', 'cv', 'portafolio', 'contacto'];
+  case: number;
+  cases = ['clear', 'help', 'add:', 'modify:', 'delete:', 'open:', 'close'];
   commands = {
-    1: 'Comandos disponibles:<br />clear<br />help<br />resumen<br />cv<br />portafolio<br />contacto',
-    2: 'Muestra Resumen.',
-    3: 'Muestra CV.',
-    4: 'Muestra Portafolio.',
-    5: 'Muestra Contacto.'
+    1: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+    2: 'Add implementation.',
+    3: 'Modify member.',
+    4: 'Delete member.',
+    5: 'Open member.',
+    6: 'Close member.'
   }; // Respuesta a comandos
 
-  constructor() {  }
+  blinkVisibility: string;
+  userText: string;
+  response: {
+    content: string;
+    style: string;
+  };
 
-  ngOnInit(): void {
-    this.loadTerminal();
+  constructor() {
+    this.userText = '';
+    this.response = {
+      content: '',
+      style: ''
+    };
     this.cursorBlink();
   }
 
-  focus(): void { $('#user').focus(); }
-
-  loadTerminal(): void {
-    $('.terminal').show();
-    // tslint:disable-next-line:only-arrow-functions typedef
-    $('#user').on('input', function(e){
-      $('.clone').html((document.getElementById('user') as HTMLInputElement).value);
-    });
+  ngOnInit(): void {
   }
 
-  @HostListener('document:keyup', ['$event'])
-  // tslint:disable-next-line:typedef
-  keyEvent(e: KeyboardEvent){
-    if (e.keyCode === 13) {
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', '-webkit-inline-box');
-      });
-      document.getElementById('respuesta').innerHTML = '';
-      // @ts-ignore
-      document.getElementById('respuesta').style = 'margin-block-start: -1em;';
+  textAreaFocus(): void {
+    this.textAreaElement.nativeElement.focus();
+  }
+
+  keyEvent(e: KeyboardEvent): void {
+    if (e.ctrlKey && e.code === 'Enter') {
+      this.executeCommand(e);
+    }else if (e.code === 'ArrowUp'){
+      this.loadPreviousCommand();
+    }else if (e.code === 'Enter'){
+      this.addLineBreak();
+    }else if (e.code === 'Tab'){
       e.preventDefault();
-      const valor = document.getElementsByClassName('clone')[0].innerHTML.valueOf();
-      $(this).val('');
-      $('.clone').text('');
-      $('#respuesta').append('<p class="command">$ ' + valor + '</p>');
-      let valorCase;
-      if (this.previousCommand === ''){
-        valorCase = valor.replace(' ', '').substring(0, valor.length - 2);
-      } else{
-        valorCase = valor.replace(' ', '').substring(0, valor.length - 1);
-      }
-      if (typeof valorCase === 'string') {
-        this.case = this.cases.indexOf(valorCase);
-      }
-      if (this.case === -1) {
-        $('#respuesta').append('<p class="respuesta">Comando "' + valor + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>');
-      } else {
-        this.terminal(this.case);
-      }
-      this.previousCommand = valorCase;
-      (document.getElementById('user') as HTMLInputElement).value = '';
-    }else if (e.keyCode === 38){
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', 'none');
-      });
-      $('.clone').text(this.previousCommand);
-      (document.getElementById('user') as HTMLInputElement).value = this.previousCommand;
-    }else if (e.keyCode === 17){
-      (document.getElementById('user') as HTMLInputElement).value += '\n';
-      // tslint:disable-next-line:typedef
-      $('.blink').each(function() {
-        $(this).css('display', 'none');
-      });
-    }else if (e.keyCode === 9){
-      (document.getElementById('user') as HTMLInputElement).value += '&emsp;';
-      document.getElementsByClassName('clone')[0].innerHTML += '&emsp;';
-      $('#user').focus();
+      this.addTabulation();
     }
   }
 
-  terminal(caseNumber): void {
+  executeCommand(e: KeyboardEvent): void {
+    // tslint:disable-next-line:typedef
+    /*$('.blink').each(function() {
+      $(this).css('display', '-webkit-inline-box');
+    });*/
+    this.response.content = '';
+    this.response.style = '{ margin-block-start: -1em; }';
+    e.preventDefault();
+    this.response.content += '<p class="command">$ ' + this.userText + '</p>';
+    if (typeof this.userText === 'string') {
+      this.case = this.cases.indexOf(this.userText);
+    }
+    if (this.case === -1) {
+      this.response.content += '<p class="respuesta">Comando "' + this.userText + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+    } else {
+      this.showResponse(this.case);
+    }
+    this.previousCommand = this.userText;
+    this.userText = '';
+  }
+
+  loadPreviousCommand(): void {
+    // tslint:disable-next-line:typedef
+    /*$('.blink').each(function() {
+      $(this).css('display', 'none');
+    });*/
+    this.userText = this.previousCommand;
+  }
+
+  addLineBreak(): void {
+    this.userText += '<br/>';
+    // tslint:disable-next-line:typedef
+    /*$('.blink').each(function() {
+      $(this).css('display', 'none');
+    });*/
+  }
+
+  addTabulation(): void {
+    this.userText += '&emsp;';
+    this.textAreaFocus();
+  }
+
+  showResponse(caseNumber): void {
       if (this.commands[caseNumber]) {
         const x = this.commands[caseNumber];
-        $('#respuesta').append('<p class="respuesta">' + x + '</p>');
+        this.response.content += '<p class="respuesta">' + x + '</p>';
       } else {
-        $('#respuesta, .info').empty();
-        // @ts-ignore
-        document.getElementById('respuesta').style = 'margin-block-start: 0em;';
+        this.response.content = '';
+        this.response.style = '{ margin-block-start: 0em; }';
       }
   }
 
   cursorBlink(): void {
-    // tslint:disable-next-line:typedef
-    $('.blink').each(function() {
-      const elem = $(this);
-      // tslint:disable-next-line:only-arrow-functions typedef
-      setInterval(function() {
-        if (elem.css('visibility') === 'hidden') {
-          elem.css('visibility', 'visible');
-        } else {
-          elem.css('visibility', 'hidden');
-        }
-      }, 500);
-    });
+    this.blinkVisibility = 'visible';
+    setInterval(() => {
+      this.blinkVisibility === 'hidden' ? this.blinkVisibility = 'visible' : this.blinkVisibility = 'hidden';
+    }, 500);
   }
 
 }
