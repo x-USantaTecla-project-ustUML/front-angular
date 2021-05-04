@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterViewComponent } from './footer-view/footer-view.component';
 import { HeaderViewComponent } from './header-view/header-view.component';
-import { MemberViewComponent } from './member-view/member-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
-import { DiagramViewComponent } from './member-view/diagram-view/diagram-view.component';
-import { RepositoryViewComponent } from './member-view/repository-view/repository-view.component';
-import { CommandViewComponent } from './member-view/command-view/command-view.component';
-import { PackageViewComponent } from './member-view/package-view/package-view.component';
+import { DiagramViewComponent } from './user-view/diagram-view/diagram-view.component';
+import { RepositoryViewComponent } from './user-view/repository-view/repository-view.component';
+import { CommandViewComponent } from './user-view/command-view/command-view.component';
+import { PackageViewComponent } from './user-view/package-view/package-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {FormsModule} from '@angular/forms';
@@ -20,7 +20,7 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     FooterViewComponent,
     HeaderViewComponent,
-    MemberViewComponent,
+    UserViewComponent,
     NotFoundViewComponent,
     DiagramViewComponent,
     RepositoryViewComponent,
