@@ -11,24 +11,14 @@ export class CommandViewComponent implements AfterViewInit {
   @ViewChild('user') textAreaElement: ElementRef;
   @ViewChild('clone') cloneElement: ElementRef;
   blinkDiv: HTMLDivElement;
-  previousCommandText = '';
-  case: number;
-  cases = ['clear', 'help', 'add:', 'modify:', 'delete:', 'open:', 'close'];
-  commands = {
-    1: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
-    2: 'Add implementation.',
-    3: 'Modify member.',
-    4: 'Delete member.',
-    5: 'Open member.',
-    6: 'Close member.'
-  }; // Respuesta a comandos
 
-  userText: string;
-  cloneText: string;
-  response: {
+  response: { // output
     content: string;
     style: string;
   };
+  userText: string; // input
+  cloneText: string; // Cambiar a método
+  previousCommandText = '';
 
   constructor(private renderer: Renderer2) {
     this.userText = '';
@@ -79,14 +69,7 @@ export class CommandViewComponent implements AfterViewInit {
     this.response.content = '';
     this.response.style = 'margin-block-start: -1em;';
     this.response.content += '<p class="command">$ ' + this.cloneText + '</p>';
-    if (typeof this.userText === 'string') {
-      this.case = this.cases.indexOf(this.userText);
-    }
-    if (this.case === -1) {
-      this.response.content += '<p class="respuesta">Comando "' + this.cloneText + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
-    } else {
-      this.showResponse(this.case);
-    }
+    this.showResponse();
     this.previousCommandText = this.userText;
     this.userText = '';
     this.cloneText = '';
@@ -104,9 +87,22 @@ export class CommandViewComponent implements AfterViewInit {
     this.cloneToHTML();
   }
 
-  showResponse(caseNumber): void {
-    if (this.commands[caseNumber]) {
-      const x = this.commands[caseNumber];
+  showResponse(): void {
+    const cases = ['clear', 'help', 'add:', 'modify:', 'delete:', 'open:', 'close'];
+    const command = cases.indexOf(this.userText);
+    if (command === -1) {
+      this.response.content += '<p class="respuesta">Comando "' + this.cloneText + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+    }
+    const commands = {
+      1: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+      2: 'Add implementation.',
+      3: 'Modify member.',
+      4: 'Delete member.',
+      5: 'Open member.',
+      6: 'Close member.'
+    };
+    if (commands[command]) {
+      const x = commands[command];
       this.response.content += '<p class="respuesta">' + x + '</p>';
     } else {
       this.response.content = '';
