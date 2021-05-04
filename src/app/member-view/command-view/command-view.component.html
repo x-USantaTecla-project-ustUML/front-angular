@@ -2,11 +2,11 @@
   <div id="header">
     <p id="title">USTUML's Terminal</p>
   </div>
-  <div class="terminal" (click)="textAreaFocus()">
+  <div class="terminal" #terminal (click)="textAreaFocus()">
     <div [style]="output.style" [innerHTML]="output.content"></div>
     <div id="sign">$ </div>
     <div class="textAreaClone" #textAreaClone></div>
     <textarea #textArea size="2" (keydown)="keyEvent($event)"
-              [(ngModel)]="input" (ngModelChange)="updateTextAreaClone(parseToHTML(input))"></textarea>
+              [(ngModel)]="input.content" (ngModelChange)="updateTextAreaClone(parseToHTML(input.content))"></textarea>
   </div>
 </div>
