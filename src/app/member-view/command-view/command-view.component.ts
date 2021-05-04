@@ -8,49 +8,39 @@ import * as $ from 'jquery';
 })
 export class CommandViewComponent implements AfterViewInit {
 
-  @ViewChild('user') textAreaElement: ElementRef;
-  @ViewChild('clone') cloneElement: ElementRef;
-  blinkDiv: HTMLDivElement;
-  previousCommandText = '';
-  case: number;
-  cases = ['clear', 'help', 'add:', 'modify:', 'delete:', 'open:', 'close'];
-  commands = {
-    1: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
-    2: 'Add implementation.',
-    3: 'Modify member.',
-    4: 'Delete member.',
-    5: 'Open member.',
-    6: 'Close member.'
-  }; // Respuesta a comandos
+  @ViewChild('textArea') textArea: ElementRef;
+  @ViewChild('textAreaClone') textAreaClone: ElementRef;
+  blink: HTMLDivElement;
 
-  userText: string;
-  cloneText: string;
-  response: {
+  output: {
     content: string;
     style: string;
   };
 
+  input: string;
+  previousCommandText = '';
+
   constructor(private renderer: Renderer2) {
-    this.userText = '';
-    this.cloneText = '';
-    this.response = {
+    this.input = '';
+    this.output = {
       content: '',
       style: ''
     };
   }
 
   ngAfterViewInit(): void {
-    this.blinkDiv = this.renderer.createElement('div');
-    this.blinkDiv.className = 'blink';
-    this.blinkDiv.style.visibility = 'visible';
+    this.blink = this.renderer.createElement('div');
+    this.blink.className = 'blink';
+    this.blink.style.visibility = 'visible';
     setInterval(() => {
-      this.blinkDiv.style.visibility === 'hidden' ? this.blinkDiv.style.visibility = 'visible' : this.blinkDiv.style.visibility = 'hidden';
+      this.blink.style.visibility === 'hidden' ? this.blink.style.visibility = 'visible' : this.blink.style.visibility = 'hidden';
     }, 500);
-    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
+    this.updateTextAreaClone('');
   }
 
-  textAreaFocus(): void {
-    this.textAreaElement.nativeElement.focus();
+  updateTextAreaClone(htmlContent: string): void {
+    this.textAreaClone.nativeElement.innerHTML = htmlContent;
+    this.renderer.appendChild(this.textAreaClone.nativeElement, this.blink);
   }
 
   keyEvent(e: KeyboardEvent): void {
@@ -67,51 +57,53 @@ export class CommandViewComponent implements AfterViewInit {
     $('.terminal').animate({ scrollTop: $('.terminal')[0].scrollHeight}, 10);
   }
 
-  cloneToHTML(): void {
-    this.cloneText = this.userText;
-    this.cloneText = this.cloneText.replace(/\t/g, '&emsp;');
-    this.cloneText = this.cloneText.replace(/\n/g, '<br/>');
-    this.cloneElement.nativeElement.innerHTML = this.cloneText;
-    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
+  executeCommand(): void {
+    this.showResponse();
+    this.previousCommandText = this.input;
+    this.input = '';
+    this.updateTextAreaClone('');
   }
 
-  executeCommand(): void {
-    this.response.content = '';
-    this.response.style = 'margin-block-start: -1em;';
-    this.response.content += '<p class="command">$ ' + this.cloneText + '</p>';
-    if (typeof this.userText === 'string') {
-      this.case = this.cases.indexOf(this.userText);
-    }
-    if (this.case === -1) {
-      this.response.content += '<p class="respuesta">Comando "' + this.cloneText + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+  parseToHTML(input: string): string {
+    let parsed = input;
+    parsed = parsed.replace(/\t/g, '&emsp;');
+    parsed = parsed.replace(/\n/g, '<br/>');
+    return parsed;
+  }
+
+  private showResponse(): void {
+    const commands = {
+      help: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+      'add:': 'Add implementation.',
+      'modify:': 'Modify member.',
+      'delete:': 'Delete member.',
+      'open:': 'Open member.',
+      close: 'Close member.'
+    };
+    if (commands[this.input]) {
+      this.output.content = '<p>' + commands[this.input] + '</p>';
+      this.output.style = 'margin-block-start: 2em;';
+    } else if (this.input === 'clear') {
+      this.output.content = '';
+      this.output.style = 'margin-block-start: 0em;';
     } else {
-      this.showResponse(this.case);
+      this.output.content = '<p>Comando "' + this.parseToHTML(this.input) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+      this.output.style = 'margin-block-start: 2em;';
     }
-    this.previousCommandText = this.userText;
-    this.userText = '';
-    this.cloneText = '';
-    this.cloneElement.nativeElement.innerHTML = '';
-    this.renderer.appendChild(this.cloneElement.nativeElement, this.blinkDiv);
   }
 
   loadPreviousCommand(): void {
-    this.userText = this.previousCommandText;
-    this.cloneToHTML();
+    this.input = this.previousCommandText;
+    this.updateTextAreaClone(this.parseToHTML(this.input));
   }
 
   addTabulation(): void {
-    this.userText += '\t';
-    this.cloneToHTML();
+    this.input += '\t';
+    this.updateTextAreaClone(this.parseToHTML(this.input));
   }
 
-  showResponse(caseNumber): void {
-    if (this.commands[caseNumber]) {
-      const x = this.commands[caseNumber];
-      this.response.content += '<p class="respuesta">' + x + '</p>';
-    } else {
-      this.response.content = '';
-      this.response.style = 'margin-block-start: 0em;';
-    }
+  textAreaFocus(): void {
+    this.textArea.nativeElement.focus();
   }
 
 }

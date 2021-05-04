@@ -1,6 +1,6 @@
 #terminal {
   position: relative;
-  height: 10em;
+  height: 13em;
   min-width: 27em;
   max-width: 37em;
   background-color: black;
@@ -10,7 +10,7 @@
   border-radius: 11px;
   overflow-x: hidden;
 }
-#handle {
+#header {
   position: absolute;
   width: 100%;
   height: 30px;
@@ -32,7 +32,7 @@
 #title {
   margin-top: 3px;
 }
-#handle p {
+#header p {
   line-height: 30px;
   color: #DFDBD2;
   padding-left: 15px;
@@ -69,8 +69,7 @@ textarea {
   background-color: white;
   display: -webkit-inline-box;
 }
-.clone {
-  /*white-space: pre-line;*/
+.textAreaClone {
   display: -webkit-inline-box;
 }
 #sign {
