@@ -31,15 +31,13 @@
 }
 #title {
   margin-top: 3px;
-}
-#header p {
   line-height: 30px;
   color: #DFDBD2;
   padding-left: 15px;
   font-size: 0.8em;
   font-weight: 500;
 }
-p, span {
+span {
   margin-top: 30px;
   color: white;
 }
@@ -48,9 +46,6 @@ p, span {
   padding-top: 10px;
   overflow: auto;
   height: 100%;
-
-}
-.info p, .terminal {
   word-wrap: break-word;
   font-size: 0.9em;
 }
