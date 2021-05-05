@@ -62,10 +62,10 @@ textarea {
   width: 5px;
   height: 13px;
   background-color: white;
-  display: -webkit-inline-box;
+  display: inline-flex;
 }
 .textAreaClone {
-  display: -webkit-inline-box;
+  display: inline-flex;
 }
 #sign {
   display: contents;

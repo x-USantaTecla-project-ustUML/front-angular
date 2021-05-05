@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import * as yaml from 'js-yaml';
 
 @Component({
   selector: 'app-command-view',
@@ -46,8 +47,13 @@ export class CommandViewComponent implements AfterViewInit {
   }
 
   updateTextAreaClone(htmlContent: string): void {
-    this.textAreaClone.nativeElement.innerHTML = htmlContent;
-    this.renderer.appendChild(this.textAreaClone.nativeElement, this.blink);
+    const span = this.renderer.createElement('span');
+    span.innerHTML = htmlContent;
+    span.appendChild(this.blink);
+    if (this.textAreaClone.nativeElement.childNodes.length > 0) {
+      this.renderer.removeChild(this.textAreaClone.nativeElement, this.textAreaClone.nativeElement.childNodes[0]);
+    }
+    this.renderer.appendChild(this.textAreaClone.nativeElement, span);
   }
 
   keyEvent(e: KeyboardEvent): void {
@@ -68,11 +74,10 @@ export class CommandViewComponent implements AfterViewInit {
   }
 
   private executeCommand(): void {
-    this.showResponse();
     this.input.previousCommands.push(this.input.content);
     this.input.selectedCommand = this.input.previousCommands.length;
-    this.input.content = '';
     this.updateTextAreaClone('');
+    this.showResponse();
   }
 
   private showResponse(): void {
@@ -84,22 +89,31 @@ export class CommandViewComponent implements AfterViewInit {
       'open:': 'Open member.',
       close: 'Close member.'
     };
-    if (commands[this.input.content]) {
-      this.output.content = '<p>' + commands[this.input.content] + '</p>';
-      this.output.style = 'margin-block-start: 2em;';
-    } else if (this.input.content === 'clear') {
+    const command = this.input.content.split('\n')[0];
+    if (commands[command]) {
+      if (command === 'help'){
+        this.output.content = '<p>' + commands[command] + '</p>';
+        this.output.style = 'margin-block-start: 2em;';
+      } else {
+        // TODO Llamar a Command Service (parse YAML to JSON dentro + post + observable)
+        console.log(yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA })); // Try catch
+        console.log(JSON.stringify(yaml.load(this.input.content)));
+      }
+    } else if (command === 'clear') {
       this.output.content = '';
       this.output.style = 'margin-block-start: 0em;';
     } else {
-      this.output.content = '<p>Comando "' + this.parseToHTML(this.input.content) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+      this.output.content = '<p>Comando "' + this.parseToHTML(command) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
       this.output.style = 'margin-block-start: 2em;';
     }
+    this.input.content = '';
   }
 
   parseToHTML(input: string): string {
     let parsed = input;
-    parsed = parsed.replace(/\t/g, '&emsp;');
+    // parsed = parsed.replace(/\t/g, '&emsp;');
     parsed = parsed.replace(/\n/g, '<br/>');
+    parsed = parsed.replace(/ /g, '&nbsp;');
     return parsed;
   }
 
@@ -121,7 +135,7 @@ export class CommandViewComponent implements AfterViewInit {
   }
 
   private addTabulation(): void {
-    this.input.content += '\t';
+    this.input.content += '  ';
     this.updateTextAreaClone(this.parseToHTML(this.input.content));
   }
 
