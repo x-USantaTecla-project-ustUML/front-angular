@@ -140,7 +140,7 @@ export class CommandViewComponent implements AfterViewInit {
   }
 
   private loadPastCommand(pastCommand: number): void {
-    if (pastCommand > 0 && pastCommand < this.input.previousCommands.length - 1){
+    if (pastCommand >= 0 && pastCommand < this.input.previousCommands.length){
       this.input.content = this.input.previousCommands[pastCommand];
       this.input.selectedCommand = pastCommand;
     }
