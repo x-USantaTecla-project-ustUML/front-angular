@@ -38,7 +38,6 @@
   font-weight: 500;
 }
 span {
-  margin-top: 30px;
   color: white;
 }
 .terminal {
@@ -63,9 +62,12 @@ textarea {
   height: 13px;
   background-color: white;
   display: inline-flex;
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 2px;
 }
 .textAreaClone {
-  display: inline-flex;
+  display: inline-table;
 }
 #sign {
   display: contents;

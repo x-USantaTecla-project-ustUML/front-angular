@@ -15,8 +15,10 @@ export class CommandViewComponent implements AfterViewInit {
 
   input: {
     content: string;
+    previousContentLength: number;
     previousCommands: string[];
     selectedCommand: number;
+    cursorPosition: number;
   };
 
   output: {
@@ -27,8 +29,10 @@ export class CommandViewComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {
     this.input = {
       content: '',
+      previousContentLength: 0,
       previousCommands: [],
-      selectedCommand: 0
+      selectedCommand: 0,
+      cursorPosition: 0
     };
     this.output = {
       content: '',
@@ -43,17 +47,26 @@ export class CommandViewComponent implements AfterViewInit {
     setInterval(() => {
       this.blink.style.visibility === 'hidden' ? this.blink.style.visibility = 'visible' : this.blink.style.visibility = 'hidden';
     }, 500);
-    this.updateTextAreaClone('');
+    this.updateTextAreaClone();
   }
 
-  updateTextAreaClone(htmlContent: string): void {
-    const span = this.renderer.createElement('span');
-    span.innerHTML = htmlContent;
-    span.appendChild(this.blink);
-    if (this.textAreaClone.nativeElement.childNodes.length > 0) {
-      this.renderer.removeChild(this.textAreaClone.nativeElement, this.textAreaClone.nativeElement.childNodes[0]);
-    }
-    this.renderer.appendChild(this.textAreaClone.nativeElement, span);
+  updateTextAreaClone(): void {
+    const sign = Math.sign(this.input.content.length - this.input.previousContentLength);
+    this.input.cursorPosition += sign;
+    this.insertAtStringPos(this.textAreaClone.nativeElement, this.input.cursorPosition, this.blink);
+  }
+
+  private insertAtStringPos(el: HTMLDivElement, pos: number, insertable: HTMLDivElement): void {
+    const text = this.input.content;
+    const beginning = this.parseToHTML(text.substr(0, pos));
+    const end = this.parseToHTML(text.substr(pos, text.length - pos));
+
+    el.innerHTML = '';
+
+    el.insertAdjacentHTML( 'beforeend', beginning );
+    this.renderer.appendChild(el, insertable);
+    el.insertAdjacentHTML( 'beforeend', end );
+
   }
 
   keyEvent(e: KeyboardEvent): void {
@@ -66,6 +79,16 @@ export class CommandViewComponent implements AfterViewInit {
     }else if (e.code === 'ArrowDown'){
       e.preventDefault();
       this.loadNextCommand();
+    }else if (e.code === 'ArrowLeft'){
+      if (this.input.cursorPosition > 0) {
+        this.input.cursorPosition--;
+        this.updateTextAreaClone();
+      }
+    }else if (e.code === 'ArrowRight'){
+      if (this.input.cursorPosition < this.input.content.length) {
+        this.input.cursorPosition++;
+        this.updateTextAreaClone();
+      }
     }else if (e.code === 'Tab'){
       e.preventDefault();
       this.addTabulation();
@@ -76,8 +99,11 @@ export class CommandViewComponent implements AfterViewInit {
   private executeCommand(): void {
     this.input.previousCommands.push(this.input.content);
     this.input.selectedCommand = this.input.previousCommands.length;
-    this.updateTextAreaClone('');
     this.showResponse();
+    this.input.content = '';
+    this.input.cursorPosition = 0;
+    this.input.previousContentLength = 0;
+    this.updateTextAreaClone();
   }
 
   private showResponse(): void {
@@ -106,12 +132,10 @@ export class CommandViewComponent implements AfterViewInit {
       this.output.content = '<p>Comando "' + this.parseToHTML(command) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
       this.output.style = 'margin-block-start: 2em;';
     }
-    this.input.content = '';
   }
 
   parseToHTML(input: string): string {
     let parsed = input;
-    // parsed = parsed.replace(/\t/g, '&emsp;');
     parsed = parsed.replace(/\n/g, '<br/>');
     parsed = parsed.replace(/ /g, '&nbsp;');
     return parsed;
@@ -122,7 +146,9 @@ export class CommandViewComponent implements AfterViewInit {
     if (this.input.selectedCommand > 0){
       this.input.selectedCommand--;
       this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.updateTextAreaClone(this.parseToHTML(this.input.content));
+      this.input.previousContentLength = this.input.content.length;
+      this.input.cursorPosition = this.input.content.length;
+      this.updateTextAreaClone();
     }
   }
 
@@ -130,13 +156,17 @@ export class CommandViewComponent implements AfterViewInit {
     if (this.input.selectedCommand < this.input.previousCommands.length - 1){
       this.input.selectedCommand++;
       this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.updateTextAreaClone(this.parseToHTML(this.input.content));
+      this.input.previousContentLength = this.input.content.length;
+      this.input.cursorPosition = this.input.content.length;
+      this.updateTextAreaClone();
     }
   }
 
   private addTabulation(): void {
     this.input.content += '  ';
-    this.updateTextAreaClone(this.parseToHTML(this.input.content));
+    this.input.previousContentLength = this.input.content.length;
+    this.input.cursorPosition = this.input.content.length;
+    this.updateTextAreaClone();
   }
 
   textAreaFocus(): void {
