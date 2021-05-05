@@ -79,11 +79,11 @@ export class CommandViewComponent implements AfterViewInit {
       this.modifyBlink(0);
     } else if (e.code === 'ArrowUp'){
       e.preventDefault();
-      this.loadCommand(this.input.selectedCommand - 1);
+      this.loadPastCommand(this.input.selectedCommand - 1);
       this.modifyBlink(this.input.content.length);
     } else if (e.code === 'ArrowDown'){
       e.preventDefault();
-      this.loadCommand(this.input.selectedCommand + 1);
+      this.loadPastCommand(this.input.selectedCommand + 1);
       this.modifyBlink(this.input.content.length);
     } else if (e.code === 'ArrowLeft'){
       this.modifyBlink(this.input.blinkPosition - 1);
@@ -139,10 +139,10 @@ export class CommandViewComponent implements AfterViewInit {
     return parsed;
   }
 
-  private loadCommand(command: number): void {
-    if (command > 0 && command < this.input.previousCommands.length - 1){
-      this.input.content = this.input.previousCommands[command];
-      this.input.selectedCommand = command;
+  private loadPastCommand(pastCommand: number): void {
+    if (pastCommand > 0 && pastCommand < this.input.previousCommands.length - 1){
+      this.input.content = this.input.previousCommands[pastCommand];
+      this.input.selectedCommand = pastCommand;
     }
   }
 
