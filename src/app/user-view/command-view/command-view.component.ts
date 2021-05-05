@@ -15,10 +15,9 @@ export class CommandViewComponent implements AfterViewInit {
 
   input: {
     content: string;
-    previousContentLength: number;
     previousCommands: string[];
     selectedCommand: number;
-    cursorPosition: number;
+    blinkPosition: number;
   };
 
   output: {
@@ -29,10 +28,9 @@ export class CommandViewComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {
     this.input = {
       content: '',
-      previousContentLength: 0,
       previousCommands: [],
       selectedCommand: 0,
-      cursorPosition: 0
+      blinkPosition: 0
     };
     this.output = {
       content: '',
@@ -50,48 +48,51 @@ export class CommandViewComponent implements AfterViewInit {
     this.updateTextAreaClone();
   }
 
-  updateTextAreaClone(): void {
-    const sign = Math.sign(this.input.content.length - this.input.previousContentLength);
-    this.input.cursorPosition += sign;
-    this.insertAtStringPos(this.textAreaClone.nativeElement, this.input.cursorPosition, this.blink);
+  private updateTextAreaClone(): void {
+    const text = this.input.content;
+    const beginning = this.parseToHTML(text.substr(0, this.input.blinkPosition));
+    const end = this.parseToHTML(text.substr(this.input.blinkPosition, text.length - this.input.blinkPosition));
+
+    this.textAreaClone.nativeElement.innerHTML = '';
+
+    this.textAreaClone.nativeElement.insertAdjacentHTML( 'beforeend', beginning );
+    this.renderer.appendChild(this.textAreaClone.nativeElement, this.blink);
+    this.textAreaClone.nativeElement.insertAdjacentHTML( 'beforeend', end );
   }
 
-  private insertAtStringPos(el: HTMLDivElement, pos: number, insertable: HTMLDivElement): void {
-    const text = this.input.content;
-    const beginning = this.parseToHTML(text.substr(0, pos));
-    const end = this.parseToHTML(text.substr(pos, text.length - pos));
+  onModelChange(): void {
+    const newPosition = this.input.blinkPosition + Math.sign(this.input.content.length - this.input.blinkPosition);
+    this.modifyBlink(newPosition);
+  }
 
-    el.innerHTML = '';
-
-    el.insertAdjacentHTML( 'beforeend', beginning );
-    this.renderer.appendChild(el, insertable);
-    el.insertAdjacentHTML( 'beforeend', end );
-
+  private modifyBlink(newPosition: number): void {
+    if (newPosition >= 0 && newPosition <= this.input.content.length) {
+      this.input.blinkPosition = newPosition;
+      this.updateTextAreaClone();
+    }
   }
 
   keyEvent(e: KeyboardEvent): void {
     if (e.ctrlKey && e.code === 'Enter') {
       e.preventDefault();
       this.executeCommand();
-    }else if (e.code === 'ArrowUp'){
+      this.modifyBlink(0);
+    } else if (e.code === 'ArrowUp'){
       e.preventDefault();
-      this.loadPreviousCommand();
-    }else if (e.code === 'ArrowDown'){
+      this.loadCommand(this.input.selectedCommand - 1);
+      this.modifyBlink(this.input.content.length);
+    } else if (e.code === 'ArrowDown'){
       e.preventDefault();
-      this.loadNextCommand();
-    }else if (e.code === 'ArrowLeft'){
-      if (this.input.cursorPosition > 0) {
-        this.input.cursorPosition--;
-        this.updateTextAreaClone();
-      }
-    }else if (e.code === 'ArrowRight'){
-      if (this.input.cursorPosition < this.input.content.length) {
-        this.input.cursorPosition++;
-        this.updateTextAreaClone();
-      }
-    }else if (e.code === 'Tab'){
+      this.loadCommand(this.input.selectedCommand + 1);
+      this.modifyBlink(this.input.content.length);
+    } else if (e.code === 'ArrowLeft'){
+      this.modifyBlink(this.input.blinkPosition - 1);
+    } else if (e.code === 'ArrowRight'){
+      this.modifyBlink(this.input.blinkPosition + 1);
+    } else if (e.code === 'Tab'){
       e.preventDefault();
-      this.addTabulation();
+      this.input.content += '  ';
+      this.modifyBlink(this.input.blinkPosition + 2);
     }
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
@@ -101,9 +102,6 @@ export class CommandViewComponent implements AfterViewInit {
     this.input.selectedCommand = this.input.previousCommands.length;
     this.showResponse();
     this.input.content = '';
-    this.input.cursorPosition = 0;
-    this.input.previousContentLength = 0;
-    this.updateTextAreaClone();
   }
 
   private showResponse(): void {
@@ -129,44 +127,23 @@ export class CommandViewComponent implements AfterViewInit {
       this.output.content = '';
       this.output.style = 'margin-block-start: 0em;';
     } else {
-      this.output.content = '<p>Comando "' + this.parseToHTML(command) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+      this.output.content = '<p>Comando "' + this.parseToHTML(this.input.content) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
       this.output.style = 'margin-block-start: 2em;';
     }
   }
 
-  parseToHTML(input: string): string {
+  private parseToHTML(input: string): string {
     let parsed = input;
     parsed = parsed.replace(/\n/g, '<br/>');
     parsed = parsed.replace(/ /g, '&nbsp;');
     return parsed;
   }
 
-
-  private loadPreviousCommand(): void {
-    if (this.input.selectedCommand > 0){
-      this.input.selectedCommand--;
-      this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.input.previousContentLength = this.input.content.length;
-      this.input.cursorPosition = this.input.content.length;
-      this.updateTextAreaClone();
+  private loadCommand(command: number): void {
+    if (command > 0 && command < this.input.previousCommands.length - 1){
+      this.input.content = this.input.previousCommands[command];
+      this.input.selectedCommand = command;
     }
-  }
-
-  private loadNextCommand(): void {
-    if (this.input.selectedCommand < this.input.previousCommands.length - 1){
-      this.input.selectedCommand++;
-      this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.input.previousContentLength = this.input.content.length;
-      this.input.cursorPosition = this.input.content.length;
-      this.updateTextAreaClone();
-    }
-  }
-
-  private addTabulation(): void {
-    this.input.content += '  ';
-    this.input.previousContentLength = this.input.content.length;
-    this.input.cursorPosition = this.input.content.length;
-    this.updateTextAreaClone();
   }
 
   textAreaFocus(): void {
