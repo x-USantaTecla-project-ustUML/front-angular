@@ -81,18 +81,22 @@ export class CommandViewComponent implements AfterViewInit {
       e.preventDefault();
       this.loadPastCommand(this.input.selectedCommand - 1);
       this.modifyBlink(this.input.content.length);
+      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
     } else if (e.code === 'ArrowDown'){
       e.preventDefault();
       this.loadPastCommand(this.input.selectedCommand + 1);
       this.modifyBlink(this.input.content.length);
+      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
     } else if (e.code === 'ArrowLeft'){
       this.modifyBlink(this.input.blinkPosition - 1);
     } else if (e.code === 'ArrowRight'){
       this.modifyBlink(this.input.blinkPosition + 1);
     } else if (e.code === 'Tab'){
       e.preventDefault();
-      this.input.content += '  ';
+      const text = this.input.content;
+      this.input.content = [text.slice(0, this.input.blinkPosition), text.slice(this.input.blinkPosition)].join('  ');
       this.modifyBlink(this.input.blinkPosition + 2);
+      setTimeout(() => this.textArea.nativeElement.setSelectionRange(this.input.blinkPosition, this.input.blinkPosition), 15);
     }
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
