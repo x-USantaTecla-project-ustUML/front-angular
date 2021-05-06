@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from '@angular/core';
 import * as yaml from 'js-yaml';
 import {UserViewService} from '../user-view.service';
 import {CommandResponse} from '../command-response.model';
@@ -9,6 +9,8 @@ import {CommandResponse} from '../command-response.model';
   styleUrls: ['./command-view.component.css']
 })
 export class CommandViewComponent implements AfterViewInit {
+
+  @Output() serverResponse = new EventEmitter<CommandResponse>();
 
   @ViewChild('textArea') textArea: ElementRef;
   @ViewChild('textAreaClone') textAreaClone: ElementRef;

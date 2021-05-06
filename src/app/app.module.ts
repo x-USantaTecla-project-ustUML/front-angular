@@ -14,6 +14,7 @@ import { PackageViewComponent } from './user-view/package-view/package-view.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {FormsModule} from '@angular/forms';
       AppRoutingModule,
       BrowserAnimationsModule,
       DemoMaterialModule,
-      FormsModule
+      FormsModule,
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
