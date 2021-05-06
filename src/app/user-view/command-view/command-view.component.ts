@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import * as yaml from 'js-yaml';
+import {UserViewService} from '../user-view.service';
+import {CommandResponse} from '../command-response.model';
 
 @Component({
   selector: 'app-command-view',
@@ -25,7 +27,7 @@ export class CommandViewComponent implements AfterViewInit {
     style: string;
   };
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private userViewService: UserViewService) {
     this.input = {
       content: '',
       previousCommands: [],
@@ -123,9 +125,13 @@ export class CommandViewComponent implements AfterViewInit {
         this.output.content = '<p>' + commands[command] + '</p>';
         this.output.style = 'margin-block-start: 2em;';
       } else {
-        // TODO Llamar a Command Service (parse YAML to JSON dentro + post + observable)
-        console.log(yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA })); // Try catch
-        console.log(JSON.stringify(yaml.load(this.input.content)));
+        try {
+          const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
+          this.userViewService.create(commandObject)
+            .subscribe((response) => { this.serverResponse.emit(response); });
+        } catch (e) {
+          console.log(e);
+        }
       }
     } else if (command === 'clear') {
       this.output.content = '';

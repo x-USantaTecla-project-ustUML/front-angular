@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CommandResponse} from './command-response.model';
 
 @Component({
   selector: 'app-on-project',
