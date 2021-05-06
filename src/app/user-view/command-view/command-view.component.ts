@@ -17,6 +17,7 @@ export class CommandViewComponent implements AfterViewInit {
     content: string;
     previousCommands: string[];
     selectedCommand: number;
+    blinkPosition: number;
   };
 
   output: {
@@ -28,7 +29,8 @@ export class CommandViewComponent implements AfterViewInit {
     this.input = {
       content: '',
       previousCommands: [],
-      selectedCommand: 0
+      selectedCommand: 0,
+      blinkPosition: 0
     };
     this.output = {
       content: '',
@@ -43,32 +45,58 @@ export class CommandViewComponent implements AfterViewInit {
     setInterval(() => {
       this.blink.style.visibility === 'hidden' ? this.blink.style.visibility = 'visible' : this.blink.style.visibility = 'hidden';
     }, 500);
-    this.updateTextAreaClone('');
+    this.updateTextAreaClone();
   }
 
-  updateTextAreaClone(htmlContent: string): void {
-    const span = this.renderer.createElement('span');
-    span.innerHTML = htmlContent;
-    span.appendChild(this.blink);
-    if (this.textAreaClone.nativeElement.childNodes.length > 0) {
-      this.renderer.removeChild(this.textAreaClone.nativeElement, this.textAreaClone.nativeElement.childNodes[0]);
+  private updateTextAreaClone(): void {
+    const text = this.input.content;
+    const beginning = this.parseToHTML(text.substr(0, this.input.blinkPosition));
+    const end = this.parseToHTML(text.substr(this.input.blinkPosition, text.length - this.input.blinkPosition));
+
+    this.textAreaClone.nativeElement.innerHTML = '';
+
+    this.textAreaClone.nativeElement.insertAdjacentHTML( 'beforeend', beginning );
+    this.renderer.appendChild(this.textAreaClone.nativeElement, this.blink);
+    this.textAreaClone.nativeElement.insertAdjacentHTML( 'beforeend', end );
+  }
+
+  onModelChange(): void {
+    const newPosition = this.input.blinkPosition + Math.sign(this.input.content.length - this.input.blinkPosition);
+    this.modifyBlink(newPosition);
+  }
+
+  private modifyBlink(newPosition: number): void {
+    if (newPosition >= 0 && newPosition <= this.input.content.length) {
+      this.input.blinkPosition = newPosition;
+      this.updateTextAreaClone();
     }
-    this.renderer.appendChild(this.textAreaClone.nativeElement, span);
   }
 
   keyEvent(e: KeyboardEvent): void {
     if (e.ctrlKey && e.code === 'Enter') {
       e.preventDefault();
       this.executeCommand();
-    }else if (e.code === 'ArrowUp'){
+      this.modifyBlink(0);
+    } else if (e.code === 'ArrowUp'){
       e.preventDefault();
-      this.loadPreviousCommand();
-    }else if (e.code === 'ArrowDown'){
+      this.loadPastCommand(this.input.selectedCommand - 1);
+      this.modifyBlink(this.input.content.length);
+      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
+    } else if (e.code === 'ArrowDown'){
       e.preventDefault();
-      this.loadNextCommand();
-    }else if (e.code === 'Tab'){
+      this.loadPastCommand(this.input.selectedCommand + 1);
+      this.modifyBlink(this.input.content.length);
+      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
+    } else if (e.code === 'ArrowLeft'){
+      this.modifyBlink(this.input.blinkPosition - 1);
+    } else if (e.code === 'ArrowRight'){
+      this.modifyBlink(this.input.blinkPosition + 1);
+    } else if (e.code === 'Tab'){
       e.preventDefault();
-      this.addTabulation();
+      const text = this.input.content;
+      this.input.content = [text.slice(0, this.input.blinkPosition), text.slice(this.input.blinkPosition)].join('  ');
+      this.modifyBlink(this.input.blinkPosition + 2);
+      setTimeout(() => this.textArea.nativeElement.setSelectionRange(this.input.blinkPosition, this.input.blinkPosition), 15);
     }
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
@@ -76,8 +104,8 @@ export class CommandViewComponent implements AfterViewInit {
   private executeCommand(): void {
     this.input.previousCommands.push(this.input.content);
     this.input.selectedCommand = this.input.previousCommands.length;
-    this.updateTextAreaClone('');
     this.showResponse();
+    this.input.content = '';
   }
 
   private showResponse(): void {
@@ -103,40 +131,23 @@ export class CommandViewComponent implements AfterViewInit {
       this.output.content = '';
       this.output.style = 'margin-block-start: 0em;';
     } else {
-      this.output.content = '<p>Comando "' + this.parseToHTML(command) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
+      this.output.content = '<p>Comando "' + this.parseToHTML(this.input.content) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
       this.output.style = 'margin-block-start: 2em;';
     }
-    this.input.content = '';
   }
 
-  parseToHTML(input: string): string {
+  private parseToHTML(input: string): string {
     let parsed = input;
-    // parsed = parsed.replace(/\t/g, '&emsp;');
     parsed = parsed.replace(/\n/g, '<br/>');
     parsed = parsed.replace(/ /g, '&nbsp;');
     return parsed;
   }
 
-
-  private loadPreviousCommand(): void {
-    if (this.input.selectedCommand > 0){
-      this.input.selectedCommand--;
-      this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.updateTextAreaClone(this.parseToHTML(this.input.content));
+  private loadPastCommand(pastCommand: number): void {
+    if (pastCommand >= 0 && pastCommand < this.input.previousCommands.length){
+      this.input.content = this.input.previousCommands[pastCommand];
+      this.input.selectedCommand = pastCommand;
     }
-  }
-
-  private loadNextCommand(): void {
-    if (this.input.selectedCommand < this.input.previousCommands.length - 1){
-      this.input.selectedCommand++;
-      this.input.content = this.input.previousCommands[this.input.selectedCommand];
-      this.updateTextAreaClone(this.parseToHTML(this.input.content));
-    }
-  }
-
-  private addTabulation(): void {
-    this.input.content += '  ';
-    this.updateTextAreaClone(this.parseToHTML(this.input.content));
   }
 
   textAreaFocus(): void {

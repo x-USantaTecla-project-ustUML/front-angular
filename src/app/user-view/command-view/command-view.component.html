@@ -7,6 +7,6 @@
     <div id="sign">$ </div>
     <div class="textAreaClone" #textAreaClone></div>
     <textarea #textArea size="2" (keydown)="keyEvent($event)"
-              [(ngModel)]="input.content" (ngModelChange)="updateTextAreaClone(parseToHTML(input.content))"></textarea>
+              [(ngModel)]="input.content" (ngModelChange)="onModelChange()"></textarea>
   </div>
 </div>
