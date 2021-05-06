@@ -13,11 +13,9 @@ export class DiagramViewComponent implements OnChanges {
   diagramRoute: string;
 
   constructor() {
-    this.diagramRoute = 'https://media1.tenor.com/images/784b9b582c87db36577e99ed1022e323/tenor.gif?itemid=17804693';
   }
 
   ngOnChanges(): void {
-    console.log('Ha cambiado');
     this.diagramRoute = 'http://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9})); // img para png
   }
 

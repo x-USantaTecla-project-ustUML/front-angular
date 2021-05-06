@@ -12,7 +12,11 @@ export class UserViewComponent implements OnInit {
   USTUML: string;
 
   constructor() {
-    this.plantUML = '';
+    this.plantUML = 'skinparam Handwritten true\n' +
+      'skinparam DefaultTextAlignment center\n' +
+      'skinparam NoteBackgroundColor lightyellow\n' +
+      'skinparam NoteBorderColor darkgray\n' +
+      'note "This diagram still needs to be done" as tbd';
     this.USTUML = '';
   }
 
