@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {encode64} from './base64-encoder';
 import pako from 'pako';
 
@@ -7,26 +7,18 @@ import pako from 'pako';
   templateUrl: './diagram-view.component.html',
   styleUrls: ['./diagram-view.component.css']
 })
-export class DiagramViewComponent implements OnInit {
+export class DiagramViewComponent implements OnChanges {
 
+  @Input() plantUML: string;
   diagramRoute: string;
 
   constructor() {
+    this.diagramRoute = 'https://media1.tenor.com/images/784b9b582c87db36577e99ed1022e323/tenor.gif?itemid=17804693';
   }
 
-  ngOnInit(): void {
-    this.generateDiagram();
-  }
-
-  generateDiagram(): void {
-    const plantuml = 'abstract class Name {\n' +
-                      '- name: Type\n' +
-                      '~ {static} name: Type\n' +
-                      '~ name(): Type\n' +
-                      '+ name(name: Type): Type\n' +
-                      '- {abstract} name(name: Type, name: Type): Type\n' +
-                      '}';
-    this.diagramRoute = 'http://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(plantuml, {level: 9})); // img para png
+  ngOnChanges(): void {
+    console.log('Ha cambiado');
+    this.diagramRoute = 'http://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9})); // img para png
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CommandResponse} from './command-response.model';
 
 @Component({
   selector: 'app-on-project',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserViewComponent implements OnInit {
 
-  constructor() { }
+  plantUML: string;
+  USTUML: string;
+
+  constructor() {
+    this.plantUML = '';
+    this.USTUML = '';
+  }
 
   ngOnInit(): void {
+  }
+
+  sendUMLToChildren(commandResponse: CommandResponse): void {
+    this.plantUML = commandResponse.plantUML;
+    this.USTUML = commandResponse.ustUML;
   }
 
 }
