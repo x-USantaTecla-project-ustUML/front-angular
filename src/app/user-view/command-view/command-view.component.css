@@ -55,6 +55,7 @@ textarea {
   color: transparent;
   overflow: hidden;
   resize: none;
+  cursor: default;
 }
 .blink {
   width: 5px;
