@@ -132,10 +132,10 @@ export class CommandViewComponent implements AfterViewInit {
       close: 'Closed successfully.'
     };
     const command = this.input.content.split('\n')[0];
+    this.output.style = 'margin-block-start: 2em;';
     if (commands[command]) {
       if (command === 'help' || command === 'clear'){
         this.output.content = '<p>' + commands[command] + '</p>';
-        this.output.style = 'margin-block-start: 2em;';
       } else {
         this.sendCommandToServer(commands[command]);
       }
@@ -144,6 +144,17 @@ export class CommandViewComponent implements AfterViewInit {
       this.output.style = 'margin-block-start: 0em;';
     } else {
       this.output.content = '<p>Command "' + this.parseToHTML(this.input.content) + '" not identified.<br />To see command\'s list, write: help</p>';
+    }
+  }
+
+  private sendCommandToServer(consoleResponse: string): void {
+    try {
+      const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
+      this.userViewService.sendCommand(commandObject)
+        .subscribe((response) => { this.serverResponse.emit(response); });
+      this.output.content = '<p>' + consoleResponse + '</p>';
+    } catch (e) {
+      this.output.content = '<p>' + e.name + ': Command syntax is not correct.</p>';
     }
   }
 
