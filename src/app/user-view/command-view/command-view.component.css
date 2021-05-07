@@ -49,6 +49,7 @@ span {
   font-size: 0.9em;
 }
 textarea {
+  width: 3px;
   border: none;
   outline: none;
   background: transparent;
