@@ -151,10 +151,14 @@ export class CommandViewComponent implements AfterViewInit {
     try {
       const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
       this.userViewService.sendCommand(commandObject)
-        .subscribe((response) => { this.serverResponse.emit(response); });
+        .subscribe((response) => {
+          this.serverResponse.emit(response);
+        }, error => {
+          this.output.content = '<p>' + error + '</p>';
+        });
       this.output.content = '<p>' + consoleResponse + '</p>';
     } catch (e) {
-      this.output.content = '<p>' + e.name + ': Command syntax is not correct.</p>';
+      this.output.content = '<p>' + e.name + ': Yaml syntax is not correct.</p>';
     }
   }
 
