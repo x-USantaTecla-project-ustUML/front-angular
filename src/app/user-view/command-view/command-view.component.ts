@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from '@angular/core';
 import * as yaml from 'js-yaml';
-import {UserViewService} from '../user-view.service';
+import {CommandViewService} from './command-view.service';
 import {CommandResponse} from '../command-response.model';
 
 @Component({
@@ -29,7 +29,7 @@ export class CommandViewComponent implements AfterViewInit {
     style: string;
   };
 
-  constructor(private renderer: Renderer2, private userViewService: UserViewService) {
+  constructor(private renderer: Renderer2, private userViewService: CommandViewService) {
     this.input = {
       content: '',
       previousCommands: [],
@@ -77,30 +77,40 @@ export class CommandViewComponent implements AfterViewInit {
   }
 
   keyEvent(e: KeyboardEvent): void {
-    if (e.ctrlKey && e.code === 'Enter') {
-      e.preventDefault();
-      this.executeCommand();
-      this.modifyBlink(0);
-    } else if (e.code === 'ArrowUp'){
-      e.preventDefault();
-      this.loadPastCommand(this.input.selectedCommand - 1);
-      this.modifyBlink(this.input.content.length);
-      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
-    } else if (e.code === 'ArrowDown'){
-      e.preventDefault();
-      this.loadPastCommand(this.input.selectedCommand + 1);
-      this.modifyBlink(this.input.content.length);
-      this.textArea.nativeElement.setSelectionRange(this.input.content.length, this.input.content.length);
-    } else if (e.code === 'ArrowLeft'){
-      this.modifyBlink(this.input.blinkPosition - 1);
-    } else if (e.code === 'ArrowRight'){
-      this.modifyBlink(this.input.blinkPosition + 1);
-    } else if (e.code === 'Tab'){
-      e.preventDefault();
-      const text = this.input.content;
-      this.input.content = [text.slice(0, this.input.blinkPosition), text.slice(this.input.blinkPosition)].join('  ');
-      this.modifyBlink(this.input.blinkPosition + 2);
-      setTimeout(() => this.textArea.nativeElement.setSelectionRange(this.input.blinkPosition, this.input.blinkPosition), 15);
+    const keyMap = {
+      Enter: (event) => {
+        if (event.ctrlKey) {
+          event.preventDefault();
+          this.executeCommand();
+          this.modifyBlink(0);
+        }
+      },
+      ArrowUp: (event) => {
+        event.preventDefault();
+        this.loadPastCommand(this.input.selectedCommand - 1);
+        this.modifyBlink(this.input.content.length);
+      },
+      ArrowDown: (event) => {
+        event.preventDefault();
+        this.loadPastCommand(this.input.selectedCommand + 1);
+        this.modifyBlink(this.input.content.length);
+      },
+      ArrowLeft: (event) => {
+        this.modifyBlink(this.input.blinkPosition - 1);
+      },
+      ArrowRight: (event) => {
+        this.modifyBlink(this.input.blinkPosition + 1);
+      },
+      Tab: (event) => {
+        event.preventDefault();
+        const text = this.input.content;
+        this.input.content = [text.slice(0, this.input.blinkPosition), text.slice(this.input.blinkPosition)].join('  ');
+        this.modifyBlink(this.input.blinkPosition + 2);
+        setTimeout(() => this.textArea.nativeElement.setSelectionRange(this.input.blinkPosition, this.input.blinkPosition), 15);
+      }
+    };
+    if (keyMap[e.code]) {
+      keyMap[e.code](e);
     }
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
@@ -114,33 +124,26 @@ export class CommandViewComponent implements AfterViewInit {
 
   private showResponse(): void {
     const commands = {
-      help: 'Comandos disponibles:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
-      'add:': 'Add implementation.',
-      'modify:': 'Modify member.',
-      'delete:': 'Delete member.',
-      'open:': 'Open member.',
-      close: 'Close member.'
+      help: 'Available commands:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+      'add:': 'Added successfully.',
+      'modify:': 'Modified successfully.',
+      'delete:': 'Deleted successfully.',
+      'open:': 'Opened successfully.',
+      close: 'Closed successfully.'
     };
     const command = this.input.content.split('\n')[0];
     if (commands[command]) {
-      if (command === 'help'){
+      if (command === 'help' || command === 'clear'){
         this.output.content = '<p>' + commands[command] + '</p>';
         this.output.style = 'margin-block-start: 2em;';
       } else {
-        try {
-          const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
-          this.userViewService.create(commandObject)
-            .subscribe((response) => { this.serverResponse.emit(response); });
-        } catch (e) {
-          console.log(e);
-        }
+        this.sendCommandToServer(commands[command]);
       }
     } else if (command === 'clear') {
       this.output.content = '';
       this.output.style = 'margin-block-start: 0em;';
     } else {
-      this.output.content = '<p>Comando "' + this.parseToHTML(this.input.content) + '" no identificado.<br />Para ver lista de comandos, escribe: help</p>';
-      this.output.style = 'margin-block-start: 2em;';
+      this.output.content = '<p>Command "' + this.parseToHTML(this.input.content) + '" not identified.<br />To see command\'s list, write: help</p>';
     }
   }
 
