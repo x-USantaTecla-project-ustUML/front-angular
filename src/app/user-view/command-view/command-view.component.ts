@@ -81,7 +81,7 @@ export class CommandViewComponent {
 
   private showResponse(): void {
     const commands = {
-      help: 'Available commands:<br />clear<br />help<br />add:<br />modify:<br />delete:<br />open:<br />close',
+      help: 'Available commands:<br/>clear<br/>help<br/>add:<br/>modify:<br/>delete:<br/>open:<br/>close',
       'add:': 'Added successfully.',
       'modify:': 'Modified successfully.',
       'delete:': 'Deleted successfully.',
