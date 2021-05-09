@@ -40,11 +40,7 @@ export class CommandViewComponent {
   }
 
   keyEvent(e: KeyboardEvent): void {
-    if (this.output.content.split('<br />').length > 2){
-      this.output.style = 'margin-block-start: 2em; overflow: auto; height: 40px;';
-    }else{
-      this.output.style = 'margin-block-start: 2em;';
-    }
+    this.output.style = 'margin-block-start: 2em;';
     const keyMap = {
       Enter: (event) => {
         if (event.ctrlKey) {
@@ -104,11 +100,9 @@ export class CommandViewComponent {
       this.output.content = '';
       this.output.style = 'margin-block-start: 2em;';
     } else {
-      this.output.content = '<p>Command "' + this.parseToHTML(this.input.content) + '" not identified.<br />To see command\'s list, write: help</p>';
+      this.output.content = '<p>Command "' + this.parseToHTML(this.input.content) + '" not identified.<br/>To see command\'s list, write: help</p>';
     }
-    console.log(this.output.content);
-    console.log(this.output.content.split('<br />').length);
-    if (this.output.content.split('<br />').length > 2){
+    if (this.output.content.split('<br/>').length > 2){
       this.output.style = 'margin-block-start: 2em; overflow: auto; height: 40px;';
     }else{
       this.output.style = 'margin-block-start: 2em;';
