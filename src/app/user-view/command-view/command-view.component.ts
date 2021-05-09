@@ -10,7 +10,7 @@ import {CommandResponse} from '../command-response.model';
 })
 export class CommandViewComponent implements AfterViewInit {
 
-  editorOptions = {theme: 'vs-dark', language: 'yaml'};
+  editorOptions = {theme: 'vs-dark', language: 'yaml', cursorWidth: 7};
   code = 'add:\n\tmembers:\n\t\t- class: Class';
 
   @Output() serverResponse = new EventEmitter<CommandResponse>();
