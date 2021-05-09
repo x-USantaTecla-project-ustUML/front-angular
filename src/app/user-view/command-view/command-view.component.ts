@@ -10,6 +10,9 @@ import {CommandResponse} from '../command-response.model';
 })
 export class CommandViewComponent implements AfterViewInit {
 
+  editorOptions = {theme: 'vs-dark', language: 'javascript'};
+  code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+
   @Output() serverResponse = new EventEmitter<CommandResponse>();
 
   @ViewChild('textArea') textArea: ElementRef;

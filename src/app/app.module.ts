@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {HttpClientModule} from '@angular/common/http';
       BrowserAnimationsModule,
       DemoMaterialModule,
       FormsModule,
-      HttpClientModule
+      HttpClientModule,
+      MonacoEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
