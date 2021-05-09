@@ -41,7 +41,7 @@ span {
   color: white;
 }
 .terminal {
-  padding-right: -5px;
+  margin-right: 5px;
   padding-top: 30px;
   overflow: hidden;
   word-wrap: break-word;
@@ -71,5 +71,5 @@ textarea {
   display: contents;
 }
 .monaco {
-  height: 143px;
+  height: 100px;
 }

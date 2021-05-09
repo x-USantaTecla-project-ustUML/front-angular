@@ -42,7 +42,7 @@ describe('CommandViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should move blink one position right', () => {
+  /*it('should move blink one position right', () => {
     component.input.content = '\n';
     component.onModelChange();
     expect(component.input.blinkPosition).toBe(1);
@@ -64,5 +64,5 @@ describe('CommandViewComponent', () => {
     expect(component.input.blinkPosition).toBe(0);
     expect(component.input.content).toBe('');
     expect(component.input.previousCommands.length).toBe(1);
-  });
+  });*/
 });
