@@ -40,7 +40,11 @@ export class CommandViewComponent {
   }
 
   keyEvent(e: KeyboardEvent): void {
-    this.output.style = 'margin-block-start: 2em;';
+    if (this.output.content.split('<br/>').length > 2){
+      this.output.style = 'margin-block-start: 2em; overflow: auto; height: 40px;';
+    }else{
+      this.output.style = 'margin-block-start: 2em;';
+    }
     const keyMap = {
       Enter: (event) => {
         if (event.ctrlKey) {
