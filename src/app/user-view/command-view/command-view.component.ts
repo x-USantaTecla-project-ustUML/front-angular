@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from 
 import * as yaml from 'js-yaml';
 import {CommandViewService} from './command-view.service';
 import {CommandResponse} from '../command-response.model';
+import ICodeEditor = monaco.editor.ICodeEditor;
 
 @Component({
   selector: 'app-command-view',
@@ -39,7 +40,7 @@ export class CommandViewComponent {
     };
   }
 
-  onEditorInit(editor): void {
+  onEditorInit(editor: ICodeEditor): void {
     editor.getModel().updateOptions({tabSize: 2});
   }
 
