@@ -2,11 +2,9 @@
   <div id="header">
     <p id="title">USTUML's Terminal</p>
   </div>
-  <div class="terminal" #terminal (click)="textAreaFocus()">
+  <div class="terminal" #terminal>
     <div [style]="output.style" [innerHTML]="output.content"></div>
-    <div id="sign">$ </div>
-    <div class="textAreaClone" #textAreaClone></div>
-    <textarea #textArea size="2" (keydown)="keyEvent($event)" spellcheck="false"
-              [(ngModel)]="input.content" (ngModelChange)="onModelChange()"></textarea>
+    <ngx-monaco-editor class="monaco" (keydown)="keyEvent($event)" [options]="editorOptions"
+                       (onInit)="onEditorInit($event)" [(ngModel)]="input.content"></ngx-monaco-editor>
   </div>
 </div>
