@@ -1,6 +1,6 @@
 #terminal {
   position: relative;
-  height: 13em;
+  height: 18em;
   min-width: 27em;
   max-width: 37em;
   background-color: #1e1e1e;
@@ -71,5 +71,5 @@ textarea {
   display: contents;
 }
 .monaco {
-  height: 95px;
+  height: 165px;
 }

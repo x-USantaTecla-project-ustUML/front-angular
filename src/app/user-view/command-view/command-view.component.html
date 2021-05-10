@@ -4,7 +4,7 @@
   </div>
   <div class="terminal" #terminal>
     <div [style]="output.style" [innerHTML]="output.content"></div>
-    <!--<div id="sign">$ </div>-->
-    <ngx-monaco-editor class="monaco" (keydown)="keyEvent($event)" [options]="editorOptions" [(ngModel)]="input.content"></ngx-monaco-editor>
+    <ngx-monaco-editor class="monaco" (keydown)="keyEvent($event)" [options]="editorOptions"
+                       (onInit)="onEditorInit($event)" [(ngModel)]="input.content"></ngx-monaco-editor>
   </div>
 </div>

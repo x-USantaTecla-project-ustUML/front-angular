@@ -39,12 +39,12 @@ export class CommandViewComponent {
     };
   }
 
+  onEditorInit(editor): void {
+    editor.getModel().updateOptions({tabSize: 2});
+  }
+
   keyEvent(e: KeyboardEvent): void {
-    if (this.output.content.split('<br/>').length > 2){
-      this.output.style = 'margin-block-start: 2em; overflow: auto; height: 40px;';
-    }else{
-      this.output.style = 'margin-block-start: 2em;';
-    }
+    this.output.style = 'margin-block-start: 2em;';
     const keyMap = {
       Enter: (event) => {
         if (event.ctrlKey) {
@@ -81,35 +81,25 @@ export class CommandViewComponent {
 
   private showResponse(): void {
     const commands = {
-      help: 'Available commands:<br/>clear<br/>help<br/>add:<br/>modify:<br/>delete:<br/>open:<br/>close',
+      help: 'Available commands:<br/> \'clear\' \'help\' \'add:\' \'modify:\' \'delete:\' \'open:\' \'close\'',
       'add:': 'Added successfully.',
       'modify:': 'Modified successfully.',
       'delete:': 'Deleted successfully.',
       'open:': 'Opened successfully.',
       close: 'Closed successfully.'
     };
-    let command = this.input.content.split('\n')[0];
-    if (!commands[command] && command !== 'clear'){
-      command = command.substring(0, command.length - 1);
-    }
+    const command = this.input.content.split('\r\n')[0];
     this.output.style = 'margin-block-start: 2em;';
     if (commands[command]) {
       if (command === 'help'){
         this.output.content = '<p>' + commands[command] + '</p>';
-        this.output.style += 'overflow: auto; height: 40px';
       } else {
         this.sendCommandToServer(commands[command]);
       }
     } else if (command === 'clear') {
       this.output.content = '';
-      this.output.style = 'margin-block-start: 2em;';
     } else {
-      this.output.content = '<p>Command "' + this.parseToHTML(this.input.content) + '" not identified.<br/>To see command\'s list, write: help</p>';
-    }
-    if (this.output.content.split('<br/>').length > 2){
-      this.output.style = 'margin-block-start: 2em; overflow: auto; height: 40px;';
-    }else{
-      this.output.style = 'margin-block-start: 2em;';
+      this.output.content = '<p>Command "' + command + '" not identified.<br/>To see command\'s list, write: help</p>';
     }
   }
 
@@ -127,13 +117,6 @@ export class CommandViewComponent {
     } catch (e) {
       this.output.content = '<p>' + e.name + ': Yaml syntax is not correct.</p>';
     }
-  }
-
-  private parseToHTML(input: string): string {
-    let parsed = input;
-    parsed = parsed.replace(/\n/g, '<br/>');
-    parsed = parsed.replace(/ /g, '&nbsp;');
-    return parsed;
   }
 
   private loadPastCommand(pastCommand: number): void {
