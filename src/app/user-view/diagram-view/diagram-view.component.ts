@@ -12,11 +12,8 @@ export class DiagramViewComponent implements OnChanges {
   @Input() plantUML: string;
   diagramRoute: string;
 
-  constructor() {
-  }
-
   ngOnChanges(): void {
-    this.diagramRoute = 'http://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9})); // img para png
+    this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9})); // img para png
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {CommandResponse} from './command-response.model';
 
 @Component({
@@ -6,7 +6,7 @@ import {CommandResponse} from './command-response.model';
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.css']
 })
-export class UserViewComponent implements OnInit {
+export class UserViewComponent {
 
   plantUML: string;
   USTUML: string;
@@ -18,9 +18,6 @@ export class UserViewComponent implements OnInit {
       'skinparam NoteBorderColor darkgray\n' +
       'note "This diagram still needs to be done" as tbd';
     this.USTUML = '';
-  }
-
-  ngOnInit(): void {
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
