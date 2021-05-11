@@ -49,7 +49,6 @@ export class CommandViewComponent {
     const keyMap = {
       Enter: (event) => {
         if (event.ctrlKey) {
-          this.input.content = this.input.content.substring(0, this.input.content.length - 2);
           event.preventDefault();
           this.executeCommand();
         }
@@ -57,13 +56,13 @@ export class CommandViewComponent {
       ArrowUp: (event) => {
         if (event.ctrlKey) {
           event.preventDefault();
-          this.loadPastCommand(this.input.selectedCommand - 1);
+          this.loadPreviousCommand(-1);
         }
       },
       ArrowDown: (event) => {
         if (event.ctrlKey) {
           event.preventDefault();
-          this.loadPastCommand(this.input.selectedCommand + 1);
+          this.loadPreviousCommand(1);
         }
       }
     };
@@ -120,10 +119,11 @@ export class CommandViewComponent {
     }
   }
 
-  private loadPastCommand(pastCommand: number): void {
-    if (pastCommand >= 0 && pastCommand < this.input.previousCommands.length){
-      this.input.content = this.input.previousCommands[pastCommand];
-      this.input.selectedCommand = pastCommand;
+  private loadPreviousCommand(increment: number): void {
+    const previousCommand = this.input.selectedCommand + increment;
+    if (previousCommand >= 0 && previousCommand < this.input.previousCommands.length){
+      this.input.content = this.input.previousCommands[previousCommand];
+      this.input.selectedCommand = previousCommand;
     }
   }
 
