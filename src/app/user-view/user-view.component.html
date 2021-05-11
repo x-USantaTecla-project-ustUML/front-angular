@@ -1,5 +1,5 @@
 <div class="d-lg-flex justify-content-around">
-  <app-repository-view class="flex-fill"></app-repository-view>
+  <app-repository-view id="repository" ></app-repository-view>
   <div class="flex-fill">
     <app-package-view [USTUML]="USTUML"></app-package-view>
     <app-command-view (serverResponse)="sendUMLToChildren($event)"></app-command-view>
