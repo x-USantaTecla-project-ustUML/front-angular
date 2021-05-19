@@ -30,6 +30,17 @@ export class HttpService {
       );
   }
 
+  authBasic(email: string, password: string): HttpService {
+    return this.header('Authorization', 'Basic ' + btoa(email + ':' + password));
+  }
+
+  header(key: string, value: string): HttpService {
+    if (value != null) {
+      this.headers = this.headers.append(key, value);
+    }
+    return this;
+  }
+
   private resetOptions(): void {
     this.headers = new HttpHeaders();
     this.params = new HttpParams();

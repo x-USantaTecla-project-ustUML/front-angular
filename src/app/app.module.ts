@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterViewComponent } from './footer-view/footer-view.component';
 import { HeaderViewComponent } from './header-view/header-view.component';
+import { LoginDialogComponent } from './header-view/dialogs/login-dialog.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
 import { DiagramViewComponent } from './user-view/diagram-view/diagram-view.component';
@@ -22,6 +23,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     AppComponent,
     FooterViewComponent,
     HeaderViewComponent,
+    LoginDialogComponent,
     UserViewComponent,
     NotFoundViewComponent,
     DiagramViewComponent,
