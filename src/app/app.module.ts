@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FooterViewComponent } from './footer-view/footer-view.component';
 import { HeaderViewComponent } from './header-view/header-view.component';
 import { LoginDialogComponent } from './header-view/dialogs/login-dialog.component';
+import { RegisterDialogComponent } from './header-view/dialogs/register-dialog.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
 import { DiagramViewComponent } from './user-view/diagram-view/diagram-view.component';
@@ -15,8 +16,12 @@ import { PackageViewComponent } from './user-view/package-view/package-view.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import {AuthService} from './shared/auth.service';
+import {HttpService} from './shared/http.service';
+import {RoleGuardService} from './shared/role-guard.service';
+import { TokenInterceptor } from './shared/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     FooterViewComponent,
     HeaderViewComponent,
     LoginDialogComponent,
+    RegisterDialogComponent,
     UserViewComponent,
     NotFoundViewComponent,
     DiagramViewComponent,
@@ -40,7 +46,16 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
       HttpClientModule,
       MonacoEditorModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    HttpService,
+    RoleGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {LoginDialogComponent} from './dialogs/login-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../shared/auth.service';
+import {RegisterDialogComponent} from './dialogs/register-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderViewComponent {
   }
 
   register(): void {
-    // this.dialog.open(RegisterDialogComponent);
+    this.dialog.open(RegisterDialogComponent);
   }
 
   isAuthenticated(): boolean {
