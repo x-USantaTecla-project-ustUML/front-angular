@@ -20,8 +20,14 @@
       </ul>
 
       <div class="navbar-nav">
-        <a class="btn btn-primary" href="#">Sign Up</a>
-        <a class="btn btn-outline-primary" href="#">Log In</a>
+        <button mat-raised-button color="primary" (click)="login()" *ngIf="!isAuthenticated()" style="margin-right: 10px">
+          <mat-icon>person_outline</mat-icon>
+          <span>Login</span>
+        </button>
+        <button (click)="register()" *ngIf="!isAuthenticated()" mat-button>
+          <mat-icon>person_add_alt_1</mat-icon>
+          <span>Register</span>
+        </button>
       </div>
 
     </div>

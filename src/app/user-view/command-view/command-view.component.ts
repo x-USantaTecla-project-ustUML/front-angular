@@ -86,7 +86,7 @@ export class CommandViewComponent {
       'modify:': 'Modified successfully.',
       'delete:': 'Deleted successfully.',
       'open:': 'Opened successfully.',
-      close: 'Closed successfully.'
+      'close:': 'Closed successfully.'
     };
     const command = this.input.content.split('\r\n')[0].split(' ')[0];
     this.output.style = 'margin-block-start: 2em;';
