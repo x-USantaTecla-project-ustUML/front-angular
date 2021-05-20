@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommandViewComponent } from './command-view.component';
+import {CommandViewComponent} from './command-view.component';
 import {CommandViewService} from './command-view.service';
 import {Observable, of} from 'rxjs';
 import {CommandResponse} from '../command-response.model';

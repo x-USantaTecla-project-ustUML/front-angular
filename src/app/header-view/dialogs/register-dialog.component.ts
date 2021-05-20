@@ -4,7 +4,6 @@ import {environment} from '../../../environments/environment';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {User} from '../models/userRegister.model';
 import {HttpService} from '../../shared/http.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {AuthService} from '../../shared/auth.service';
 
 @Component({

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NotFoundViewComponent } from './not-found-view.component';
+import {NotFoundViewComponent} from './not-found-view.component';
 
 describe('NotFoundViewComponent', () => {
   let component: NotFoundViewComponent;

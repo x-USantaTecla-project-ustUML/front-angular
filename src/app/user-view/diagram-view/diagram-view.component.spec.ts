@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DiagramViewComponent } from './diagram-view.component';
+import {DiagramViewComponent} from './diagram-view.component';
 
 describe('DiagramViewComponent', () => {
   let component: DiagramViewComponent;

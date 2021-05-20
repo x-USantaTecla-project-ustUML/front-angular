@@ -73,10 +73,23 @@ export class CommandViewComponent {
   }
 
   private executeCommand(): void {
-    this.input.previousCommands.push(this.input.content);
+    const previousCommand = this.previousCommandBuilder();
+    this.input.previousCommands.push(previousCommand);
     this.input.selectedCommand = this.input.previousCommands.length;
     this.showResponse();
     this.input.content = '';
+  }
+
+  private previousCommandBuilder(): string {
+    const inputContent = this.input.content.split('\n');
+    let previousCommand = '';
+    const regexp = new RegExp('( )+\r');
+    inputContent.forEach((inputLine) => {
+      if (!regexp.test(inputLine)) {
+        previousCommand += inputLine + '\n';
+      }
+    });
+    return previousCommand;
   }
 
   private showResponse(): void {

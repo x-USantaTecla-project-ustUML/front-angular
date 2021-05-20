@@ -1,27 +1,27 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { FooterViewComponent } from './footer-view/footer-view.component';
-import { HeaderViewComponent } from './header-view/header-view.component';
-import { LoginDialogComponent } from './header-view/dialogs/login-dialog.component';
-import { RegisterDialogComponent } from './header-view/dialogs/register-dialog.component';
-import { UserViewComponent } from './user-view/user-view.component';
-import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
-import { DiagramViewComponent } from './user-view/diagram-view/diagram-view.component';
-import { RepositoryViewComponent } from './user-view/repository-view/repository-view.component';
-import { CommandViewComponent } from './user-view/command-view/command-view.component';
-import { PackageViewComponent } from './user-view/package-view/package-view.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {FooterViewComponent} from './footer-view/footer-view.component';
+import {HeaderViewComponent} from './header-view/header-view.component';
+import {LoginDialogComponent} from './header-view/dialogs/login-dialog.component';
+import {RegisterDialogComponent} from './header-view/dialogs/register-dialog.component';
+import {UserViewComponent} from './user-view/user-view.component';
+import {NotFoundViewComponent} from './not-found-view/not-found-view.component';
+import {DiagramViewComponent} from './user-view/diagram-view/diagram-view.component';
+import {RepositoryViewComponent} from './user-view/repository-view/repository-view.component';
+import {CommandViewComponent} from './user-view/command-view/command-view.component';
+import {PackageViewComponent} from './user-view/package-view/package-view.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 import {AuthService} from './shared/auth.service';
 import {HttpService} from './shared/http.service';
 import {RoleGuardService} from './shared/role-guard.service';
-import { TokenInterceptor } from './shared/token.interceptor';
+import {TokenInterceptor} from './shared/token.interceptor';
 
 @NgModule({
   declarations: [
