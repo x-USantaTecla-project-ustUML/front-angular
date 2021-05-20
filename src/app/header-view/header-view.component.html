@@ -28,6 +28,10 @@
           <mat-icon>person_add_alt_1</mat-icon>
           <span>Register</span>
         </button>
+        <button (click)="logout()" *ngIf="isAuthenticated()" mat-button>
+          <mat-icon>person_outline</mat-icon>
+          <span>Logout</span>
+        </button>
       </div>
 
     </div>

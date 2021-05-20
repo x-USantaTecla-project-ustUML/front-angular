@@ -21,7 +21,13 @@ export class HeaderViewComponent {
   }
 
   register(): void {
-    this.dialog.open(RegisterDialogComponent);
+    this.dialog.open(RegisterDialogComponent)
+      .afterClosed()
+      .subscribe();
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 
   isAuthenticated(): boolean {
