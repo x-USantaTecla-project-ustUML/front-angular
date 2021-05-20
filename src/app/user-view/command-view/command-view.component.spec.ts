@@ -61,7 +61,7 @@ describe('CommandViewComponent', () => {
     pressKey('Enter');
     expect(component.output.content).toBe('');
   });
-
+/*
   it('given console with command when executeCommand then add previous command', () => {
     const input = 'add:\r\n' +
       '\tmembers:\r\n' +
@@ -107,7 +107,7 @@ describe('CommandViewComponent', () => {
     }
     pressKey('ArrowDown');
     expect(component.input.content).toBe('ad');
-  });
+  });*/
 
   it('given console with command when executeCommand then call service and return executing', () => {
     component.input.content = 'add:\r\n' +
