@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RepositoryViewComponent } from './repository-view.component';
+import {RepositoryViewComponent} from './repository-view.component';
 
 describe('RepositoryViewComponent', () => {
   let component: RepositoryViewComponent;

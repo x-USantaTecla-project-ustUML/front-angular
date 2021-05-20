@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderViewComponent } from './header-view.component';
+import {HeaderViewComponent} from './header-view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DemoMaterialModule} from '../material-module';
 import {AuthService} from '../shared/auth.service';
