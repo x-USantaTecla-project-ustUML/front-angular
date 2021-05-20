@@ -61,7 +61,7 @@ describe('CommandViewComponent', () => {
     pressKey('Enter');
     expect(component.output.content).toBe('');
   });
-/*
+
   it('given console with command when executeCommand then add previous command', () => {
     const input = 'add:\r\n' +
       '\tmembers:\r\n' +
@@ -70,7 +70,7 @@ describe('CommandViewComponent', () => {
     component.input.content = input;
     pressKey('Enter');
     expect(component.input.previousCommands.length).toBe(1);
-    expect(component.input.previousCommands[0]).toBe(input);
+    expect(component.input.previousCommands[0]).toBe(input + '\n');
   });
 
   it('given console with command when executeCommand then press arrowUp to load previous command', () => {
@@ -81,7 +81,7 @@ describe('CommandViewComponent', () => {
     component.input.content = input;
     pressKey('Enter');
     pressKey('ArrowUp');
-    expect(component.input.content).toBe(input);
+    expect(component.input.content).toBe(input + '\n');
   });
 
   it('given console with command when executeCommand two times then add two previous commands', () => {
@@ -92,7 +92,7 @@ describe('CommandViewComponent', () => {
       input = input.substring(0, input.length - 1);
     }
     expect(component.input.previousCommands.length).toBe(2);
-    expect(component.input.previousCommands[0]).toBe('add');
+    expect(component.input.previousCommands[0]).toBe('add\n');
   });
 
   it('given console with command when executeCommand two times then press two times arrowUp and one time arrowDown', () => {
@@ -106,8 +106,8 @@ describe('CommandViewComponent', () => {
       pressKey('ArrowUp');
     }
     pressKey('ArrowDown');
-    expect(component.input.content).toBe('ad');
-  });*/
+    expect(component.input.content).toBe('ad\n');
+  });
 
   it('given console with command when executeCommand then call service and return executing', () => {
     component.input.content = 'add:\r\n' +
