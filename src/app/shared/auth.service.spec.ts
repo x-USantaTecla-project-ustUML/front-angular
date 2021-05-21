@@ -46,19 +46,24 @@ describe('AuthService', () => {
       ]
     });
     service = TestBed.inject(AuthService);
+  });
+
+  it('given authService when login then return user', () => {
     user = {
       email: 'prueba@gmail.com',
       password: 'prueba',
       token: '1234'
     };
-  });
-
-  it('given authService when login then return user', () => {
     service.login('prueba@gmail.com', 'prueba').subscribe(response => {
       expect(response).toBe(user);
     });
   });
 
-
+  it('given authService when login then logout', () => {
+      service.logout();
+      expect(service.getToken()).toBe(undefined);
+      expect(service.getPassword()).toBe(undefined);
+      expect(service.getEmail()).toBe(undefined);
+  });
 
 });

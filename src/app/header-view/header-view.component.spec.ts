@@ -9,7 +9,6 @@ class MockAuthService {
   constructor() {
   }
   isAuthenticated(): void {}
-  getToken(): void {}
 }
 
 describe('HeaderViewComponent', () => {
