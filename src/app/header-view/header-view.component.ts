@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginDialogComponent} from './dialogs/login-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../shared/auth.service';
@@ -9,9 +9,13 @@ import {RegisterDialogComponent} from './dialogs/register-dialog.component';
   templateUrl: './header-view.component.html',
   styleUrls: ['./header-view.component.css']
 })
-export class HeaderViewComponent {
+export class HeaderViewComponent implements OnInit{
 
   constructor(private dialog: MatDialog, private authService: AuthService) {
+  }
+
+  ngOnInit(): void{
+    console.log(this.authService.getToken());
   }
 
   login(): void {

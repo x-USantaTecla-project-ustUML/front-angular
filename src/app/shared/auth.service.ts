@@ -28,7 +28,6 @@ export class AuthService {
           const jwtHelper = new JwtHelperService();
           this.user = jsonToken;
           this.user.email = jwtHelper.decodeToken(jsonToken.token).user;
-
           this.password = password;
           this.onLogin$.next(this.user);
           return this.user;
