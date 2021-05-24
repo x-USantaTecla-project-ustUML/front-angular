@@ -22,6 +22,7 @@ import {AuthService} from './shared/auth.service';
 import {HttpService} from './shared/http.service';
 import {RoleGuardService} from './shared/role-guard.service';
 import {TokenInterceptor} from './shared/token.interceptor';
+import { HomeViewComponent } from './home-view/home-view.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {TokenInterceptor} from './shared/token.interceptor';
     DiagramViewComponent,
     RepositoryViewComponent,
     CommandViewComponent,
-    PackageViewComponent
+    PackageViewComponent,
+    HomeViewComponent
   ],
   imports: [
       BrowserModule,
