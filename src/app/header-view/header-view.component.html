@@ -1,40 +1,63 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="assets/ustUML.jpg" width="35" height="35" class="d-inline-block align-top" alt="ustUML Logo">
-      <span class="d-inline-block align-text-bottom">UST-UML Tool</span>
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned" style="height:80px; padding: 0">
+  <div class="container">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/']">
+      <img src="assets/ustUML.png" width="80px" height="80px" >
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarActions"
-            aria-controls="navbarActions" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarActions">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/']">
+              <span class="nav-link-inner--text">UST_UML</span>
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a [routerLink]="['/']" class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <span class="nav-link-inner--text">Home</span>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item dropdown" *ngIf="isAuthenticated()">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Sections</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/user-view']" class="dropdown-item">User View</a>
+          </div>
         </li>
       </ul>
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://github.com/USantaTecla-tool-ustUML" target="_blank" data-toggle="tooltip" title="Star us on Github">
+            <i class="fa fa-github"></i>
+            <span class="nav-link-inner--text d-lg-none">Github</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
 
-      <div class="navbar-nav">
-        <button mat-raised-button color="primary" (click)="login()" *ngIf="!isAuthenticated()" style="margin-right: 10px">
-          <mat-icon>person_outline</mat-icon>
-          <span>Login</span>
-        </button>
-        <button (click)="register()" *ngIf="!isAuthenticated()" mat-button>
-          <mat-icon>person_add_alt_1</mat-icon>
-          <span>Register</span>
-        </button>
-        <button (click)="logout()" *ngIf="isAuthenticated()" mat-button>
-          <mat-icon>person_outline</mat-icon>
-          <span>Logout</span>
-        </button>
-      </div>
-
+          <button (click)="register()" class="btn btn-1 btn-outline-primary" type="button">Register</button>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
+          <button (click)="login()" class="btn btn-1 btn-primary" type="button">Login</button>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
+          <button (click)="logout()" *ngIf="isAuthenticated()" class="btn btn-1 btn-outline-primary" type="button">Logout</button>
+        </li>
+      </ul>
     </div>
   </div>
-
 </nav>

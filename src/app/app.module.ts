@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {FooterViewComponent} from './footer-view/footer-view.component';
@@ -46,6 +47,7 @@ import { HomeViewComponent } from './home-view/home-view.component';
       DemoMaterialModule,
       FormsModule,
       HttpClientModule,
+      NgbModule,
       MonacoEditorModule.forRoot()
   ],
   providers: [
