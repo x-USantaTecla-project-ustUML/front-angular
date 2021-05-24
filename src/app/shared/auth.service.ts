@@ -32,6 +32,7 @@ export class AuthService {
           this.user.email = jwtHelper.decodeToken(jsonToken.token).user;
           this.password = password;
           this.onLogin$.next(this.user);
+          this.router.navigate(['user-view']).then();
           return this.user;
         })
       );

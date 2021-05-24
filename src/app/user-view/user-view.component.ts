@@ -15,8 +15,8 @@ export class UserViewComponent {
     this.plantUML = 'skinparam Handwritten true\n' +
       'skinparam DefaultTextAlignment center\n' +
       'skinparam NoteBackgroundColor lightyellow\n' +
-      'skinparam NoteBorderColor darkgray\n' +
-      'note "This diagram still needs to be done" as tbd';
+      'skinparam NoteBorderColor darkgray\\n\' +\n' +
+      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
     this.USTUML = '';
   }
 
