@@ -12,7 +12,9 @@ import {HttpService} from './http.service';
   providedIn: 'root',
 })
 export class AuthService {
-  static END_POINT = environment.SERVER + '/users/token';
+  static END_POINT = environment.SERVER + '/users';
+  static LOGIN = '/token';
+  static LOGOUT = '/logout';
   private user: User;
   password: string = undefined;
   private onLogin$ = new Subject<User>();
@@ -22,7 +24,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<User> {
     return this.httpService.authBasic(email, password)
-      .post(AuthService.END_POINT)
+      .post(AuthService.END_POINT + AuthService.LOGIN)
       .pipe(
         map(jsonToken => {
           const jwtHelper = new JwtHelperService();
@@ -40,8 +42,11 @@ export class AuthService {
   }
 
   logout(): void {
-    this.user = undefined;
-    this.router.navigate(['']).then();
+    this.httpService.post(AuthService.END_POINT + AuthService.LOGOUT)
+      .subscribe(value => {
+        this.user = undefined;
+        this.router.navigate(['']).then();
+      });
   }
 
   isAuthenticated(): boolean {
