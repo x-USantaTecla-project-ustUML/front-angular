@@ -10,8 +10,11 @@ body {
 
 main {
   min-height: 80%;
-  padding-top: 10px;
-  padding-bottom: 30px;
 }
+
+#user-view {
+  padding-top: 100px;
+}
+
 
 
