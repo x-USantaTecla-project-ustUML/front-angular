@@ -11,6 +11,8 @@ import {RegisterDialogComponent} from './dialogs/register-dialog.component';
 })
 export class HeaderViewComponent {
 
+  authenticated: boolean;
+
   constructor(private dialog: MatDialog, private authService: AuthService) {
   }
 
@@ -31,7 +33,11 @@ export class HeaderViewComponent {
   }
 
   isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+    if (this.authenticated && !this.authService.isAuthenticated()){
+      this.logout();
+    }
+    this.authenticated = this.authService.isAuthenticated();
+    return this.authenticated;
   }
 
 }
