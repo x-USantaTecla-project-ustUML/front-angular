@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-view.component.css']
 })
 export class HomeViewComponent implements OnInit {
+  focus: any;
+  focus1: any;
 
   constructor() { }
 
