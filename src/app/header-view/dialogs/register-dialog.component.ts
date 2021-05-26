@@ -19,7 +19,7 @@ export class RegisterDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) data: User, private httpService: HttpService, private router: Router,
               private dialog: MatDialog, private auth: AuthService) {
     this.user = data ? data : {
-      email: undefined, password: undefined
+      name: undefined, email: undefined, password: undefined
     };
   }
 
@@ -27,7 +27,7 @@ export class RegisterDialogComponent {
     this.httpService.post(RegisterDialogComponent.END_POINT + RegisterDialogComponent.USER, this.user)
       .subscribe(
         () => {
-          this.router.navigate(['user-view']).then().finally(() => this.dialog.closeAll());
+          this.router.navigate(['']).then().finally(() => this.dialog.closeAll());
           this.auth.login(this.user.email, this.user.password).subscribe();
           }
         );

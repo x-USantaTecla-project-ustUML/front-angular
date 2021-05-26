@@ -1,6 +1,13 @@
 <h3 mat-dialog-title>Register</h3>
 <mat-dialog-content>
   <mat-form-field>
+    <input [(ngModel)]="user.name" matInput placeholder="Name" type="text" required/>
+    <button (click)="user.name=undefined" *ngIf="user.name" aria-label="Clear" cdkFocusInitial mat-button mat-icon-button
+            matSuffix>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field>
     <input [(ngModel)]="user.email" matInput placeholder="Email" type="email" required/>
     <button (click)="user.email=undefined" *ngIf="user.email" aria-label="Clear" cdkFocusInitial mat-button mat-icon-button
             matSuffix>
