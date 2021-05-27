@@ -47,14 +47,14 @@
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
         </li>
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
+        <li class="nav-item d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
 
           <button (click)="register()" class="btn btn-1 btn-outline-primary" type="button">Register</button>
         </li>
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
+        <li class="nav-item d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
           <button (click)="login()" class="btn btn-1 btn-primary" type="button">Login</button>
         </li>
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
+        <li class="nav-item d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
           <button (click)="logout()" *ngIf="isAuthenticated()" class="btn btn-1 btn-outline-primary" type="button">Logout</button>
         </li>
       </ul>
