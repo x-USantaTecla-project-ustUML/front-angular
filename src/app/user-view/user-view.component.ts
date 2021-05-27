@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommandResponse} from './command-response.model';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
+import {UserViewService} from './user-view.service';
 
 @Component({
   selector: 'app-on-project',
@@ -13,7 +14,7 @@ export class UserViewComponent implements OnInit{
   plantUML: string;
   USTUML: string;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
     this.plantUML = 'skinparam Handwritten true\n' +
       'skinparam DefaultTextAlignment center\n' +
       'skinparam NoteBackgroundColor lightyellow\n' +
@@ -24,6 +25,12 @@ export class UserViewComponent implements OnInit{
 
   ngOnInit(): void {
     this.redirectIfNotAuthenticated();
+    this.userViewService.getContext().subscribe( response => {
+      if (response.ustUML !== ''){
+        this.USTUML = response.ustUML;
+        this.plantUML = response.plantUML;
+      }
+    });
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
