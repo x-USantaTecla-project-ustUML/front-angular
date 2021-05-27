@@ -36,7 +36,7 @@
             <span class="nav-link-inner--text">Sections</span>
           </a>
           <div class="dropdown-menu">
-            <a [routerLink]="['/user-view']" class="dropdown-item">User View</a>
+            <a [routerLink]="['/user-view']" class="dropdown-item" *ngIf="isAuthenticated()">User View</a>
           </div>
         </li>
       </ul>
@@ -47,14 +47,29 @@
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
         </li>
-        <li class="nav-item d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
+        <li class="nav-item dropdown" id="disappear" *ngIf="!isAuthenticated()">
+          <a (click)="register()" class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <span class="nav-link-inner--text">Register</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" id="disappear1" *ngIf="!isAuthenticated()">
+          <a (click)="login()" class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <span class="nav-link-inner--text">Login</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" id="disappear2" *ngIf="isAuthenticated()">
+          <a (click)="logout()" class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <span class="nav-link-inner--text">Logout</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
 
           <button (click)="register()" class="btn btn-1 btn-outline-primary" type="button">Register</button>
         </li>
-        <li class="nav-item d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isAuthenticated()">
           <button (click)="login()" class="btn btn-1 btn-primary" type="button">Login</button>
         </li>
-        <li class="nav-item d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
           <button (click)="logout()" *ngIf="isAuthenticated()" class="btn btn-1 btn-outline-primary" type="button">Logout</button>
         </li>
       </ul>

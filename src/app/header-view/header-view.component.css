@@ -1,3 +1,5 @@
+
+
 .navbar-nav > a {
   margin: 0 10px;
 }
@@ -582,6 +584,18 @@ pre code {
   }
 }
 @media (min-width:992px) {
+  #disappear {
+    display: none;
+  }
+
+  #disappear1 {
+    display: none;
+  }
+
+  #disappear2 {
+    display: none;
+  }
+
   .container {
     max-width:960px
   }
