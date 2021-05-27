@@ -26,6 +26,7 @@ class MockHttpService {
     return of({
       headers: new HttpHeaders('content-type'),
       body: {
+        name: 'prueba',
         email: 'prueba@gmail.com',
         password: 'prueba',
         token: '1234'
@@ -65,6 +66,6 @@ describe('RegisterDialogComponent', () => {
 
   it('given email and password when register then redirect if successful', () => {
     component.register();
-    expect (routerSpy.navigate).toHaveBeenCalledWith([ 'user-view' ]);
+    expect (routerSpy.navigate).toHaveBeenCalledWith([ '' ]);
   });
 });

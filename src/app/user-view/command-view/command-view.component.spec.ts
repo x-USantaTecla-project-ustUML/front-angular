@@ -66,47 +66,44 @@ describe('CommandViewComponent', () => {
     const input = 'add:\r\n' +
       '\tmembers:\r\n' +
       '\t\tmember:\r\n' +
-      '\terror';
+      '\terror\r\n';
     component.input.content = input;
     pressKey('Enter');
     expect(component.input.previousCommands.length).toBe(1);
-    expect(component.input.previousCommands[0]).toBe(input + '\n');
+    expect(component.input.previousCommands[0]).toBe(input);
   });
 
   it('given console with command when executeCommand then press arrowUp to load previous command', () => {
     const input = 'add:\r\n' +
       '\tmembers:\r\n' +
       '\t\tmember:\r\n' +
-      '\terror';
+      '\terror\r\n';
     component.input.content = input;
     pressKey('Enter');
     pressKey('ArrowUp');
-    expect(component.input.content).toBe(input + '\n');
+    expect(component.input.content).toBe(input);
   });
 
   it('given console with command when executeCommand two times then add two previous commands', () => {
-    let input = 'add';
-    for (let i = 0; i < 2; i++) {
-      component.input.content = input;
-      pressKey('Enter');
-      input = input.substring(0, input.length - 1);
-    }
+    component.input.content = 'add\r\n';
+    pressKey('Enter');
+    component.input.content = 'delete\r\n';
+    pressKey('Enter');
     expect(component.input.previousCommands.length).toBe(2);
-    expect(component.input.previousCommands[0]).toBe('add\n');
+    expect(component.input.previousCommands[0]).toBe('add\r\n');
+    expect(component.input.previousCommands[1]).toBe('delete\r\n');
   });
 
   it('given console with command when executeCommand two times then press two times arrowUp and one time arrowDown', () => {
-    let input = 'add';
-    for (let i = 0; i < 2; i++) {
-      component.input.content = input;
-      pressKey('Enter');
-      input = input.substring(0, input.length - 1);
-    }
+    component.input.content = 'add\r\n';
+    pressKey('Enter');
+    component.input.content = 'modify\r\n';
+    pressKey('Enter');
     for (let i = 0; i < 2; i++) {
       pressKey('ArrowUp');
     }
     pressKey('ArrowDown');
-    expect(component.input.content).toBe('ad\n');
+    expect(component.input.content).toBe('modify\r\n');
   });
 
   it('given console with command when executeCommand then call service and return executing', () => {

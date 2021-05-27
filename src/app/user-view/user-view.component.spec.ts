@@ -3,12 +3,22 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {UserViewComponent} from './user-view.component';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
+import {UserViewService} from './user-view.service';
+import {Observable, of} from 'rxjs';
 
 class MockAuthService {
   constructor() {
   }
   isAuthenticated(): boolean {
     return true;
+  }
+}
+
+class MockUserViewService {
+  constructor() {
+  }
+  getContext(): Observable<any> {
+    return of({});
   }
 }
 
@@ -20,6 +30,7 @@ describe('UserViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ UserViewComponent ],
       providers: [{ provide: AuthService, useValue: new MockAuthService() },
+        { provide: UserViewService, useValue: new MockUserViewService() },
         { provide: Router, useValue: {} }]
     })
     .compileComponents();
