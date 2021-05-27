@@ -4,11 +4,15 @@ import {HeaderViewComponent} from './header-view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DemoMaterialModule} from '../material-module';
 import {AuthService} from '../shared/auth.service';
+import {Router} from '@angular/router';
+import {of} from 'rxjs';
 
 class MockAuthService {
   constructor() {
   }
-  isAuthenticated(): void {}
+  isAuthenticated(): boolean {
+    return false;
+  }
 }
 
 describe('HeaderViewComponent', () => {

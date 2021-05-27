@@ -14,6 +14,7 @@ class MockHttpClient {
     return of({
       headers: new HttpHeaders('content-type'),
       body: {
+        name: 'prueba',
         email: 'prueba@gmail.com',
         password: 'prueba',
         token: '1234'
@@ -50,6 +51,7 @@ describe('AuthService', () => {
 
   it('given authService when login then return user', () => {
     user = {
+      name: 'prueba',
       email: 'prueba@gmail.com',
       password: 'prueba',
       token: '1234'
