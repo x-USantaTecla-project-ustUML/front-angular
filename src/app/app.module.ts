@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {FooterViewComponent} from './footer-view/footer-view.component';
@@ -23,7 +23,7 @@ import {AuthService} from './shared/auth.service';
 import {HttpService} from './shared/http.service';
 import {RoleGuardService} from './shared/role-guard.service';
 import {TokenInterceptor} from './shared/token.interceptor';
-import { HomeViewComponent } from './home-view/home-view.component';
+import {HomeViewComponent} from './home-view/home-view.component';
 
 @NgModule({
   declarations: [

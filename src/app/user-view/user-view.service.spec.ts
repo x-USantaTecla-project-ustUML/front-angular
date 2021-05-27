@@ -1,8 +1,7 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { UserViewService } from './user-view.service';
+import {UserViewService} from './user-view.service';
 import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {HttpService} from '../shared/http.service';
 
 class MockHttpService {

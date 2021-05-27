@@ -1,13 +1,13 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DemoMaterialModule} from '../../material-module';
 import {AuthService} from '../../shared/auth.service';
-import { FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegisterDialogComponent} from './register-dialog.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpService } from '../../shared/http.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpService} from '../../shared/http.service';
 import {Observable, of} from 'rxjs';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';

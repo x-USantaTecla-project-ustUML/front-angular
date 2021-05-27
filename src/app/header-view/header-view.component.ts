@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {LoginDialogComponent} from './dialogs/login-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../shared/auth.service';
 import {RegisterDialogComponent} from './dialogs/register-dialog.component';
-import {NavigationEnd, NavigationStart, Router, RouterEvent} from '@angular/router';
-import { Location, PopStateEvent } from '@angular/common';
 
 @Component({
   selector: 'app-header',
