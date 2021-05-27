@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
+import {User} from './user.model';
 
 class MockHttpClient {
   constructor() {
@@ -36,12 +37,7 @@ class MockRouter {
 
 describe('AuthService', () => {
   let service: AuthService;
-  const user = {
-    name: 'prueba',
-    email: 'prueba@gmail.com',
-    password: 'prueba',
-    token: '1234'
-  };
+  let user: User;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,16 +50,22 @@ describe('AuthService', () => {
   });
 
   it('given authService when login then return user', () => {
+    user = {
+      name: 'prueba',
+      email: 'prueba@gmail.com',
+      password: 'prueba',
+      token: '1234'
+    };
     service.login('prueba@gmail.com', 'prueba').subscribe(response => {
       expect(response).toBe(user);
     });
   });
 
   it('given authService when login then logout', () => {
-      service.logout();
-      expect(service.getToken()).toBe(undefined);
-      expect(service.getPassword()).toBe(undefined);
-      expect(service.getEmail()).toBe(undefined);
+    service.logout();
+    expect(service.getToken()).toBe(undefined);
+    expect(service.getPassword()).toBe(undefined);
+    expect(service.getEmail()).toBe(undefined);
   });
 
 });
