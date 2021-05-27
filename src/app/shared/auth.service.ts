@@ -38,10 +38,6 @@ export class AuthService {
       );
   }
 
-  onLogin(): Observable<User> {
-    return this.onLogin$.asObservable();
-  }
-
   logout(): void {
     this.httpService.post(AuthService.END_POINT + AuthService.LOGOUT)
       .subscribe(value => {
