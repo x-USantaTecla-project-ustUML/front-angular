@@ -18,6 +18,7 @@ class MockAuthService {
     return of({
       headers: new HttpHeaders('content-type'),
       body: {
+        name: 'prueba',
         email: 'prueba@gmail.com',
         password: 'prueba',
         token: '1234'
