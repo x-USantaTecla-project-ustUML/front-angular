@@ -84,11 +84,11 @@ export class CommandViewComponent {
     const inputContent = this.input.content.split('\n');
     let previousCommand = '';
     const regexp = new RegExp('( )+\r');
-    inputContent.forEach((inputLine) => {
-      if (!regexp.test(inputLine) && inputLine !== '\r') {
-        previousCommand += inputLine + '\n';
+    for (let i = 0; i < inputContent.length - 1 ; i++){
+      if (!regexp.test(inputContent[i]) && inputContent[i] !== '\r') {
+        previousCommand += inputContent[i] + '\n';
       }
-    });
+    }
     return previousCommand;
   }
 
