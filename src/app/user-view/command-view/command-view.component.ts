@@ -101,7 +101,7 @@ export class CommandViewComponent {
       'open:': 'Opened successfully.',
       'close:': 'Closed successfully.'
     };
-    const command = this.input.content.split('\r\n')[0].split(' ')[0];
+    const command = this.input.content.split('\r\n')[0].split(' ')[0].split('\n')[0];
     this.output.style = 'margin-block-start: 2em;';
     if (commands[command]) {
       if (command === 'help'){
