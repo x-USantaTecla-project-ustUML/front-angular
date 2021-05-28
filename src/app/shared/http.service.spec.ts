@@ -62,33 +62,38 @@ describe('HttpService', () => {
     service = TestBed.inject(HttpService);
   });
 
-  it('given httpService when post unauthorized then catch error', () => {
+  it('given httpService when post unauthorized then catch error', (done) => {
     service.post('unauthorized').subscribe(response => {}, error => {
       expect(error).toBe('Unauthorized');
+      done();
     });
   });
 
-  it('given httpService when post connection refused then catch error', () => {
+  it('given httpService when post connection refused then catch error', (done) => {
     service.post('refuse').subscribe(response => {}, error => {
       expect(error).toBe('Connection Refuse');
+      done();
     });
   });
 
-  it('given httpService when post custom error then catch error', () => {
+  it('given httpService when post custom error then catch error', (done) => {
     service.post('custom_error').subscribe(response => {}, error => {
       expect(error).toBe('Bad Request (400): Test');
+      done();
     });
   });
 
-  it('should httpService when post without content then return', () => {
+  it('should httpService when post without content then return', (done) => {
     service.post('empty_content_type').subscribe(response => {
       expect(response.body).toBeUndefined();
+      done();
     });
   });
 
-  it('given httpService when post with content then return', () => {
+  it('given httpService when post with content then return', (done) => {
     service.post('', {}).subscribe(response => {
       expect(response.body).toBeTruthy();
+      done();
     });
   });
 

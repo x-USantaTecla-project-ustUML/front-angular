@@ -2,24 +2,24 @@ import {TestBed} from '@angular/core/testing';
 
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {User} from './user.model';
+import {HttpService} from './http.service';
 
-class MockHttpClient {
+class MockHttpService {
   constructor() {
   }
 
-  post(endpoint, body): Observable<any> {
+  authBasic(email, password): MockHttpService {
+    return this;
+  }
+
+  post(endpoint): Observable<any> {
     return of({
-      headers: new HttpHeaders('content-type'),
-      body: {
-        name: 'prueba',
-        email: 'prueba@gmail.com',
-        password: 'prueba',
-        token: '1234'
-      }
-    });
+      token: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MjIxODg1NTksInJvbGUiOiJBVVRIRU5USUNBVEVEIiwiaXNzIjoidXNhbnRhdG' +
+        'VjbGEiLCJuYW1lIjoicHJ1ZWJhQGdtYWlsLmNvbSIsImV4cCI6MTYyMjIwNjU1OSwiaWF0IjoxNjIyMTg4NTU5LCJ1c2VyIjoicHJ1ZWJhQGdtYWlsLmNvbSJ9.' +
+        'shbFdClQHXfwiwk7BfDTCqsCOpx4fi2LPIYe83kRysA'
+      });
   }
 }
 
@@ -42,30 +42,30 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        {provide: HttpClient, useValue: new MockHttpClient()},
+        {provide: HttpService, useValue: new MockHttpService()},
         {provide: Router, useValue: new MockRouter()}
       ]
     });
     service = TestBed.inject(AuthService);
   });
 
-  it('given authService when login then return user', () => {
+  it('given authService when login then return user', (done) => {
     user = {
-      name: 'prueba',
       email: 'prueba@gmail.com',
       password: 'prueba',
-      token: '1234'
+      token: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MjIxODg1NTksInJvbGUiOiJBVVRIRU5USUNBVEVEIiwiaXNzIjoidXNhbnRhdGVjb' +
+        'GEiLCJuYW1lIjoicHJ1ZWJhQGdtYWlsLmNvbSIsImV4cCI6MTYyMjIwNjU1OSwiaWF0IjoxNjIyMTg4NTU5LCJ1c2VyIjoicHJ1ZWJhQGdtYWlsLmNvbSJ9.shbFdC' +
+        'lQHXfwiwk7BfDTCqsCOpx4fi2LPIYe83kRysA'
+    };
+    const serviceResponse = {
+      token: user.token,
+      email: user.email
     };
     service.login('prueba@gmail.com', 'prueba').subscribe(response => {
-      expect(response).toBe(user);
+      expect(response).toEqual(serviceResponse);
+      expect(service.getPassword()).toBe(user.password);
+      done();
     });
-  });
-
-  it('given authService when login then logout', () => {
-    service.logout();
-    expect(service.getToken()).toBe(undefined);
-    expect(service.getPassword()).toBe(undefined);
-    expect(service.getEmail()).toBe(undefined);
   });
 
 });
