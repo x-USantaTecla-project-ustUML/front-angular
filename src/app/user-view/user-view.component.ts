@@ -3,6 +3,9 @@ import {CommandResponse} from './command-response.model';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
 import {UserViewService} from './user-view.service';
+import {PackageNode} from './package-node.model';
+
+
 
 @Component({
   selector: 'app-on-project',
@@ -13,6 +16,7 @@ export class UserViewComponent implements OnInit{
 
   plantUML: string;
   USTUML: string;
+  directoryTree: any;
 
   constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
     this.plantUML = 'skinparam Handwritten true\n' +
@@ -21,6 +25,7 @@ export class UserViewComponent implements OnInit{
       'skinparam NoteBorderColor darkgray\\n\' +\n' +
       'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
     this.USTUML = '';
+    this.directoryTree = [{name: 'Project'}];
   }
 
   ngOnInit(): void {
@@ -29,6 +34,7 @@ export class UserViewComponent implements OnInit{
       if (response.ustUML !== ''){
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
+        this.directoryTree = JSON.parse(response.directoryTree);
       }
     });
   }
@@ -36,6 +42,9 @@ export class UserViewComponent implements OnInit{
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
+    console.log(commandResponse.directoryTree);
+    this.directoryTree = JSON.parse('[{' + commandResponse.directoryTree + '}]');
+    console.log(this.directoryTree);
   }
 
   redirectIfNotAuthenticated(): void {
