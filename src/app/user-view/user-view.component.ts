@@ -43,7 +43,7 @@ export class UserViewComponent implements OnInit{
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
     console.log(commandResponse.directoryTree);
-    this.directoryTree = JSON.parse('[{' + commandResponse.directoryTree + '}]');
+    this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
     console.log(this.directoryTree);
   }
 

@@ -18,7 +18,11 @@ class MockUserViewService {
   constructor() {
   }
   getContext(): Observable<any> {
-    return of({});
+    return of({
+      ustUML: '',
+      plantUML: '',
+      directoryTree: ''
+    });
   }
 }
 

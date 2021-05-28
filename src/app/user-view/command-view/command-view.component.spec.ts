@@ -13,7 +13,8 @@ class MockCommandViewService {
   sendCommand(command: any): Observable<CommandResponse> {
     return of({
       ustUML: '',
-      plantUML: ''
+      plantUML: '',
+      directoryTree: ''
     });
   }
 }

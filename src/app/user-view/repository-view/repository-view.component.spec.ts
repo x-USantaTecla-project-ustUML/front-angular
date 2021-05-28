@@ -16,6 +16,7 @@ describe('RepositoryViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RepositoryViewComponent);
     component = fixture.componentInstance;
+    component.directoryTree = [];
     fixture.detectChanges();
   });
 
