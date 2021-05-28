@@ -1,5 +1,5 @@
 import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit} from '@angular/core';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {PackageNode} from '../package-node.model';
 
@@ -75,7 +75,10 @@ export class RepositoryViewComponent implements OnInit, OnChanges{
 
   ngOnChanges(): void {
     console.log(this.directoryTree);
-    this.dataSource.data = this.directoryTree;
+    if (this.dataSource !== undefined && this.directoryTree !== undefined) {
+      this.dataSource.data = this.directoryTree;
+      this.treeControl.expandAll();
+    }
   }
 
 }
