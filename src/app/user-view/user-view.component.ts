@@ -34,7 +34,7 @@ export class UserViewComponent implements OnInit{
       if (response.ustUML !== ''){
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
-        this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
+        this.directoryTree = JSON.parse('[' + response.directoryTree.replace(', {}', '') + ']');
       }
     });
   }
@@ -42,7 +42,7 @@ export class UserViewComponent implements OnInit{
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
-    this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
+    this.directoryTree = JSON.parse('[' + commandResponse.directoryTree.replace(', {}', '') + ']');
   }
 
   redirectIfNotAuthenticated(): void {
