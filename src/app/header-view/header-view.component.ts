@@ -36,11 +36,7 @@ export class HeaderViewComponent {
   }
 
   isAuthenticated(): boolean {
-    if (this.authenticated && !this.authService.isAuthenticated()){
-      this.logout();
-    }
-    this.authenticated = this.authService.isAuthenticated();
-    return this.authenticated;
+    return this.authService.isAuthenticated();
   }
 
 }
