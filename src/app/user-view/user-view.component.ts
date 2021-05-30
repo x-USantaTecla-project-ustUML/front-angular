@@ -3,9 +3,6 @@ import {CommandResponse} from './command-response.model';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
 import {UserViewService} from './user-view.service';
-import {PackageNode} from './package-node.model';
-
-
 
 @Component({
   selector: 'app-on-project',
@@ -36,7 +33,7 @@ export class UserViewComponent implements OnInit{
       if (response.ustUML !== ''){
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
-        this.directoryTree = JSON.parse('[' + response.directoryTree.replace(', {}', '') + ']');
+        this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
         this.setSelectedNodeStyle();
       }
     });
@@ -55,7 +52,8 @@ export class UserViewComponent implements OnInit{
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
-    this.directoryTree = JSON.parse('[' + commandResponse.directoryTree.replace(', {}', '') + ']');
+    console.log(commandResponse.directoryTree);
+    this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
   }
 
   redirectIfNotAuthenticated(): void {
