@@ -3,6 +3,7 @@ import * as yaml from 'js-yaml';
 import {CommandViewService} from './command-view.service';
 import {CommandResponse} from '../command-response.model';
 import ICodeEditor = monaco.editor.ICodeEditor;
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   selector: 'app-command-view',
@@ -14,6 +15,7 @@ export class CommandViewComponent {
   editorOptions = {theme: 'vs-dark', language: 'yaml', cursorWidth: 7};
 
   @Output() serverResponse = new EventEmitter<CommandResponse>();
+  @Output() selectedNodeId = new EventEmitter<string>();
 
   @ViewChild('terminal') terminal: ElementRef;
 
@@ -28,7 +30,7 @@ export class CommandViewComponent {
     style: string;
   };
 
-  constructor(private renderer: Renderer2, private userViewService: CommandViewService) {
+  constructor(private renderer: Renderer2, private userViewService: CommandViewService, private authService: AuthService) {
     this.input = {
       content: '',
       previousCommands: [],
@@ -107,7 +109,7 @@ export class CommandViewComponent {
       if (command === 'help'){
         this.output.content = '<p>' + commands[command] + '</p>';
       } else {
-        this.sendCommandToServer(commands[command]);
+        this.sendCommandToServer(commands[command], command);
       }
     } else if (command === 'clear') {
       this.output.content = '';
@@ -116,12 +118,13 @@ export class CommandViewComponent {
     }
   }
 
-  private sendCommandToServer(consoleResponse: string): void {
+  private sendCommandToServer(consoleResponse: string, command: string): void {
     try {
       const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
       this.userViewService.sendCommand(commandObject)
         .subscribe((response) => {
           this.serverResponse.emit(response);
+          this.setSelectedNodeStyle(command, response);
           this.output.content = '<p>' + consoleResponse + '</p>';
         }, error => {
           this.output.content = '<p>' + error + '</p>';
@@ -129,6 +132,22 @@ export class CommandViewComponent {
       this.output.content = '<p>Executing...</p>';
     } catch (e) {
       this.output.content = '<p>' + e.name + ': Yaml syntax is not correct.</p>';
+    }
+  }
+
+  private setSelectedNodeStyle(command: string, response: CommandResponse): void {
+    if (command === 'open:') {
+      let selectedNodeId = this.input.previousCommands[this.input.previousCommands.length - 1].replace('open: ', '');
+      selectedNodeId = selectedNodeId.substring(0, selectedNodeId.length - 2);
+      this.selectedNodeId.emit(selectedNodeId);
+    } else if (command === 'close:') {
+      let selectedNodeId = response.ustUML.split('members')[0].split(':')[1];
+      if (selectedNodeId !== undefined) {
+        selectedNodeId = selectedNodeId.substring(1, selectedNodeId.length - 1);
+        this.selectedNodeId.emit(selectedNodeId);
+      } else {
+        this.selectedNodeId.emit(this.authService.getEmail());
+      }
     }
   }
 

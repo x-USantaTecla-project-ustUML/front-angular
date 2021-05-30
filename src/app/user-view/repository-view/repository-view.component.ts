@@ -20,6 +20,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   treeFlattener: MatTreeFlattener<PackageNode, FlatNode, any>;
   dataSource: MatTreeFlatDataSource<PackageNode, FlatNode, any>;
   @Input() directoryTree: PackageNode[];
+  @Input() selectedNodeId: string;
 
   constructor() {
   }
@@ -40,7 +41,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
       name: node.name,
       level,
     };
-  };
+  }
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
@@ -48,6 +49,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
+      setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'red', 1);
     }
   }
 

@@ -17,6 +17,7 @@ export class UserViewComponent implements OnInit{
   plantUML: string;
   USTUML: string;
   directoryTree: any;
+  selectedNodeId: string;
 
   constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
     this.plantUML = 'skinparam Handwritten true\n' +
@@ -26,6 +27,7 @@ export class UserViewComponent implements OnInit{
       'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
     this.USTUML = '';
     this.directoryTree = [{name: this.authService.getEmail()}];
+    this.selectedNodeId = this.authService.getEmail();
   }
 
   ngOnInit(): void {
