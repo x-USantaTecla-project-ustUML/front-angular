@@ -25,6 +25,7 @@ export class UserViewComponent implements OnInit{
     this.USTUML = '';
     this.directoryTree = [{name: this.authService.getEmail()}];
     this.selectedNodeId = this.authService.getEmail();
+    setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'dimgrey', 1);
   }
 
   ngOnInit(): void {
@@ -52,7 +53,6 @@ export class UserViewComponent implements OnInit{
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
-    console.log(commandResponse.directoryTree);
     this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
   }
 

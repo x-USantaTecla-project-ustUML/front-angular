@@ -6,6 +6,7 @@ import {Observable, of} from 'rxjs';
 import {CommandResponse} from '../command-response.model';
 import {FormsModule} from '@angular/forms';
 import {MonacoEditorModule} from 'ngx-monaco-editor';
+import {AuthService} from '../../shared/auth.service';
 
 class MockCommandViewService {
   constructor() {
@@ -19,6 +20,11 @@ class MockCommandViewService {
   }
 }
 
+class MockAuthService {
+  constructor() {
+  }
+}
+
 describe('CommandViewComponent', () => {
   let component: CommandViewComponent;
   let fixture: ComponentFixture<CommandViewComponent>;
@@ -27,7 +33,8 @@ describe('CommandViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CommandViewComponent ],
       providers: [
-        { provide: CommandViewService, useValue: new MockCommandViewService() }
+        { provide: CommandViewService, useValue: new MockCommandViewService() },
+        { provide: AuthService, useValue: new MockAuthService() }
       ],
       imports: [FormsModule, MonacoEditorModule.forRoot()]
     })

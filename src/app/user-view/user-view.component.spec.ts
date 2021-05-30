@@ -12,6 +12,9 @@ class MockAuthService {
   isAuthenticated(): boolean {
     return true;
   }
+  getEmail(): string {
+    return 'prueba@gmail.com';
+  }
 }
 
 class MockUserViewService {
