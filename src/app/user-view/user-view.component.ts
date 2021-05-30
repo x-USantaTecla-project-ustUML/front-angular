@@ -25,6 +25,7 @@ export class UserViewComponent implements OnInit{
       'skinparam NoteBorderColor darkgray\\n\' +\n' +
       'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
     this.USTUML = '';
+    this.directoryTree = [{name: this.authService.getEmail()}];
   }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class UserViewComponent implements OnInit{
       if (response.ustUML !== ''){
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
-        this.directoryTree = JSON.parse(response.directoryTree);
+        this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
       }
     });
   }

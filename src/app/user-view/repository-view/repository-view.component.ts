@@ -9,41 +9,12 @@ interface FlatNode {
   level: number;
 }
 
-/**
- * TODO MOCK DATA, Complete with HTTPService
- */
-/*const TREE_DATA: PackageNode[] = [
-  {
-    name: 'Project',
-    children: [
-      {
-        name: 'Package1',
-        children: [
-          {
-            name: 'Test package',
-            children: [
-              {name: 'Large package test to see layout problems'}
-            ]
-          },
-          {name: 'Another package'},
-        ]
-      }, {
-        name: 'Package2',
-        children: [
-          {name: 'Package2.package1'},
-          {name: 'Package2.package2'},
-        ]
-      },
-    ]
-  },
-];*/
-
 @Component({
   selector: 'app-repository-view',
   templateUrl: './repository-view.component.html',
   styleUrls: ['./repository-view.component.css']
 })
-export class RepositoryViewComponent implements OnInit, OnChanges{
+export class RepositoryViewComponent implements OnInit, OnChanges {
 
   treeControl: FlatTreeControl<FlatNode>;
   treeFlattener: MatTreeFlattener<PackageNode, FlatNode, any>;
@@ -69,12 +40,11 @@ export class RepositoryViewComponent implements OnInit, OnChanges{
       name: node.name,
       level,
     };
-  }
+  };
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
   ngOnChanges(): void {
-    console.log(this.directoryTree);
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
