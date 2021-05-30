@@ -33,6 +33,11 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = this.directoryTree;
     this.treeControl.expandAll();
+    setTimeout(() => {
+      if (document.getElementById(this.selectedNodeId) !== null) {
+        document.getElementById(this.selectedNodeId).style.color = 'dimgrey';
+      }
+    }, 1);
   }
 
   private transformer = (node: any, level: number) => {
@@ -41,7 +46,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
       name: node.name,
       level,
     };
-  }
+  };
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
