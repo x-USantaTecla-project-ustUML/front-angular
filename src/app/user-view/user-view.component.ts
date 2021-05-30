@@ -25,7 +25,6 @@ export class UserViewComponent implements OnInit{
     this.USTUML = '';
     this.directoryTree = [{name: this.authService.getEmail()}];
     this.selectedNodeId = this.authService.getEmail();
-    setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'dimgrey', 1);
   }
 
   ngOnInit(): void {
