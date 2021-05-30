@@ -37,8 +37,19 @@ export class UserViewComponent implements OnInit{
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
         this.directoryTree = JSON.parse('[' + response.directoryTree.replace(', {}', '') + ']');
+        this.setSelectedNodeStyle();
       }
     });
+  }
+
+  private setSelectedNodeStyle(): void {
+      let selectedNodeId = this.USTUML.split('members')[0].split(':')[1];
+      if (selectedNodeId !== undefined) {
+        selectedNodeId = selectedNodeId.substring(1, selectedNodeId.length - 1);
+        this.selectedNodeId = selectedNodeId;
+      } else {
+        this.selectedNodeId = this.authService.getEmail();
+      }
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
