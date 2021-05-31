@@ -96,12 +96,13 @@ export class CommandViewComponent {
 
   private showResponse(): void {
     const commands = {
-      help: 'Available commands:<br/> \'clear\' \'help\' \'add:\' \'modify:\' \'delete:\' \'open:\' \'close\'',
+      help: 'Available commands:<br/> \'clear\' \'help\' \'add:\' \'modify:\' \'delete:\' \'open:\' \'close\' \'import\'',
       'add:': 'Added successfully.',
       'modify:': 'Modified successfully.',
       'delete:': 'Deleted successfully.',
       'open:': 'Opened successfully.',
-      'close:': 'Closed successfully.'
+      'close:': 'Closed successfully.',
+      'import:': 'Imported successfully.'
     };
     const command = this.input.content.split('\r\n')[0].split(' ')[0].split('\n')[0];
     this.output.style = 'margin-block-start: 2em;';
