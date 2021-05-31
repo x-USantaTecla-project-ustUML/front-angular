@@ -54,7 +54,7 @@ describe('CommandViewComponent', () => {
   it('given console with help command when executeCommand then return correct response', () => {
     component.input.content = 'help';
     pressKey('Enter');
-    expect(component.output.content).toBe('<p>Available commands:<br/> \'clear\' \'help\' \'add:\' \'modify:\' \'delete:\' \'open:\' \'close\'</p>');
+    expect(component.output.content).toBe('<p>Available commands:<br/> \'clear\' \'help\' \'add:\' \'modify:\' \'delete:\' \'open:\' \'close\' \'import\'</p>');
   });
 
   function pressKey(code: string): void {
