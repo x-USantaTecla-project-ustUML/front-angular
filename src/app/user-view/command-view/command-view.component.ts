@@ -138,7 +138,7 @@ export class CommandViewComponent {
 
   private setSelectedNodeStyle(command: string, response: CommandResponse): void {
     if (command === 'open:') {
-      if (response.ustUML.split(':')[0] !== 'class') {
+      if (response.ustUML.split(':')[0] === 'project' || response.ustUML.split(':')[0] === 'package') {
         let selectedNodeId = this.input.previousCommands[this.input.previousCommands.length - 1].replace('open: ', '');
         selectedNodeId = selectedNodeId.substring(0, selectedNodeId.length - 2);
         this.lastSelectedNodeId = selectedNodeId;
