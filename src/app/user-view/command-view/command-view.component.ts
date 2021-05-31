@@ -16,6 +16,7 @@ export class CommandViewComponent {
 
   @Output() serverResponse = new EventEmitter<CommandResponse>();
   @Output() selectedNodeId = new EventEmitter<string>();
+  lastSelectedNodeId: string;
 
   @ViewChild('terminal') terminal: ElementRef;
 
@@ -86,7 +87,7 @@ export class CommandViewComponent {
     const inputContent = this.input.content.split('\n');
     let previousCommand = '';
     const regexp = new RegExp('( )+\r');
-    for (let i = 0; i < inputContent.length - 1 ; i++){
+    for (let i = 0; i < inputContent.length - 1; i++) {
       if (!regexp.test(inputContent[i]) && inputContent[i] !== '\r') {
         previousCommand += inputContent[i] + '\n';
       }
@@ -106,7 +107,7 @@ export class CommandViewComponent {
     const command = this.input.content.split('\r\n')[0].split(' ')[0].split('\n')[0];
     this.output.style = 'margin-block-start: 2em;';
     if (commands[command]) {
-      if (command === 'help'){
+      if (command === 'help') {
         this.output.content = '<p>' + commands[command] + '</p>';
       } else {
         this.sendCommandToServer(commands[command], command);
@@ -120,7 +121,7 @@ export class CommandViewComponent {
 
   private sendCommandToServer(consoleResponse: string, command: string): void {
     try {
-      const commandObject = yaml.load(this.input.content, { schema: yaml.JSON_SCHEMA });
+      const commandObject = yaml.load(this.input.content, {schema: yaml.JSON_SCHEMA});
       this.userViewService.sendCommand(commandObject)
         .subscribe((response) => {
           this.serverResponse.emit(response);
@@ -137,13 +138,19 @@ export class CommandViewComponent {
 
   private setSelectedNodeStyle(command: string, response: CommandResponse): void {
     if (command === 'open:') {
-      let selectedNodeId = this.input.previousCommands[this.input.previousCommands.length - 1].replace('open: ', '');
-      selectedNodeId = selectedNodeId.substring(0, selectedNodeId.length - 2);
-      this.selectedNodeId.emit(selectedNodeId);
+      if (response.ustUML.split(':')[0] !== 'class') {
+        let selectedNodeId = this.input.previousCommands[this.input.previousCommands.length - 1].replace('open: ', '');
+        selectedNodeId = selectedNodeId.substring(0, selectedNodeId.length - 2);
+        this.lastSelectedNodeId = selectedNodeId;
+        this.selectedNodeId.emit(selectedNodeId);
+      } else {
+        this.selectedNodeId.emit(this.lastSelectedNodeId);
+      }
     } else if (command === 'close:') {
       let selectedNodeId = response.ustUML.split('members')[0].split(':')[1];
       if (selectedNodeId !== undefined) {
         selectedNodeId = selectedNodeId.substring(1, selectedNodeId.length - 1);
+        this.lastSelectedNodeId = selectedNodeId;
         this.selectedNodeId.emit(selectedNodeId);
       } else {
         this.selectedNodeId.emit(this.authService.getEmail());
@@ -153,7 +160,7 @@ export class CommandViewComponent {
 
   private loadPreviousCommand(increment: number): void {
     const previousCommand = this.input.selectedCommand + increment;
-    if (previousCommand >= 0 && previousCommand < this.input.previousCommands.length){
+    if (previousCommand >= 0 && previousCommand < this.input.previousCommands.length) {
       this.input.content = this.input.previousCommands[previousCommand];
       this.input.selectedCommand = previousCommand;
     }
