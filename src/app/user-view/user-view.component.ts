@@ -40,9 +40,9 @@ export class UserViewComponent implements OnInit{
   }
 
   private setSelectedNodeStyle(): void {
-      let selectedNodeId = this.USTUML.split('members')[0].split(':')[1];
+      const selectedNodeId = this.USTUML.split('members')[0].split(':')[1]
+        .replace(' ', '').replace('\n', '');
       if (selectedNodeId !== undefined) {
-        selectedNodeId = selectedNodeId.substring(1, selectedNodeId.length - 1);
         this.selectedNodeId = selectedNodeId;
       } else {
         this.selectedNodeId = this.authService.getEmail();

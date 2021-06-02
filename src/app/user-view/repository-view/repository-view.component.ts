@@ -51,8 +51,6 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
   ngOnChanges(): void {
-    console.log('h');
-    console.log(this.directoryTree);
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
@@ -72,6 +70,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   }
 
   paintSelectedNode(): void{
+    console.log(this.selectedNodeId);
     setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'mediumblue', 1);
   }
 
