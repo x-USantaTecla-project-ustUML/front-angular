@@ -70,7 +70,6 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   }
 
   paintSelectedNode(): void{
-    console.log(this.selectedNodeId);
     setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'mediumblue', 1);
   }
 
