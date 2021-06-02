@@ -8,7 +8,7 @@
     </mat-tree-node>
     <!-- This is the tree node template for expandable nodes -->
     <mat-tree-node [id]="node.name" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="30">
-      <button mat-icon-button matTreeNodeToggle (click)="paintSelectedNode()"
+      <button mat-icon-button matTreeNodeToggle (click)="paintSelectedNode(); paintProjects();"
               [attr.aria-label]="'Toggle ' + node.name" class="txtColor">
         <em *ngIf="!treeControl.isExpanded(node)" class="fas fa-folder"></em>
         <em *ngIf="treeControl.isExpanded(node)" class="fas fa-folder-open"></em>

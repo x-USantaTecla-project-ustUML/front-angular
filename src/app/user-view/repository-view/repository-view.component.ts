@@ -51,11 +51,24 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
   ngOnChanges(): void {
+    console.log('h');
+    console.log(this.directoryTree);
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
+      this.paintProjects();
       this.paintSelectedNode();
     }
+  }
+
+  paintProjects(): void{
+    setTimeout(() => {
+      this.directoryTree[0].children.forEach(value =>  {
+        if ( value.name !== this.selectedNodeId) {
+          document.getElementById(value.name).style.color = 'cornflowerblue';
+        }
+        });
+      }, 1);
   }
 
   paintSelectedNode(): void{
