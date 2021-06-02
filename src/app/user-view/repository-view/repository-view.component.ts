@@ -54,11 +54,23 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
+      this.paintProjects();
       this.paintSelectedNode();
     }
   }
 
+  paintProjects(): void{
+    setTimeout(() => {
+      this.directoryTree[0].children.forEach(value =>  {
+        if ( value.name !== this.selectedNodeId) {
+          document.getElementById(value.name).style.color = 'cornflowerblue';
+        }
+        });
+      }, 1);
+  }
+
   paintSelectedNode(): void{
+    console.log(this.selectedNodeId);
     setTimeout(() => document.getElementById(this.selectedNodeId).style.color = 'mediumblue', 1);
   }
 
