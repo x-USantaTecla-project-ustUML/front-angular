@@ -24,6 +24,7 @@ import {HttpService} from './shared/http.service';
 import {RoleGuardService} from './shared/role-guard.service';
 import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
+import { ResizableDirective } from './shared/Directives/resizable.directive';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {HomeViewComponent} from './home-view/home-view.component';
     RepositoryViewComponent,
     CommandViewComponent,
     PackageViewComponent,
-    HomeViewComponent
+    HomeViewComponent,
+    ResizableDirective
   ],
   imports: [
       BrowserModule,
