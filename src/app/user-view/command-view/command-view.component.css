@@ -1,8 +1,10 @@
 #terminal {
-  position: relative;
-  height: 18em;
+  width: 70%;
+  float: left;
   min-width: 27em;
   max-width: 37em;
+  position: relative;
+  height: 18em;
   background-color: #1e1e1e;
   color: white;
   -webkit-border-radius: 11px;
