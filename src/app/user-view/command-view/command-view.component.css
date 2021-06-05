@@ -1,13 +1,62 @@
 #terminal {
+  width: 70%;
+  float: left;
+  min-width: 37em;
+  max-width: 37em;
   position: relative;
   height: 18em;
-  min-width: 27em;
-  max-width: 37em;
   background-color: #1e1e1e;
   color: white;
   -webkit-border-radius: 11px;
   -moz-border-radius: 11px;
   border-radius: 11px;
+}
+@media (max-width: 1400px) {
+  #terminal {
+    width: 70%;
+    float: left;
+    min-width: 27em;
+    max-width: 37em;
+    position: relative;
+    height: 18em;
+    background-color: #1e1e1e;
+    color: white;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+  }
+}
+@media (max-width: 991.98px) {
+  #terminal {
+    margin-top: 60vh;
+    width: 70%;
+    float: left;
+    min-width: 27em;
+    max-width: 37em;
+    position: relative;
+    height: 18em;
+    background-color: #1e1e1e;
+    color: white;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+  }
+}
+@media (max-width: 500px) {
+  #terminal {
+    margin-top: 60vh;
+    width: 70%;
+    float: left;
+    min-width: 25em;
+    max-width: 37em;
+    position: relative;
+    height: 18em;
+    background-color: #1e1e1e;
+    color: white;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+  }
 }
 #header {
   position: absolute;
