@@ -42,12 +42,33 @@
     border-radius: 11px;
   }
 }
+@media (max-width: 600px) {
+  #terminal {
+    min-width: 22em;
+  }
+}
 @media (max-width: 500px) {
   #terminal {
-    margin-top: 60vh;
+    margin-top: 41vh;
     width: 70%;
     float: left;
     min-width: 25em;
+    max-width: 37em;
+    position: relative;
+    height: 18em;
+    background-color: #1e1e1e;
+    color: white;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+  }
+}
+@media (max-width: 300px) {
+  #terminal {
+    margin-top: 41vh;
+    width: 70%;
+    float: left;
+    min-width: 20em;
     max-width: 37em;
     position: relative;
     height: 18em;

@@ -11,14 +11,37 @@ img{
 @media (max-width: 830px) {
   img {
     position: absolute;
-    margin-left: -55%;
+    margin-left: -57%;
     max-width: 460px;
+  }
+}
+@media (max-width: 600px) {
+  img {
+    position: absolute;
+    margin-left: -64%;
+    max-width: 356px;
   }
 }
 @media (max-width: 500px) {
   img {
     position: absolute;
-    margin-left: -98%;
+    margin-left: -95%;
     max-width: 365px;
+  }
+}
+
+@media (max-width: 370px) {
+  img {
+    position: absolute;
+    margin-left: -98%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 300px) {
+  img {
+    position: absolute;
+    margin-left: -100%;
+    max-width: 275px;
   }
 }
