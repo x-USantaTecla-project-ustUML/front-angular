@@ -1,9 +1,35 @@
 textarea {
   width: 70%;
   float: left;
-  min-width: 27em;
+  min-width: 37em;
   min-height: 50vh;
   max-width: 37em;
   margin-bottom: 1em;
   resize: none;
+}
+
+@media (max-width: 1400px) {
+  textarea {
+    width: 70%;
+    float: left;
+    min-width: 27em;
+    min-height: 50vh;
+    max-width: 37em;
+    margin-bottom: 1em;
+    resize: none;
+    display: block;
+  }
+}
+
+@media (max-width: 991.98px) {
+  textarea {
+    width: 70%;
+    float: left;
+    min-width: 17em;
+    min-height: 50vh;
+    max-width: 37em;
+    margin-bottom: 1em;
+    resize: none;
+    display: none;
+  }
 }
