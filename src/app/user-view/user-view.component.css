@@ -38,6 +38,19 @@
     display: block;
   }
 }
+@media (max-width: 600px) {
+  #repository {
+    width: 25%;
+    float: left;
+    position: relative;
+    min-width: 150px;
+    max-width: 150px;
+    border: 1px solid;
+    overflow: auto;
+    margin: 0 20px 0 20px;
+    display: block;
+  }
+}
 @media (max-width: 500px) {
   #repository {
     width: 25%;
@@ -47,10 +60,11 @@
     max-width: 100px;
     border: 1px solid;
     overflow: auto;
-    margin: 0 20px 0 20px;
+    margin: 0 20px 0 -40px;
     display: none;
   }
 }
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
