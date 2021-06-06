@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/ust-uml-client",
+    "site": "ust-uml-tool",
     "ignore": [
       "firebase.json",
       "**/.*",
