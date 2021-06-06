@@ -30,6 +30,11 @@
             <span class="nav-link-inner--text">Home</span>
           </a>
         </li>
+        <li class="nav-item dropdown">
+          <a [routerLink]="['/docs-view']" class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <span class="nav-link-inner--text">Docs</span>
+          </a>
+        </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated()">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>

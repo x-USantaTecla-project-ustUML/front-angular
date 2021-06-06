@@ -1,0 +1,22 @@
+.example-container {
+  width: 100%;
+  height: 80vh;
+}
+
+.example-sidenav-content {
+  display: flex;
+  align-items: center;
+  width: min-content;
+  margin: 10px;
+}
+
+mat-tree-node {
+  cursor: pointer;
+  padding-right: 60px;
+}
+
+mat-tree-node:hover {
+  background-color: lightgray;
+  color: #1669bb;
+}
+
