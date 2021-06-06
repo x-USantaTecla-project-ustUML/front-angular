@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  SERVER: ''
+  SERVER: 'https://ust-uml-server-test.herokuapp.com'
 };
