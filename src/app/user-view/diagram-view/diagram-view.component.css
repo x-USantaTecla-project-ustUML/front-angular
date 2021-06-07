@@ -15,6 +15,13 @@ img{
     max-width: 460px;
   }
 }
+@media (max-width: 800px) {
+  img {
+    position: absolute;
+    margin-left: -62%;
+    max-width: 460px;
+  }
+}
 @media (max-width: 600px) {
   img {
     position: absolute;

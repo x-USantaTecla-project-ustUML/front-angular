@@ -42,6 +42,12 @@
     border-radius: 11px;
   }
 }
+
+@media (max-width: 800px) {
+  #terminal {
+    min-width: 33em;
+  }
+}
 @media (max-width: 600px) {
   #terminal {
     min-width: 22em;
@@ -49,7 +55,7 @@
 }
 @media (max-width: 500px) {
   #terminal {
-    margin-top: 41vh;
+    margin-top: 43vh;
     width: 70%;
     float: left;
     min-width: 25em;
@@ -65,7 +71,7 @@
 }
 @media (max-width: 300px) {
   #terminal {
-    margin-top: 41vh;
+    margin-top: 43vh;
     width: 70%;
     float: left;
     min-width: 20em;
