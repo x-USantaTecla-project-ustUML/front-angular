@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
     <!-- This is the tree node template for leaf nodes -->
-    <mat-tree-node [id]="node.name" *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="30">
+    <mat-tree-node [class]="node.name" [id]="node.name" *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="30">
       <!-- use a disabled button to provide padding for tree leaf -->
       <button mat-icon-button disabled><em class="fas fa-folder"></em></button>
       {{node.name}}
     </mat-tree-node>
     <!-- This is the tree node template for expandable nodes -->
-    <mat-tree-node [id]="node.name" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="30">
+    <mat-tree-node [class]="node.name" [id]="node.name" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="30">
       <button mat-icon-button matTreeNodeToggle (click)="paintSelectedNode(); paintProjects();"
               [attr.aria-label]="'Toggle ' + node.name" class="txtColor">
         <em *ngIf="!treeControl.isExpanded(node)" class="fas fa-folder"></em>

@@ -21,7 +21,8 @@ export class UserViewComponent implements OnInit {
       'skinparam DefaultTextAlignment center\n' +
       'skinparam NoteBackgroundColor lightyellow\n' +
       'skinparam NoteBorderColor darkgray\\n\' +\n' +
-      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
+      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
+      'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring" as tbd';
     this.USTUML = '';
     this.directoryTree = [{name: this.authService.getEmail()}];
     this.selectedNodeId = this.authService.getEmail();
