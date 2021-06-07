@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {MatDrawer} from '@angular/material/sidenav';
@@ -52,11 +52,11 @@ interface ExampleFlatNode {
 })
 export class DocumentationViewComponent implements OnInit {
   treeControl: FlatTreeControl<ExampleFlatNode>;
+  public innerWidth: any;
   treeFlattener: MatTreeFlattener<DocNode, ExampleFlatNode, any>;
   dataSource: MatTreeFlatDataSource<DocNode, ExampleFlatNode, any>;
   showFiller = false;
   text = 'close';
-
 
   constructor() {
   }
@@ -68,6 +68,7 @@ export class DocumentationViewComponent implements OnInit {
       this.transformer, node => node.level, node => node.expandable, node => node.children);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = TREE_DATA;
+    this.innerWidth = window.innerWidth;
   }
 
   expand(drawer: MatDrawer): void{

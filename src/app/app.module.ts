@@ -26,6 +26,7 @@ import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
 import { ResizableDirective } from './shared/Directives/resizable.directive';
 import { DocumentationViewComponent } from './documentation-view/documentation-view.component';
+import { DocsIntroductionViewComponent } from './documentation-view/docs-introduction-view/docs-introduction-view.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DocumentationViewComponent } from './documentation-view/documentation-v
     PackageViewComponent,
     HomeViewComponent,
     ResizableDirective,
-    DocumentationViewComponent
+    DocumentationViewComponent,
+    DocsIntroductionViewComponent
   ],
   imports: [
       BrowserModule,
