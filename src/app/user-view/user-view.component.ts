@@ -9,7 +9,7 @@ import {UserViewService} from './user-view.service';
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.css']
 })
-export class UserViewComponent implements OnInit{
+export class UserViewComponent implements OnInit {
 
   plantUML: string;
   USTUML: string;
@@ -29,8 +29,8 @@ export class UserViewComponent implements OnInit{
 
   ngOnInit(): void {
     this.redirectIfNotAuthenticated();
-    this.userViewService.getContext().subscribe( response => {
-      if (response.ustUML !== ''){
+    this.userViewService.getContext().subscribe(response => {
+      if (response.ustUML !== '') {
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
         this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
@@ -40,13 +40,15 @@ export class UserViewComponent implements OnInit{
   }
 
   private setSelectedNodeStyle(): void {
-      const selectedNodeId = this.USTUML.split('members')[0].split(':')[1]
-        .replace(' ', '').replace('\n', '');
-      if (selectedNodeId !== undefined) {
-        this.selectedNodeId = selectedNodeId;
-      } else {
-        this.selectedNodeId = this.authService.getEmail();
-      }
+    const selectedNodeId = this.USTUML.split('members')[0].split(':')[1];
+    if (selectedNodeId !== undefined) {
+      selectedNodeId.replace(' ', '').replace('\n', '');
+    }
+    if (selectedNodeId !== undefined) {
+      this.selectedNodeId = selectedNodeId;
+    } else {
+      this.selectedNodeId = this.authService.getEmail();
+    }
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
@@ -56,7 +58,7 @@ export class UserViewComponent implements OnInit{
   }
 
   redirectIfNotAuthenticated(): void {
-    if (!this.authService.isAuthenticated()){
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/notFound']);
     }
   }
