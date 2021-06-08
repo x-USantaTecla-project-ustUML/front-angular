@@ -62,34 +62,19 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   paintProjects(): void{
     setTimeout(() => {
       this.directoryTree[0].children.forEach(value =>  {
-        const nodesToPaint = document.getElementsByClassName(value.name) as HTMLCollectionOf<HTMLElement>;
-        if (document.getElementById(value.name) !== null) {
-          if (nodesToPaint.length === 2) {
-            nodesToPaint[1].style.color = 'cornflowerblue';
-          }else{
-            nodesToPaint[0].style.color = 'cornflowerblue';
-          }
+        if ( value.name !== this.selectedNodeId && document.getElementById(value.name) !== null) {
+          document.getElementById(value.name).style.color = 'cornflowerblue';
         }
-        });
-      }, 1);
+      });
+    }, 1);
   }
 
   paintSelectedNode(): void{
     setTimeout(() => {
-      const nodesToPaint = document.getElementsByClassName(this.selectedNodeId) as HTMLCollectionOf<HTMLElement>;
       if (document.getElementById(this.selectedNodeId)) {
-        if (nodesToPaint.length === 2){
-          const context = document.getElementById('ustUML').innerHTML.split('members:')[0];
-          if (context[0] === undefined){
-            nodesToPaint[0].style.color = 'mediumblue';
-          }else{
-            nodesToPaint[1].style.color = 'mediumblue';
-          }
-        }else{
-          document.getElementById(this.selectedNodeId).style.color = 'mediumblue';
-        }
+        document.getElementById(this.selectedNodeId).style.color = 'mediumblue';
       }
-      }, 1);
+    }, 1);
   }
 
 }
