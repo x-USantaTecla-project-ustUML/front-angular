@@ -5,6 +5,7 @@ import {PackageNode} from '../package-node.model';
 
 interface FlatNode {
   expandable: boolean;
+  id: string;
   name: string;
   level: number;
 }
@@ -41,8 +42,10 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   }
 
   private transformer = (node: any, level: number) => {
+    console.log(node);
     return {
       expandable: !!node.children && node.children.length > 0,
+      id: node.id,
       name: node.name,
       level,
     };
@@ -62,8 +65,8 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   paintProjects(): void{
     setTimeout(() => {
       this.directoryTree[0].children.forEach(value =>  {
-        if ( value.name !== this.selectedNodeId && document.getElementById(value.name) !== null) {
-          document.getElementById(value.name).style.color = 'cornflowerblue';
+        if ( value.id !== this.selectedNodeId && document.getElementById(value.id) !== null) {
+          document.getElementById(value.id).style.color = 'cornflowerblue';
         }
       });
     }, 1);
