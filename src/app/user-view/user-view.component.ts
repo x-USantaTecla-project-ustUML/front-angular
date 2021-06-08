@@ -24,8 +24,8 @@ export class UserViewComponent implements OnInit {
       'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
       'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring" as tbd';
     this.USTUML = '';
-    this.directoryTree = [{name: this.authService.getEmail()}];
-    this.selectedNodeId = this.authService.getEmail();
+    this.directoryTree = [{id: 'account', name: this.authService.getEmail()}];
+    this.selectedNodeId = 'account';
   }
 
   ngOnInit(): void {
@@ -35,27 +35,16 @@ export class UserViewComponent implements OnInit {
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
         this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
-        this.setSelectedNodeStyle();
+        this.selectedNodeId = response.activeMemberId;
       }
     });
-  }
-
-  private setSelectedNodeStyle(): void {
-    const selectedNodeId = this.USTUML.split('members')[0].split(':')[1];
-    if (selectedNodeId !== undefined) {
-      selectedNodeId.replace(' ', '').replace('\n', '');
-    }
-    if (selectedNodeId !== undefined) {
-      this.selectedNodeId = selectedNodeId;
-    } else {
-      this.selectedNodeId = this.authService.getEmail();
-    }
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
     this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
+    this.selectedNodeId = commandResponse.activeMemberId;
   }
 
   redirectIfNotAuthenticated(): void {
