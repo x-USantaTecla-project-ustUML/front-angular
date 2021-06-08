@@ -14,7 +14,7 @@ export class UserViewComponent implements OnInit {
   plantUML: string;
   USTUML: string;
   directoryTree: any;
-  selectedNodeId: string;
+  activeMemberID: string;
 
   constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
     this.plantUML = 'skinparam Handwritten true\n' +
@@ -25,7 +25,7 @@ export class UserViewComponent implements OnInit {
       'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring" as tbd';
     this.USTUML = '';
     this.directoryTree = [{id: 'account', name: this.authService.getEmail()}];
-    this.selectedNodeId = 'account';
+    this.activeMemberID = 'account';
   }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class UserViewComponent implements OnInit {
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
         this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
-        this.selectedNodeId = response.activeMemberId;
+        this.activeMemberID = response.activeMemberID;
       }
     });
   }
@@ -44,7 +44,7 @@ export class UserViewComponent implements OnInit {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
     this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
-    this.selectedNodeId = commandResponse.activeMemberId;
+    this.activeMemberID = commandResponse.activeMemberID;
   }
 
   redirectIfNotAuthenticated(): void {

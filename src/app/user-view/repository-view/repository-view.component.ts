@@ -21,7 +21,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   treeFlattener: MatTreeFlattener<PackageNode, FlatNode, any>;
   dataSource: MatTreeFlatDataSource<PackageNode, FlatNode, any>;
   @Input() directoryTree: PackageNode[];
-  @Input() selectedNodeId: string;
+  @Input() activeMemberID: string;
 
   constructor() {
   }
@@ -35,14 +35,13 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     this.dataSource.data = this.directoryTree;
     this.treeControl.expandAll();
     setTimeout(() => {
-      if (document.getElementById(this.selectedNodeId) !== null) {
-        document.getElementById(this.selectedNodeId).style.color = 'dimgrey';
+      if (document.getElementById(this.activeMemberID) !== null) {
+        document.getElementById(this.activeMemberID).style.color = 'dimgrey';
       }
     }, 1);
   }
 
   private transformer = (node: any, level: number) => {
-    console.log(node);
     return {
       expandable: !!node.children && node.children.length > 0,
       id: node.id,
@@ -65,7 +64,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   paintProjects(): void{
     setTimeout(() => {
       this.directoryTree[0].children.forEach(value =>  {
-        if ( value.id !== this.selectedNodeId && document.getElementById(value.id) !== null) {
+        if ( value.id !== this.activeMemberID && document.getElementById(value.id) !== null) {
           document.getElementById(value.id).style.color = 'cornflowerblue';
         }
       });
@@ -74,8 +73,8 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
 
   paintSelectedNode(): void{
     setTimeout(() => {
-      if (document.getElementById(this.selectedNodeId)) {
-        document.getElementById(this.selectedNodeId).style.color = 'mediumblue';
+      if (document.getElementById(this.activeMemberID)) {
+        document.getElementById(this.activeMemberID).style.color = 'mediumblue';
       }
     }, 1);
   }
