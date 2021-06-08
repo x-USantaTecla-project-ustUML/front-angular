@@ -15,7 +15,8 @@ class MockCommandViewService {
     return of({
       ustUML: '',
       plantUML: '',
-      directoryTree: ''
+      directoryTree: '',
+      activeMemberID: ''
     });
   }
 }
