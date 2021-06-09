@@ -30,6 +30,7 @@
     "js-yaml": "^3.14.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.29.1",
+    "mouse-wheel-zoom": "^1.1.5",
     "ng2-nouislider": "1.8.2",
     "ngx-monaco-editor": "^6.0.0",
     "nouislider": "14.6.3",
