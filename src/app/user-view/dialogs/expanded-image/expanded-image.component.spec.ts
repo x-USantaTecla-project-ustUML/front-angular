@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExpandedImageComponent } from './expanded-image.component';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 describe('ExpandedImageComponent', () => {
   let component: ExpandedImageComponent;
@@ -8,7 +9,12 @@ describe('ExpandedImageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExpandedImageComponent ]
+      declarations: [ ExpandedImageComponent ],
+      imports: [ MatDialogModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
     .compileComponents();
   });
