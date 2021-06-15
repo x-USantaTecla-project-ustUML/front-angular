@@ -31,6 +31,8 @@ export class DiagramViewComponent implements OnChanges {
     dialogConfig.data = {
       src: this.diagramRoute
     };
+    dialogConfig.width = '100%';
+    dialogConfig.height = '95%';
     this.dialog.open(ExpandedImageComponent, dialogConfig)
       .afterClosed()
       .subscribe();
