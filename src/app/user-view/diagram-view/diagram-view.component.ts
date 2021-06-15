@@ -1,6 +1,8 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {encode64} from './base64-encoder';
 import pako from 'pako';
+import {ExpandedImageComponent} from '../dialogs/expanded-image/expanded-image.component';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {mouseWheelZoom} from 'mouse-wheel-zoom';
 
 @Component({
@@ -13,6 +15,8 @@ export class DiagramViewComponent implements OnChanges {
   @Input() plantUML: string;
   diagramRoute: string;
 
+  constructor(public dialog: MatDialog) {}
+
   ngOnChanges(): void {
     this.setDiagramRoute();
     const wz = mouseWheelZoom({
@@ -20,6 +24,18 @@ export class DiagramViewComponent implements OnChanges {
       zoomStep: .4
     });
     wz.setSrc(this.diagramRoute);
+  }
+
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      src: this.diagramRoute
+    };
+    dialogConfig.width = '100%';
+    dialogConfig.height = '95%';
+    this.dialog.open(ExpandedImageComponent, dialogConfig)
+      .afterClosed()
+      .subscribe();
   }
 
   onError(): void {

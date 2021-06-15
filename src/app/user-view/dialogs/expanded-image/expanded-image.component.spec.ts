@@ -1,15 +1,15 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {DiagramViewComponent} from './diagram-view.component';
+import { ExpandedImageComponent } from './expanded-image.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
-describe('DiagramViewComponent', () => {
-  let component: DiagramViewComponent;
-  let fixture: ComponentFixture<DiagramViewComponent>;
+describe('ExpandedImageComponent', () => {
+  let component: ExpandedImageComponent;
+  let fixture: ComponentFixture<ExpandedImageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiagramViewComponent ],
+      declarations: [ ExpandedImageComponent ],
       imports: [ MatDialogModule],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
@@ -20,7 +20,7 @@ describe('DiagramViewComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiagramViewComponent);
+    fixture = TestBed.createComponent(ExpandedImageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
