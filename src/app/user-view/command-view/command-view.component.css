@@ -149,3 +149,8 @@ textarea {
 .monaco {
   height: 165px;
 }
+
+button {
+  margin-top: 15px;
+  float: right;
+}

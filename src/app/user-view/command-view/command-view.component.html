@@ -1,10 +1,13 @@
-<div id="terminal">
-  <div id="header">
-    <p id="title">USTUML's Terminal</p>
+<div>
+  <div id="terminal">
+    <div id="header">
+      <p id="title">USTUML's Terminal</p>
+    </div>
+    <div class="terminal" #terminal>
+      <div [style]="output.style" [innerHTML]="output.content"></div>
+      <ngx-monaco-editor class="monaco" (keydown)="keyEvent($event)" [options]="editorOptions"
+                         (onInit)="onEditorInit($event)" [(ngModel)]="input.content"></ngx-monaco-editor>
+    </div>
   </div>
-  <div class="terminal" #terminal (dblclick)="executeCommand()">
-    <div [style]="output.style" [innerHTML]="output.content"></div>
-    <ngx-monaco-editor class="monaco" (keydown)="keyEvent($event)" [options]="editorOptions"
-                       (onInit)="onEditorInit($event)" [(ngModel)]="input.content"></ngx-monaco-editor>
-  </div>
+  <button id="btnExecute" type="button" class="btn btn-primary" title="ctrl+Enter" (click)="executeCommand()">Execute</button>
 </div>
