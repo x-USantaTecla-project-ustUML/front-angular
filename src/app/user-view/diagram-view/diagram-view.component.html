@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: column; align-items: end">
-  <img class="img-fluid" data-wheel-zoom="" [src]=diagramRoute alt="UML Image">
+  <img class="img-fluid" data-wheel-zoom="" [src]=diagramRoute alt="UML Image"  (error)="onError()">
   <span (click)="openDialog()" class="material-icons" style="cursor: pointer;">
     fullscreen
   </span>
