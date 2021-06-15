@@ -14,7 +14,6 @@ export class ExpandedImageComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(document.getElementById('dialog-img'));
     const wz = mouseWheelZoom({
       element: document.getElementById('dialog-img'),
       zoomStep: .4
