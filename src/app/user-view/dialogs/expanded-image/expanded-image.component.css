@@ -1,4 +1,11 @@
-.ng-star-inserted {
-  height: inherit;
-  width: inherit;
+
+
+.mat-dialog-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.mat-dialog-content {
+  display: flex;
+  max-height: 100%;
 }
