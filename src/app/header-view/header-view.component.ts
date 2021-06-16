@@ -12,9 +12,6 @@ import {RegisterDialogComponent} from './dialogs/register-dialog.component';
 export class HeaderViewComponent {
 
   public isCollapsed = true;
-  private lastPoppedUrl: string;
-  private yScrollStack: number[] = [];
-  authenticated: boolean;
 
   constructor(private dialog: MatDialog, private authService: AuthService) {
   }

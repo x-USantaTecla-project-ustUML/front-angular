@@ -9,5 +9,12 @@
                          (onInit)="onEditorInit($event)" [(ngModel)]="input.content"></ngx-monaco-editor>
     </div>
   </div>
-  <button id="btnExecute" type="button" class="btn btn-primary" title="ctrl+Enter" (click)="executeCommand()">Execute</button>
+  <div style="text-align: right;">
+    <a id="btnExecute" type="button" title="ctrl+Enter" (click)="executeCommand()" class="btn effect01" target="_blank"
+       style="margin-top: 1.5vh; height: 30px; width: 100px;">
+      <div style="margin-top: -10px;">
+      <span style="vertical-align:middle; ">Execute</span>
+      </div>
+    </a>
+  </div>
 </div>
