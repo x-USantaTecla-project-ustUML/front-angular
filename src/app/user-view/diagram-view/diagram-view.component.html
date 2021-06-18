@@ -1,6 +1,13 @@
 <div style="display: flex; flex-direction: column; align-items: end">
-  <img class="img-fluid" data-wheel-zoom="" [src]=diagramRoute alt="This member is too big for PlantUML to draw a diagram."  (error)="onError()">
-  <span (click)="openDialog()" class="material-icons" style="cursor: pointer;">
-    fullscreen
-  </span>
+  <img id="diagram" class="img-fluid" data-wheel-zoom="" [src]=diagramRoute
+       alt="This member is too big for PlantUML to draw a diagram." (error)="onError()">
+  <div style="display: flex; flex-direction: row; align-items: center">
+    <a [href]="fileUrl" download="diagram.svg">
+    <span class="btn"><i class="fa fa-download"></i> Download as SVG</span>
+    </a>
+    <span class="btn"><i class="fa fa-download"></i> Download as PNG</span>
+    <span (click)="openDialog()" class="material-icons" style="cursor: pointer;">
+      fullscreen
+    </span>
+  </div>
 </div>

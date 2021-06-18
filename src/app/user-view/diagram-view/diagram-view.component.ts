@@ -4,6 +4,7 @@ import pako from 'pako';
 import {ExpandedImageComponent} from '../dialogs/expanded-image/expanded-image.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {mouseWheelZoom} from 'mouse-wheel-zoom';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-diagram-view',
@@ -14,8 +15,9 @@ export class DiagramViewComponent implements OnChanges {
 
   @Input() plantUML: string;
   diagramRoute: string;
+  fileUrl;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private sanitizer: DomSanitizer) {}
 
   ngOnChanges(): void {
     this.setDiagramRoute();
@@ -47,6 +49,16 @@ export class DiagramViewComponent implements OnChanges {
 
   setDiagramRoute(): void {
     this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9}));
+    this.toDataURL(this.diagramRoute);
+  }
+
+  toDataURL(url): Promise<string> {
+    return fetch(url).then((response) => {
+      return response.blob();
+    }).then(blob => {
+      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+      return URL.createObjectURL(blob);
+    });
   }
 
 }
