@@ -17,13 +17,13 @@ export class HeaderViewComponent {
   }
 
   login(): void {
-    this.dialog.open(LoginDialogComponent)
+    this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
   }
 
   register(): void {
-    this.dialog.open(RegisterDialogComponent)
+    this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
   }
