@@ -23,7 +23,7 @@ export class HeaderViewComponent {
   }
 
   register(): void {
-    this.dialog.open(RegisterDialogComponent)
+    this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
   }

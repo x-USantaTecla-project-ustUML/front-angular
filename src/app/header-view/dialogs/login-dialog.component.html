@@ -6,14 +6,14 @@
       <div class="sign-in-htm">
         <div class="group">
           <label for="user" class="label">Email*</label>
-          <input id="user" [(ngModel)]="email" type="text" class="input">
+          <input id="user" [(ngModel)]="email" type="text" class="input" required>
         </div>
         <div class="group">
           <label for="pass" class="label">Password*</label>
-          <input id="pass" type="password" [(ngModel)]="password" class="input" data-type="password">
+          <input id="pass" type="password" [(ngModel)]="password" class="input" data-type="password" required>
         </div>
         <div class="group" style="margin-top: 50px;">
-          <input (click)="login()" type="submit" class="button" value="Submit">
+          <input (click)="login()" type="submit" class="button" value="Login">
         </div>
       </div>
     </div>
