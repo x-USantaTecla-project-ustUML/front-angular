@@ -17,7 +17,7 @@ export class HeaderViewComponent {
   }
 
   login(): void {
-    this.dialog.open(LoginDialogComponent)
+    this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
   }
