@@ -9,54 +9,46 @@ import {UserViewService} from './user-view.service';
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.css']
 })
-export class UserViewComponent implements OnInit{
+export class UserViewComponent implements OnInit {
 
   plantUML: string;
   USTUML: string;
   directoryTree: any;
-  selectedNodeId: string;
+  activeMemberID: string;
 
   constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
     this.plantUML = 'skinparam Handwritten true\n' +
       'skinparam DefaultTextAlignment center\n' +
       'skinparam NoteBackgroundColor lightyellow\n' +
       'skinparam NoteBorderColor darkgray\\n\' +\n' +
-      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject" as tbd';
+      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
+      'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring" as tbd';
     this.USTUML = '';
-    this.directoryTree = [{name: this.authService.getEmail()}];
-    this.selectedNodeId = this.authService.getEmail();
+    this.directoryTree = [{id: 'account', name: this.authService.getEmail()}];
+    this.activeMemberID = 'account';
   }
 
   ngOnInit(): void {
     this.redirectIfNotAuthenticated();
-    this.userViewService.getContext().subscribe( response => {
-      if (response.ustUML !== ''){
+    this.userViewService.getContext().subscribe(response => {
+      if (response.ustUML !== '') {
         this.USTUML = response.ustUML;
         this.plantUML = response.plantUML;
         this.directoryTree = JSON.parse('[' + response.directoryTree + ']');
-        this.setSelectedNodeStyle();
+        this.activeMemberID = response.activeMemberID;
       }
     });
-  }
-
-  private setSelectedNodeStyle(): void {
-      const selectedNodeId = this.USTUML.split('members')[0].split(':')[1]
-        .replace(' ', '').replace('\n', '');
-      if (selectedNodeId !== undefined) {
-        this.selectedNodeId = selectedNodeId;
-      } else {
-        this.selectedNodeId = this.authService.getEmail();
-      }
   }
 
   sendUMLToChildren(commandResponse: CommandResponse): void {
     this.plantUML = commandResponse.plantUML;
     this.USTUML = commandResponse.ustUML;
     this.directoryTree = JSON.parse('[' + commandResponse.directoryTree + ']');
+    this.activeMemberID = commandResponse.activeMemberID;
   }
 
   redirectIfNotAuthenticated(): void {
-    if (!this.authService.isAuthenticated()){
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/notFound']);
     }
   }

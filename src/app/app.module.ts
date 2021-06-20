@@ -25,6 +25,8 @@ import {RoleGuardService} from './shared/role-guard.service';
 import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
 import { ResizableDirective } from './shared/Directives/resizable.directive';
+import { DocumentationViewComponent } from './documentation-view/documentation-view.component';
+import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ResizableDirective } from './shared/Directives/resizable.directive';
     CommandViewComponent,
     PackageViewComponent,
     HomeViewComponent,
-    ResizableDirective
+    ResizableDirective,
+    DocumentationViewComponent,
+    ExpandedImageComponent
   ],
   imports: [
       BrowserModule,
