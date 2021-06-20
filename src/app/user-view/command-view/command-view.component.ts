@@ -164,7 +164,7 @@ export class CommandViewComponent {
     }
   }
 
-  private loadPreviousCommand(increment: number): void {
+  public loadPreviousCommand(increment: number): void {
     const previousCommand = this.input.selectedCommand + increment;
     if (previousCommand >= 0 && previousCommand < this.input.previousCommands.length) {
       this.input.content = this.input.previousCommands[previousCommand];
