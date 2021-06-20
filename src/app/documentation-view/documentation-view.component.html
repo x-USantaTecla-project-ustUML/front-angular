@@ -15,7 +15,7 @@
             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
         </button>
-        {{node.name}}
+        <a [routerLink]="['/docs-view',{outlets:{intro:':'+node.href}}]">{{node.name}}</a>
       </mat-tree-node>
     </mat-tree>
   </mat-drawer>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="container">
-    <app-docs-introduction-view style=""></app-docs-introduction-view>
+    <router-outlet name="intro"></router-outlet>
   </div>
 
 </mat-drawer-container>
