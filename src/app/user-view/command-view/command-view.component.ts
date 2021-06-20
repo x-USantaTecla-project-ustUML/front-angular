@@ -75,6 +75,11 @@ export class CommandViewComponent {
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
 
+  executeCommandByButton(): void{
+    this.input.content += '\r\n';
+    this.executeCommand();
+  }
+
   public executeCommand(): void {
     const previousCommand = this.previousCommandBuilder();
     this.input.previousCommands.push(previousCommand);
