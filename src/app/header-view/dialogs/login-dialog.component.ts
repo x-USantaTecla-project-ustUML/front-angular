@@ -14,6 +14,7 @@ export class LoginDialogComponent {
   password: string;
 
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar) {
+    this.email = '';
   }
 
   login(): void {
