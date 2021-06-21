@@ -17,12 +17,7 @@ export class UserViewComponent implements OnInit {
   activeMemberID: string;
 
   constructor(private authService: AuthService, private userViewService: UserViewService, private router: Router) {
-    this.plantUML = 'skinparam Handwritten true\n' +
-      'skinparam DefaultTextAlignment center\n' +
-      'skinparam NoteBackgroundColor lightyellow\n' +
-      'skinparam NoteBorderColor darkgray\\n\' +\n' +
-      'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
-      'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring" as tbd';
+    this.plantUML = '';
     this.USTUML = '';
     this.directoryTree = [{id: 'account', name: this.authService.getEmail()}];
     this.activeMemberID = 'account';
