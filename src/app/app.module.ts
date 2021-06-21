@@ -26,6 +26,9 @@ import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
 import { ResizableDirective } from './shared/Directives/resizable.directive';
 import { DocumentationViewComponent } from './documentation-view/documentation-view.component';
+import { DocsLanguageViewComponent } from './documentation-view/docs-language-view/docs-language-view.component';
+import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
+import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
 import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
 
 @NgModule({
@@ -44,7 +47,11 @@ import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expan
     HomeViewComponent,
     ResizableDirective,
     DocumentationViewComponent,
-    ExpandedImageComponent
+    ExpandedImageComponent,
+    DocumentationViewComponent,
+    DocsLanguageViewComponent,
+    DocsLanguageGrammarViewComponent,
+    DocsIntroViewComponent
   ],
   imports: [
       BrowserModule,
