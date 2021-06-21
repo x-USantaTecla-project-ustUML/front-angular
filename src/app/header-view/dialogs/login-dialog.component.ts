@@ -14,9 +14,12 @@ export class LoginDialogComponent {
   password: string;
 
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar) {
+    this.email = '';
   }
 
   login(): void {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(this.email).toLowerCase())){
     this.auth.login(this.email, this.password).subscribe(
       () => {
         this.router.navigate(['user-view']).then().finally(() => this.dialog.closeAll());
@@ -27,6 +30,11 @@ export class LoginDialogComponent {
         });
       }
     );
+    }else{
+      this.snackBar.open('Please enter a valid email', 'Error', {
+        duration: 3000,
+      });
+    }
   }
 
 }
