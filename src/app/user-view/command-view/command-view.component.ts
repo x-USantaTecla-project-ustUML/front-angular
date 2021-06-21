@@ -75,9 +75,11 @@ export class CommandViewComponent {
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
 
-  executeCommandByButton(): void{
-    this.input.content += '\r\n';
-    this.executeCommand();
+  executeCommandByButton(): void {
+    if (this.input.content !== '') {
+      this.input.content += '\r\n';
+      this.executeCommand();
+    }
   }
 
   public executeCommand(): void {
