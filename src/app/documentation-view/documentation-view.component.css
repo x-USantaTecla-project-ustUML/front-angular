@@ -31,3 +31,12 @@ mat-tree-node:hover {
   max-width: 50em;
   margin: 0 auto;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: darkslateblue;
+}

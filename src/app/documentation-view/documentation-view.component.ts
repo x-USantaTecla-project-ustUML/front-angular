@@ -14,15 +14,16 @@ interface DocNode {
 const TREE_DATA: DocNode[] = [
   {
     name: 'Introduction',
-    href: '',
+    href: 'introduction',
+    children: []
   },
   {
     name: 'Language',
-    href: 'introduction',
+    href: 'language',
     children: [
       {
         name: 'Language grammar',
-        href: '',
+        href: 'language-grammar',
       },
       {
         name: 'Command semantic',

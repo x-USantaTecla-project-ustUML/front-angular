@@ -26,7 +26,9 @@ import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
 import { ResizableDirective } from './shared/Directives/resizable.directive';
 import { DocumentationViewComponent } from './documentation-view/documentation-view.component';
-import { DocsIntroductionViewComponent } from './documentation-view/docs-introduction-view/docs-introduction-view.component';
+import { DocsLanguageViewComponent } from './documentation-view/docs-language-view/docs-language-view.component';
+import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
+import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { DocsIntroductionViewComponent } from './documentation-view/docs-introdu
     HomeViewComponent,
     ResizableDirective,
     DocumentationViewComponent,
-    DocsIntroductionViewComponent
+    DocsLanguageViewComponent,
+    DocsLanguageGrammarViewComponent,
+    DocsIntroViewComponent
   ],
   imports: [
       BrowserModule,

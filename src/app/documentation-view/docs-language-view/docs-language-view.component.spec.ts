@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocsIntroductionViewComponent } from './docs-introduction-view.component';
+import { DocsLanguageViewComponent } from './docs-language-view.component';
 
 describe('DocsIntroductionViewComponent', () => {
-  let component: DocsIntroductionViewComponent;
-  let fixture: ComponentFixture<DocsIntroductionViewComponent>;
+  let component: DocsLanguageViewComponent;
+  let fixture: ComponentFixture<DocsLanguageViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DocsIntroductionViewComponent ]
+      declarations: [ DocsLanguageViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocsIntroductionViewComponent);
+    fixture = TestBed.createComponent(DocsLanguageViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

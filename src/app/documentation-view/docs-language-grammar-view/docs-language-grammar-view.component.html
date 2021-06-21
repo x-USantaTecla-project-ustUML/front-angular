@@ -1,0 +1,740 @@
+<div class="language-grammar">
+
+<p style="font-size: 14px; font-weight:bold"><a name="UST_UML">UST_UML:</a></p><img border="0"
+                                                                                    src="../../assets/img/language-grammar/UST_UML.png"
+                                                                                    height="257" width="225"
+                                                                                    usemap="#UST_UML.map">
+<map name="UST_UML.map">
+  <area
+    shape="rect" coords="49,1,165,33" href="/docs-view/(intro:language-grammar)#openCommand" title="openCommand">
+  <area shape="rect"
+        coords="49,45,157,77" href="#addCommand" title="addCommand">
+  <area shape="rect" coords="49,89,175,121"
+        href="#modifyCommand" title="modifyCommand">
+  <area shape="rect" coords="49,133,173,165" href="#deleteCommand"
+        title="deleteCommand">
+  <area shape="rect" coords="49,221,173,253" href="#importCommand"
+        title="importCommand">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#UST_UML" title="UST_UML">UST_UML</a>&nbsp;&nbsp;::= <a href="#openCommand" title="openCommand">openCommand</a>
+  </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="#addCommand" title="addCommand">addCommand</a>
+  </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="#modifyCommand"
+                                                                              title="modifyCommand">modifyCommand</a>
+  </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="#deleteCommand"
+                                                                              title="deleteCommand">deleteCommand</a>
+  </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 'close:'</div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="#importCommand"
+                                                                              title="importCommand">importCommand</a>
+  </div>
+</code>
+</div>
+
+<p>no references</p><br>
+<p style="font-size: 14px; font-weight:bold"><a name="openCommand">openCommand:</a></p><img border="0"
+                                                                                            src="../../assets/img/language-grammar/openCommand.png"
+                                                                                            height="37" width="221"
+                                                                                            usemap="#openCommand.map">
+<map name="openCommand.map">
+  <area
+    shape="rect" coords="107,1,191,33" href="#indentifier" title="indentifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#openCommand" title="openCommand">openCommand</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'open:' <a href="#indentifier" title="indentifier">indentifier</a>
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#UST_UML" title="UST_UML">UST_UML</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="project">project:</a></p><img border="0"
+                                                                                    src="../../assets/img/language-grammar/project.png"
+                                                                                    height="37" width="227"
+                                                                                    usemap="#project.map">
+<map name="project.map">
+  <area shape="rect"
+        coords="121,1,197,33" href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#project" title="project">project</a>&nbsp;&nbsp;::= 'project:' <a href="#identifier"
+                                                                                   title="identifier">identifier</a>
+  </div>
+</code>
+</div>
+
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addProject" title="addProject">addProject</a></li>
+
+  <li><a href="#deleteMembers" title="deleteMembers">deleteMembers</a></li>
+
+  <li><a href="#modifyMembers" title="modifyMembers">modifyMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="package">package:</a></p><img border="0"
+                                                                                    src="../../assets/img/language-grammar/package.png"
+                                                                                    height="37" width="235"
+                                                                                    usemap="#package.map">
+<map name="package.map">
+  <area shape="rect"
+        coords="129,1,205,33" href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#package" title="package">package</a>&nbsp;&nbsp;::= 'package:' <a href="#identifier"
+                                                                                   title="identifier">identifier</a>
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addPackage" title="addPackage">addPackage</a></li>
+
+  <li><a href="#deleteMembers" title="deleteMembers">deleteMembers</a></li>
+
+  <li><a href="#modifiers" title="modifiers">modifiers</a></li>
+
+  <li><a href="#modifyMembers" title="modifyMembers">modifyMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="class">class:</a></p><img border="0" src="../../assets/img/language-grammar/class.png"
+                                                                                height="37" width="213"
+                                                                                usemap="#class.map">
+<map name="class.map">
+  <area shape="rect" coords="107,1,183,33"
+        href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#class" title="class">class</a>&nbsp;&nbsp;&nbsp;&nbsp;::= 'class:' <a href="#identifier"
+                                                                                       title="identifier">identifier</a>
+  </div>
+</code>
+</div>
+
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addClass" title="addClass">addClass</a></li>
+
+  <li><a href="#deleteMembers" title="deleteMembers">deleteMembers</a></li>
+
+  <li><a href="#modifyMembers" title="modifyMembers">modifyMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="addCommand">addCommand:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/addCommand.png"
+                                                                                          height="69" width="521"
+                                                                                          usemap="#addCommand.map">
+<map name="addCommand.map">
+  <area
+    shape="rect" coords="119,33,221,65" href="#addMembers" title="addMembers">
+  <area shape="rect"
+        coords="281,33,357,65" href="#relations" title="relations">
+  <area shape="rect" coords="417,33,471,65"
+        href="#users" title="users">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#addCommand" title="addCommand">addCommand</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'add:' <a href="#addMembers" title="addMembers">addMembers</a>?
+    <a href="#relations" title="relations">relations</a>? <a href="#users" title="users">users</a>?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#UST_UML" title="UST_UML">UST_UML</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="addMembers">addMembers:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/addMembers.png"
+                                                                                          height="537" width="343"
+                                                                                          usemap="#addMembers.map">
+<map name="addMembers.map">
+  <area
+    shape="rect" coords="177,17,265,49" href="#addProject" title="addProject">
+  <area shape="rect"
+        coords="177,61,273,93" href="#addPackage" title="addPackage">
+  <area shape="rect" coords="177,105,255,137"
+        href="#addClass" title="addClass">
+  <area shape="rect" coords="177,149,233,181" href="#enum" title="enum">
+  <area
+    shape="rect" coords="177,193,253,225" href="#interface" title="interface">
+  <area shape="rect"
+        coords="177,237,229,269" href="#actor" title="actor">
+  <area shape="rect" coords="177,281,249,313"
+        href="#usecase" title="usecase">
+  <area shape="rect" coords="177,325,235,357" href="#object" title="object">
+  <area
+    shape="rect" coords="177,369,229,401" href="#node" title="node">
+  <area shape="rect" coords="177,413,267,445"
+        href="#component" title="component">
+  <area shape="rect" coords="177,457,229,489" href="#state"
+        title="state">
+  <area shape="rect" coords="177,501,241,533" href="#activity" title="activity">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#addMembers" title="addMembers">addMembers</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'members:' ( <a href="#addProject" title="addProject">addProject</a>
+    | <a href="#addPackage" title="addPackage">addPackage</a> | <a href="#addClass" title="addClass">addClass</a> | <a
+      href="#enum" title="enum">enum</a> | <a href="#interface" title="interface">interface</a> | <a href="#actor"
+                                                                                                     title="actor">actor</a>
+    | <a href="#usecase" title="usecase">usecase</a> | <a href="#object" title="object">object</a> | <a href="#node"
+                                                                                                        title="node">node</a>
+    | <a href="#component" title="component">component</a> | <a href="#state" title="state">state</a> | <a
+      href="#activity" title="activity">activity</a> )+
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addCommand" title="addCommand">addCommand</a></li>
+
+  <li><a href="#addPackage" title="addPackage">addPackage</a></li>
+
+  <li><a href="#addProject" title="addProject">addProject</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="addProject">addProject:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/addProject.png"
+                                                                                          height="69" width="421"
+                                                                                          usemap="#addProject.map">
+<map name="addProject.map">
+  <area
+    shape="rect" coords="29,1,93,33" href="#project" title="project">
+  <area shape="rect" coords="133,33,235,65"
+        href="#addMembers" title="addMembers">
+  <area shape="rect" coords="295,33,371,65" href="#relations"
+        title="relations">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#addProject" title="addProject">addProject</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= <a href="#project" title="project">project</a> <a
+    href="#addMembers" title="addMembers">addMembers</a>? <a href="#relations" title="relations">relations</a>?
+  </div>
+</code>
+</div>
+
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addMembers" title="addMembers">addMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="addPackage">addPackage:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/addPackage.png"
+                                                                                          height="69" width="429"
+                                                                                          usemap="#addPackage.map">
+<map name="addPackage.map">
+  <area
+    shape="rect" coords="29,1,101,33" href="#package" title="package">
+  <area shape="rect" coords="141,33,243,65"
+        href="#addMembers" title="addMembers">
+  <area shape="rect" coords="303,33,379,65" href="#relations"
+        title="relations">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#addPackage" title="addPackage">addPackage</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= <a href="#package" title="package">package</a> <a
+    href="#addMembers" title="addMembers">addMembers</a>? <a href="#relations" title="relations">relations</a>?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addMembers" title="addMembers">addMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="addClass">addClass:</a></p><img border="0"
+                                                                                      src="../../assets/img/language-grammar/addClass.png"
+                                                                                      height="69" width="553"
+                                                                                      usemap="#addClass.map">
+<map name="addClass.map">
+  <area
+    shape="rect" coords="29,1,81,33" href="#class" title="class">
+  <area shape="rect" coords="121,33,199,65"
+        href="#modifiers" title="modifiers">
+  <area shape="rect" coords="259,33,367,65" href="#classMembers"
+        title="classMembers">
+  <area shape="rect" coords="427,33,503,65" href="#relations" title="relations">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#addClass" title="addClass">addClass</a>&nbsp;::= <a href="#class" title="class">class</a> <a
+    href="#modifiers" title="modifiers">modifiers</a>? <a href="#classMembers" title="classMembers">classMembers</a>? <a
+    href="#relations" title="relations">relations</a>?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addMembers" title="addMembers">addMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="identifier">identifier:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/identifier.png"
+                                                                                          height="229" width="323">
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#identifier" title="identifier">identifier</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= [$_a-zA-Z] [$_a-zA-Z0-9]+</div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#class" title="class">class</a></li>
+
+  <li><a href="#definition" title="definition">definition</a></li>
+
+  <li><a href="#package" title="package">package</a></li>
+
+  <li><a href="#project" title="project">project</a></li>
+
+  <li><a href="#relations" title="relations">relations</a></li>
+
+  <li><a href="#type" title="type">type</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="modifiers">modifiers:</a></p><img border="0"
+                                                                                        src="../../assets/img/language-grammar/modifiers.png"
+                                                                                        height="113" width="413"
+                                                                                        usemap="#modifiers.map">
+<map name="modifiers.map">
+  <area
+    shape="rect" coords="157,33,213,65" href="#public" title="public">
+  <area shape="rect" coords="157,77,229,109"
+        href="#package" title="package">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#modifiers" title="modifiers">modifiers</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'modifiers:' ( <a href="#public"
+                                                                                   title="public">public</a> | <a
+    href="#package" title="package">package</a> )? 'abstract'?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addClass" title="addClass">addClass</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="classMembers">classMembers:</a></p><img border="0"
+                                                                                              src="../../assets/img/language-grammar/classMembers.png"
+                                                                                              height="53" width="285"
+                                                                                              usemap="#classMembers.map">
+<map
+  name="classMembers.map">
+  <area shape="rect" coords="157,17,235,49" href="#definition" title="definition">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#classMembers" title="classMembers">classMembers</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'members:' <a href="#definition" title="definition">definition</a>+
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addClass" title="addClass">addClass</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="definition">definition:</a></p><img border="0"
+                                                                                          src="../../assets/img/language-grammar/definition.png"
+                                                                                          height="233" width="857"
+                                                                                          usemap="#definition.map">
+<map name="definition.map">
+  <area
+    shape="rect" coords="419,1,467,33" href="#type" title="type">
+  <area shape="rect" coords="487,1,563,33"
+        href="#identifier" title="identifier">
+  <area shape="rect" coords="327,121,375,153" href="#type"
+        title="type">
+  <area shape="rect" coords="395,121,471,153" href="#identifier" title="identifier">
+  <area
+    shape="rect" coords="577,121,625,153" href="#type" title="type">
+  <area shape="rect" coords="645,121,721,153"
+        href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#definition" title="definition">definition</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'public' | 'private' | 'package' | 'protected' )? (
+    'static'? 'final'?
+    <a href="#type" title="type">type</a> <a href="#identifier" title="identifier">identifier</a> | ( 'static' |
+    'abstract' )? <a href="#type" title="type">type</a> <a href="#identifier" title="identifier">identifier</a> '(' ( <a
+      href="#type" title="type">type</a> <a href="#identifier" title="identifier">identifier</a> ( ',' <a href="#type"
+                                                                                                          title="type">type</a>
+    <a href="#identifier" title="identifier">identifier</a> )* )? ')' )
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#classMembers" title="classMembers">classMembers</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="type">type:</a></p><img border="0" src="../../assets/img/language-grammar/type.png"
+                                                                              height="301" width="267"
+                                                                              usemap="#type.map">
+<map name="type.map">
+  <area shape="rect" coords="49,265,125,297"
+        href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#type" title="type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'int' | 'float' | 'double' | 'boolean' |
+    'char' | 'string' | <a href="#identifier" title="identifier">identifier</a> ) '[]'?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#definition" title="definition">definition</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="relations">relations:</a></p><img border="0"
+                                                                                        src="../../assets/img/language-grammar/relations.png"
+                                                                                        height="213" width="767"
+                                                                                        usemap="#relations.map">
+<map name="relations.map">
+  <area
+    shape="rect" coords="125,1,201,33" href="#identifier" title="identifier">
+  <area shape="rect"
+        coords="215,45,291,77" href="#identifier" title="identifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#relations" title="relations">relations</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'base:' <a href="#identifier" title="identifier">identifier</a>
+  </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ( 'composition:' | 'aggregation:' | 'use:' |
+    'association:' ) <a href="#identifier" title="identifier">identifier</a> ( 'cardinality:' 'string' )? ( 'role:'
+    'string' )?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#addClass" title="addClass">addClass</a></li>
+
+  <li><a href="#addCommand" title="addCommand">addCommand</a></li>
+
+  <li><a href="#addPackage" title="addPackage">addPackage</a></li>
+
+  <li><a href="#addProject" title="addProject">addProject</a></li>
+
+  <li><a href="#deleteCommand" title="deleteCommand">deleteCommand</a></li>
+
+  <li><a href="#modifyCommand" title="modifyCommand">modifyCommand</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="modifyCommand">modifyCommand:</a></p><img border="0"
+                                                                                                src="../../assets/img/language-grammar/modifyCommand.png"
+                                                                                                height="69" width="561"
+                                                                                                usemap="#modifyCommand.map">
+<map
+  name="modifyCommand.map">
+  <area shape="rect" coords="141,33,261,65" href="#modifyMembers"
+        title="modifyMembers">
+  <area shape="rect" coords="321,33,397,65" href="#relations" title="relations">
+  <area
+    shape="rect" coords="457,33,511,65" href="#users" title="users">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#modifyCommand" title="modifyCommand">modifyCommand</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'modify:' <a href="#modifyMembers"
+                                                                              title="modifyMembers">modifyMembers</a>?
+    <a href="#relations" title="relations">relations</a>? <a href="#users" title="users">users</a>?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#UST_UML" title="UST_UML">UST_UML</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="modifyMembers">modifyMembers:</a></p><img border="0"
+                                                                                                src="../../assets/img/language-grammar/modifyMembers.png"
+                                                                                                height="537" width="527"
+                                                                                                usemap="#modifyMembers.map">
+<map
+  name="modifyMembers.map">
+  <area shape="rect" coords="177,17,241,49" href="#project" title="project">
+  <area
+    shape="rect" coords="177,61,249,93" href="#package" title="package">
+  <area shape="rect" coords="177,105,229,137"
+        href="#class" title="class">
+  <area shape="rect" coords="177,149,233,181" href="#enum" title="enum">
+  <area
+    shape="rect" coords="177,193,253,225" href="#interface" title="interface">
+  <area shape="rect"
+        coords="177,237,229,269" href="#actor" title="actor">
+  <area shape="rect" coords="177,281,249,313"
+        href="#usecase" title="usecase">
+  <area shape="rect" coords="177,325,235,357" href="#object" title="object">
+  <area
+    shape="rect" coords="177,369,229,401" href="#node" title="node">
+  <area shape="rect" coords="177,413,267,445"
+        href="#component" title="component">
+  <area shape="rect" coords="177,457,229,489" href="#state"
+        title="state">
+  <area shape="rect" coords="177,501,241,533" href="#activity" title="activity">
+  <area shape="rect"
+        coords="373,17,477,49" href="#newIdentifier" title="newIdentifier">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#modifyMembers" title="modifyMembers">modifyMembers</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'members:' ( ( <a href="#project" title="project">project</a>
+    | <a href="#package" title="package">package</a> | <a href="#class" title="class">class</a> | <a href="#enum"
+                                                                                                     title="enum">enum</a>
+    | <a href="#interface" title="interface">interface</a> | <a href="#actor" title="actor">actor</a> | <a
+      href="#usecase" title="usecase">usecase</a> | <a href="#object" title="object">object</a> | <a href="#node"
+                                                                                                     title="node">node</a>
+    | <a href="#component" title="component">component</a> | <a href="#state" title="state">state</a> | <a
+      href="#activity" title="activity">activity</a> ) 'set:' <a href="#newIdentifier" title="newIdentifier">newIdentifier</a>
+    )+
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#modifyCommand" title="modifyCommand">modifyCommand</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="deleteCommand">deleteCommand:</a></p><img border="0"
+                                                                                                src="../../assets/img/language-grammar/deleteCommand.png"
+                                                                                                height="69" width="553"
+                                                                                                usemap="#deleteCommand.map">
+<map
+  name="deleteCommand.map">
+  <area shape="rect" coords="135,33,253,65" href="#deleteMembers"
+        title="deleteMembers">
+  <area shape="rect" coords="313,33,389,65" href="#relations" title="relations">
+  <area
+    shape="rect" coords="449,33,503,65" href="#users" title="users">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#deleteCommand" title="deleteCommand">deleteCommand</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'delete:' <a href="#deleteMembers"
+                                                                              title="deleteMembers">deleteMembers</a>?
+    <a href="#relations" title="relations">relations</a>? <a href="#users" title="users">users</a>?
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#UST_UML" title="UST_UML">UST_UML</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="deleteMembers">deleteMembers:</a></p><img border="0"
+                                                                                                src="../../assets/img/language-grammar/deleteMembers.png"
+                                                                                                height="537" width="337"
+                                                                                                usemap="#deleteMembers.map">
+<map
+  name="deleteMembers.map">
+  <area shape="rect" coords="177,17,241,49" href="#project" title="project">
+  <area
+    shape="rect" coords="177,61,249,93" href="#package" title="package">
+  <area shape="rect" coords="177,105,229,137"
+        href="#class" title="class">
+  <area shape="rect" coords="177,149,233,181" href="#enum" title="enum">
+  <area
+    shape="rect" coords="177,193,253,225" href="#interface" title="interface">
+  <area shape="rect"
+        coords="177,237,229,269" href="#actor" title="actor">
+  <area shape="rect" coords="177,281,249,313"
+        href="#usecase" title="usecase">
+  <area shape="rect" coords="177,325,235,357" href="#object" title="object">
+  <area
+    shape="rect" coords="177,369,229,401" href="#node" title="node">
+  <area shape="rect" coords="177,413,267,445"
+        href="#component" title="component">
+  <area shape="rect" coords="177,457,229,489" href="#state"
+        title="state">
+  <area shape="rect" coords="177,501,241,533" href="#activity" title="activity">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#deleteMembers" title="deleteMembers">deleteMembers</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'members:' ( <a href="#project"
+                                                                                 title="project">project</a> | <a
+    href="#package" title="package">package</a> | <a href="#class" title="class">class</a> | <a href="#enum"
+                                                                                                title="enum">enum</a> |
+    <a href="#interface" title="interface">interface</a> | <a href="#actor" title="actor">actor</a> | <a href="#usecase"
+                                                                                                         title="usecase">usecase</a>
+    | <a href="#object" title="object">object</a> | <a href="#node" title="node">node</a> | <a href="#component"
+                                                                                               title="component">component</a>
+    | <a href="#state" title="state">state</a> | <a href="#activity" title="activity">activity</a> )+
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#deleteCommand" title="deleteCommand">deleteCommand</a></li>
+</ul>
+<br>
+<p style="font-size: 14px; font-weight:bold"><a name="importCommand">importCommand:</a></p><img border="0"
+                                                                                                src="../../assets/img/language-grammar/importCommand.png"
+                                                                                                height="37" width="259"
+                                                                                                usemap="#importCommand.map">
+<map
+  name="importCommand.map">
+  <area shape="rect" coords="119,1,229,33" href="#urlGitHubRepo"
+        title="urlGitHubRepo">
+</map>
+<p>
+
+<div class="ebnf"><code>
+
+  <div><a href="#importCommand" title="importCommand">importCommand</a></div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'import:' <a href="#urlGitHubRepo"
+                                                                              title="urlGitHubRepo">urlGitHubRepo</a>
+  </div>
+</code>
+</div>
+
+<p>referenced by:
+
+<ul>
+
+  <li><a href="#UST_UML" title="UST_UML">UST_UML</a></li>
+</ul>
+<br>
+<hr>
+
+<p>
+</div>
