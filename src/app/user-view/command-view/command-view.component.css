@@ -213,13 +213,14 @@ p {
     border-radius: 11px;
   }
 }
-@media (max-width: 300px) {
+
+@media (max-width: 325px) {
   #terminal {
     margin-top: 43vh;
-    width: 70%;
+    width: 50%;
     float: left;
     min-width: 20em;
-    max-width: 37em;
+    max-width: 20em;
     position: relative;
     height: 18em;
     background-color: #1e1e1e;
@@ -227,6 +228,10 @@ p {
     -webkit-border-radius: 11px;
     -moz-border-radius: 11px;
     border-radius: 11px;
+  }
+  .wrapper{
+    margin-left: 40px;
+    grid-template-columns: minmax(0px, 1fr) 16px 33px 380px;
   }
 }
 #header {
