@@ -55,9 +55,9 @@ export class DiagramViewComponent implements OnChanges {
         'skinparam NoteBackgroundColor lightyellow\n' +
         'skinparam NoteBorderColor darkgray\\n\' +\n' +
         'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
-        'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring\\n\\n' +
-        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\\n\\n' +
-        '*Import requirements: only available for java projects in public \\nrepositories and the main path has to be src/main/java\\n" as tbd';
+        'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring\\n' +
+        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\\n' +
+        'Requirements to import: the project has to be java, be stored in a \\npublic repository and it\'s main path has to be src/main/java" as tbd';
     }
     this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9}));
     this.toDataURL(this.diagramRoute).then((response) => {
