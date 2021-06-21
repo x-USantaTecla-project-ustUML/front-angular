@@ -20,16 +20,19 @@ export class HeaderViewComponent {
     this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
+    this.isCollapsed = true;
   }
 
   register(): void {
     this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
+    this.isCollapsed = true;
   }
 
   logout(): void {
     this.authService.logout();
+    this.isCollapsed = true;
   }
 
   isAuthenticated(): boolean {
