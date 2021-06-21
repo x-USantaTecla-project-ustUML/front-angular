@@ -8,13 +8,13 @@ import {Component, Input} from '@angular/core';
 export class PackageViewComponent{
   @Input() USTUML: string;
   codeMirrorOptions: any = {
-    mode: "text/x-yaml",
+    mode: 'text/x-yaml',
     indentWithTabs: true,
     smartIndent: true,
     lineNumbers: true,
     lineWrapping: false,
-    extraKeys: { "Ctrl-Space": "autocomplete" },
-    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+    extraKeys: { 'Ctrl-Space': 'autocomplete' },
+    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
     autoCloseBrackets: true,
     matchBrackets: true,
     lint: true
