@@ -160,6 +160,9 @@ p {
     -moz-border-radius: 11px;
     border-radius: 11px;
   }
+  .wrapper{
+    grid-template-columns: minmax(0px, 1fr) 200px 0px 230px;
+  }
 }
 @media (max-width: 991.98px) {
   #terminal {
@@ -182,10 +185,16 @@ p {
   #terminal {
     min-width: 33em;
   }
+  .wrapper {
+    grid-template-columns: minmax(00px, 1fr) 285px 00px 146px;
+  }
 }
 @media (max-width: 600px) {
   #terminal {
     min-width: 22em;
+  }
+  .wrapper{
+    grid-template-columns: minmax(0px, 1fr) 185px 0px 246px;
   }
 }
 @media (max-width: 500px) {
