@@ -1,1 +1,5 @@
-<textarea disabled class="container-fluid">{{ USTUML }}</textarea>
+<!--<textarea disabled class="container-fluid">{{ USTUML }}</textarea>-->
+<ngx-codemirror id="packageView" #codemirror
+                [options]="codeMirrorOptions"
+                [(ngModel)]="USTUML" disabled>
+</ngx-codemirror>

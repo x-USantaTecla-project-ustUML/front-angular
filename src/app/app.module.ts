@@ -30,6 +30,7 @@ import { DocsLanguageViewComponent } from './documentation-view/docs-language-vi
 import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
 import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
 import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
+import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -53,16 +54,17 @@ import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expan
     DocsLanguageGrammarViewComponent,
     DocsIntroViewComponent
   ],
-  imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      DemoMaterialModule,
-      FormsModule,
-      HttpClientModule,
-      NgbModule,
-      MonacoEditorModule.forRoot()
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        MonacoEditorModule.forRoot(),
+        CodemirrorModule
+    ],
   providers: [
     AuthService,
     HttpService,

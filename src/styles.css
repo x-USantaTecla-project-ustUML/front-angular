@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/addon/lint/lint.css';
+@import '~codemirror/addon/hint/show-hint.css';
 html, body { height: 100%; }
 
 body {
@@ -20,3 +23,6 @@ main {
   padding: 0;
 }
 
+.CodeMirror {
+  height: 50vh !important;
+}
