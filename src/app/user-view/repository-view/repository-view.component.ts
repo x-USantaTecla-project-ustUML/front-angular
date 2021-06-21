@@ -35,6 +35,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     this.dataSource.data = this.directoryTree;
     this.treeControl.expandAll();
     setTimeout(() => {
+      this.setUserIcon();
       if (document.getElementById(this.activeMemberID) !== null) {
         document.getElementById(this.activeMemberID).style.color = 'dimgrey';
       }
@@ -48,7 +49,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
       name: node.name,
       level,
     };
-  }
+  };
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
@@ -56,27 +57,32 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     if (this.dataSource !== undefined && this.directoryTree !== undefined) {
       this.dataSource.data = this.directoryTree;
       this.treeControl.expandAll();
-      this.paintProjects();
-      this.paintSelectedNode();
+      setTimeout(() => {
+        this.setUserIcon();
+        this.setProjectIconsAndPaint();
+        this.paintSelectedNode();
+      }, 1);
     }
   }
 
-  paintProjects(): void{
-    setTimeout(() => {
-      this.directoryTree[0].children.forEach(value =>  {
-        if ( value.id !== this.activeMemberID && document.getElementById(value.id) !== null) {
-          document.getElementById(value.id).style.color = 'cornflowerblue';
-        }
-      });
-    }, 1);
+  setUserIcon(): void {
+    document.getElementById('em' + this.directoryTree[0].id).className = 'material-icons';
+    document.getElementById('em' + this.directoryTree[0].id).innerHTML = 'account_box';
   }
 
-  paintSelectedNode(): void{
-    setTimeout(() => {
-      if (document.getElementById(this.activeMemberID)) {
-        document.getElementById(this.activeMemberID).style.color = 'mediumblue';
+  setProjectIconsAndPaint(): void {
+    this.directoryTree[0].children.forEach(value => {
+      if (document.getElementById(value.id) !== null) {
+        document.getElementById('em' + value.id).className = 'material-icons';
+        document.getElementById('em' + value.id).innerHTML = 'folder_special';
       }
-    }, 1);
+    });
+  }
+
+  paintSelectedNode(): void {
+    if (document.getElementById(this.activeMemberID)) {
+      document.getElementById(this.activeMemberID).style.color = 'dodgerblue';
+    }
   }
 
 }
