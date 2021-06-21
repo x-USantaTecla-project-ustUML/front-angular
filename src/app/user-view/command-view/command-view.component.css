@@ -123,6 +123,16 @@ p {
   transform: rotate(40deg);
 }
 
+.wrapper {
+  padding-top: 10px;
+  width: 37em;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(00px, 1fr) 240px 200px;
+  background-color: #fff;
+  color: #444;
+}
+
 #terminal {
   width: 70%;
   float: left;
