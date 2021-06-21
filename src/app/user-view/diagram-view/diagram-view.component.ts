@@ -49,6 +49,16 @@ export class DiagramViewComponent implements OnChanges {
   }
 
   setDiagramRoutes(): void {
+    if (this.plantUML === ''){
+      this.plantUML = 'skinparam Handwritten true\n' +
+        'skinparam DefaultTextAlignment center\n' +
+        'skinparam NoteBackgroundColor lightyellow\n' +
+        'skinparam NoteBorderColor darkgray\\n\' +\n' +
+        'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
+        'or generate it automatically by importing your git repository:\\n\\nimport: https://github.com/USantaTecla-tool-ustUML/back-spring\\n\\n' +
+        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\\n\\n' +
+        '*Import requirements: only available for java projects in public \\nrepositories and the main path has to be src/main/java\\n" as tbd';
+    }
     this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9}));
     this.toDataURL(this.diagramRoute).then((response) => {
       this.svgFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(response);
