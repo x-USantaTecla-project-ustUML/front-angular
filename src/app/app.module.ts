@@ -29,6 +29,7 @@ import { DocumentationViewComponent } from './documentation-view/documentation-v
 import { DocsLanguageViewComponent } from './documentation-view/docs-language-view/docs-language-view.component';
 import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
 import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
+import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,8 @@ import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/doc
     PackageViewComponent,
     HomeViewComponent,
     ResizableDirective,
+    DocumentationViewComponent,
+    ExpandedImageComponent,
     DocumentationViewComponent,
     DocsLanguageViewComponent,
     DocsLanguageGrammarViewComponent,

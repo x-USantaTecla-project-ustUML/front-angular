@@ -12,27 +12,27 @@ import {RegisterDialogComponent} from './dialogs/register-dialog.component';
 export class HeaderViewComponent {
 
   public isCollapsed = true;
-  private lastPoppedUrl: string;
-  private yScrollStack: number[] = [];
-  authenticated: boolean;
 
   constructor(private dialog: MatDialog, private authService: AuthService) {
   }
 
   login(): void {
-    this.dialog.open(LoginDialogComponent)
+    this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
+    this.isCollapsed = true;
   }
 
   register(): void {
-    this.dialog.open(RegisterDialogComponent)
+    this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' })
       .afterClosed()
       .subscribe();
+    this.isCollapsed = true;
   }
 
   logout(): void {
     this.authService.logout();
+    this.isCollapsed = true;
   }
 
   isAuthenticated(): boolean {

@@ -15,5 +15,6 @@ main {
   padding-top: 100px;
 }
 
-
-
+.custom-dialog-container .mat-dialog-container {
+  padding: 0;
+}

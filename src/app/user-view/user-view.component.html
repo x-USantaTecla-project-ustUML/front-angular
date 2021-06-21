@@ -1,10 +1,9 @@
 <div class="box d-lg-flex justify-content-around" style="margin-top: 15px; margin-bottom: 15px">
-    <app-repository-view [directoryTree]="directoryTree" [selectedNodeId]="selectedNodeId" id="repository"
-                         appResizable></app-repository-view>
+    <app-repository-view [directoryTree]="directoryTree" [activeMemberID]="activeMemberID" id="repository"
+                         appResizable style="height: 88vh;"></app-repository-view>
   <div style="width: min-content;">
     <app-package-view [USTUML]="USTUML"></app-package-view>
-    <app-command-view (serverResponse)="sendUMLToChildren($event)"
-                      (selectedNodeId)="selectedNodeId=$event"></app-command-view>
+    <app-command-view (serverResponse)="sendUMLToChildren($event)"></app-command-view>
   </div>
   <div>
     <app-diagram-view [plantUML]="plantUML" class="flex-fill"></app-diagram-view>
