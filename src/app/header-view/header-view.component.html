@@ -13,8 +13,9 @@
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a [routerLink]="['/']">
-              <span class="nav-link-inner--text">UST_UML</span>
+            <a [routerLink]="['/']" (click)="isCollapsed=true">
+              <img src="assets/ustUML.png" height="60px">
+              <span style="color: black;margin-left: 3px;">USTUML</span>
             </a>
           </div>
           <div class="col-6 collapse-close">
