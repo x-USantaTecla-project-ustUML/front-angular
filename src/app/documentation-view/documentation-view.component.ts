@@ -3,7 +3,7 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {MatDrawer} from '@angular/material/sidenav';
 import {PackageNode} from '../user-view/package-node.model';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 interface DocNode {
   name: string;
@@ -67,7 +67,7 @@ interface ExampleFlatNode {
 })
 export class DocumentationViewComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router, private activeRoute: ActivatedRoute) {
   }
   treeControl: FlatTreeControl<ExampleFlatNode>;
   public innerWidth: any;

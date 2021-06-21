@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'user-view', component: UserViewComponent },
   { path: 'docs-view', component: DocumentationViewComponent, children: [
       { path: 'introduction', component: DocsIntroViewComponent, outlet: 'intro'},
-      { path: 'language', component: DocsLanguageViewComponent, outlet: 'intro'},
-      { path: 'language-grammar', component: DocsLanguageGrammarViewComponent, outlet: 'intro'},
+      { path: 'language', component: DocsLanguageViewComponent, outlet: 'language'},
+      { path: 'language-grammar', component: DocsLanguageGrammarViewComponent, outlet: 'language-grammar'},
     ]},
   { path: 'notFound', component: NotFoundViewComponent },
   { path: '', redirectTo: 'home-view', pathMatch: 'full' },

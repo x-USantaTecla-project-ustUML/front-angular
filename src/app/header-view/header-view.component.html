@@ -30,13 +30,13 @@
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
           <a [routerLink]="['/']" class="nav-link no-caret" data-toggle="dropdown" role="button"
-             (click)="isCollapsed=true">
+             (click)="this.isCollapsed=true">
             <span class="nav-link-inner--text">Home</span>
           </a>
         </li>
         <li class="nav-item dropdown">
           <a [routerLink]="['/docs-view']" class="nav-link no-caret" data-toggle="dropdown" role="button"
-             (click)="isCollapsed=true">
+             (click)="this.isCollapsed=true">
             <span class="nav-link-inner--text">Docs</span>
           </a>
         </li>

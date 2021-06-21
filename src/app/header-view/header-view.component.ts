@@ -3,6 +3,7 @@ import {LoginDialogComponent} from './dialogs/login-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../shared/auth.service';
 import {RegisterDialogComponent} from './dialogs/register-dialog.component';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
