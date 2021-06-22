@@ -40,7 +40,7 @@ const TREE_DATA: DocNode[] = [
               {name: 'Project & Package context',
                 href: 'project-context'},
               {name: 'Class & Interface context',
-                href: ''},
+                href: 'class-context'},
               {name: 'Enum context',
                 href: 'enum-context'},
             ]
