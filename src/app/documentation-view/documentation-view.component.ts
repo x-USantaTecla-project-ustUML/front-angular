@@ -74,6 +74,7 @@ export class DocumentationViewComponent implements OnInit {
   treeFlattener: MatTreeFlattener<DocNode, ExampleFlatNode, any>;
   dataSource: MatTreeFlatDataSource<DocNode, ExampleFlatNode, any>;
   showFiller = false;
+  mode = 'side';
   text = 'close';
 
   ngOnInit(): void {
@@ -86,10 +87,22 @@ export class DocumentationViewComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < 720) {
+      this.mode = 'over';
+      this.text = 'menu';
+    } else {
+      this.mode = 'side';
+      this.text = 'menu';
+    }
+  }
+
   expand(drawer: MatDrawer): void{
     if (this.text === 'close') {
       this.text = 'menu';
-    } else { this.text = 'close'; }
+    } else if (this.mode !== 'over') { this.text = 'close'; }
     drawer.toggle();
   }
 
