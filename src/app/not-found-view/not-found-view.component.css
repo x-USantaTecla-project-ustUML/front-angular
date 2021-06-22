@@ -1,5 +1,9 @@
 img {
-  height: 45.5em;
+  margin-top:-70px;
+  height: 80vh;
+  width: 90vw;
+  max-width: 35em;
+  max-height: 50em;
 }
 
 h1 {

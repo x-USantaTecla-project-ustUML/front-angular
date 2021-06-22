@@ -39,6 +39,7 @@ import { DocsUserAccountContextViewComponent } from './documentation-view/docs-u
 import { ProjectPackageContextViewComponent } from './documentation-view/project-package-context-view/project-package-context-view.component';
 import { ClassInterfaceContextViewComponent } from './documentation-view/class-interface-context-view/class-interface-context-view.component';
 import { EnumContextViewComponent } from './documentation-view/enum-context-view/enum-context-view.component';
+import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -70,17 +71,18 @@ import { EnumContextViewComponent } from './documentation-view/enum-context-view
     ClassInterfaceContextViewComponent,
     EnumContextViewComponent,
   ],
-  imports: [
-      BrowserModule,
-      AppRoutingModule,
-      ClipboardModule,
-      BrowserAnimationsModule,
-      DemoMaterialModule,
-      FormsModule,
-      HttpClientModule,
-      NgbModule,
-      MonacoEditorModule.forRoot()
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ClipboardModule,
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        MonacoEditorModule.forRoot(),
+        CodemirrorModule
+    ],
   providers: [
     AuthService,
     HttpService,
