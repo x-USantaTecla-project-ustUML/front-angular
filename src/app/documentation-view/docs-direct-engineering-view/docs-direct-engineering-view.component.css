@@ -51,6 +51,10 @@ code {
   padding: 4px;
 }
 
+p {
+  margin: 0;
+}
+
 @media (max-width: 991.98px) {
   .card-container {
     grid-template-columns: 2fr;

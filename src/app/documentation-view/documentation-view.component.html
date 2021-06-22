@@ -1,14 +1,14 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer opened #drawer class="example-sidenav" mode="side">
+  <mat-drawer opened #drawer class="example-sidenav" [mode]="mode" style="max-width: 305px">
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <!-- This is the tree node template for leaf nodes -->
-      <mat-tree-node [routerLink]="['/docs-view',{outlets:{intro:''+node.href}}]" *matTreeNodeDef="let node" matTreeNodePadding>
+      <mat-tree-node matTreeNodePadding matTreeNodePaddingIndent="10" [routerLink]="['/docs-view',{outlets:{intro:''+node.href}}]" *matTreeNodeDef="let node" matTreeNodePadding>
         <!-- use a disabled button to provide padding for tree leaf -->
         <button mat-icon-button disabled></button>
         {{node.name}}
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
-      <mat-tree-node [routerLink]="['/docs-view',{outlets:{intro:''+node.href}}]" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <mat-tree-node matTreeNodePadding matTreeNodePaddingIndent="10" [routerLink]="['/docs-view',{outlets:{intro:''+node.href}}]" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
         <button mat-icon-button matTreeNodeToggle
                 [attr.aria-label]="'Toggle ' + node.name">
           <mat-icon class="mat-icon-rtl-mirror">
@@ -17,6 +17,7 @@
         </button>
         {{node.name}}
       </mat-tree-node>
+      <mat-progress-bar mode="buffer"></mat-progress-bar>
     </mat-tree>
   </mat-drawer>
 
