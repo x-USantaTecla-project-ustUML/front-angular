@@ -227,6 +227,72 @@ a > code {
   margin-left: auto
 }
 
+.functionalities{
+  width: 430px;
+}
+
+.responsive1{
+  height: 300px;
+  width: 250px;
+  border-top-left-radius: calc(.25rem - .0625rem);
+  border-top-right-radius: calc(.25rem - .0625rem)
+}
+.responsive2{
+  height: 300px;
+  width: 190px;
+  border-top-left-radius: calc(.25rem - .0625rem);
+  border-top-right-radius: calc(.25rem - .0625rem)
+}
+
+@media (max-width: 1200px){
+  .functionalities{
+    width: 390px;
+  }
+}
+
+@media (max-width: 1030px){
+  .functionalities{
+    width: 390px;
+  }
+}
+
+@media (max-width: 800px){
+  .functionalities{
+    width: 270px;
+  }
+}
+
+@media (max-width: 600px){
+  .functionalities{
+    width: 327px;
+  }
+
+  .responsive1{
+    height: 200px;
+    width: 200px;
+  }
+  .responsive2{
+    height: 200px;
+    width: 120px;
+  }
+  .marginTablet{
+    margin-left: 20px;
+  }
+
+}
+
+@media (max-width: 380px){
+  .functionalities{
+    width: 287px;
+  }
+}
+
+@media (max-width: 330px){
+  .functionalities{
+    width: 193px;
+  }
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px
