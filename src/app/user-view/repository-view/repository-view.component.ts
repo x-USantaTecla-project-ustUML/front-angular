@@ -49,7 +49,7 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
       name: node.name,
       level,
     };
-  };
+  }
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
