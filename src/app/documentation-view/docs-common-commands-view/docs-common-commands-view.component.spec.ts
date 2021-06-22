@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DocsCommonCommandsViewComponent } from './docs-common-commands-view.component';
 
 describe('DocsCommonCommandsViewComponent', () => {
-  let component: DocsCommonCommandsViewComponent;
+  /*let component: DocsCommonCommandsViewComponent;
   let fixture: ComponentFixture<DocsCommonCommandsViewComponent>;
 
   beforeEach(async () => {
@@ -21,5 +21,5 @@ describe('DocsCommonCommandsViewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  });*/
 });
