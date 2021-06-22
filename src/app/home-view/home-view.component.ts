@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
   styleUrls: ['./home-view.component.css']
 })
-export class HomeViewComponent implements OnInit {
+export class HomeViewComponent {
   focus: any;
   focus1: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  navigate(url: string): void{
+    this.router.navigateByUrl(url);
   }
 
 }

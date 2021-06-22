@@ -27,13 +27,13 @@ const TREE_DATA: DocNode[] = [
       },
       {
         name: 'Command semantic',
-        href: '',
+        href: 'command-semantic',
         children: [
           {name: 'Common commands',
-            href: ''},
+            href: 'common-commands'},
           {
             name: 'Direct engineering',
-            href: '',
+            href: 'direct-engineering',
             children: [
               {name: 'User account context',
                 href: ''},
@@ -46,7 +46,7 @@ const TREE_DATA: DocNode[] = [
             ]
           },
           {name: 'Inverse engineering',
-            href: ''},
+            href: 'inverse-engineering'},
         ],
       },
     ]

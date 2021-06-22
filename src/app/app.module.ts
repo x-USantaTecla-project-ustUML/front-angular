@@ -30,6 +30,11 @@ import { DocsLanguageViewComponent } from './documentation-view/docs-language-vi
 import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
 import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
 import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
+import { DocsCommandSemanticViewComponent } from './documentation-view/docs-command-semantic-view/docs-command-semantic-view.component';
+import { DocsCommonCommandsViewComponent } from './documentation-view/docs-common-commands-view/docs-common-commands-view.component';
+import { DocsDirectEngineeringViewComponent } from './documentation-view/docs-direct-engineering-view/docs-direct-engineering-view.component';
+import { DocsInverseEngineeringViewComponent } from './documentation-view/docs-inverse-engineering-view/docs-inverse-engineering-view.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -51,11 +56,16 @@ import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expan
     DocumentationViewComponent,
     DocsLanguageViewComponent,
     DocsLanguageGrammarViewComponent,
-    DocsIntroViewComponent
+    DocsIntroViewComponent,
+    DocsCommandSemanticViewComponent,
+    DocsCommonCommandsViewComponent,
+    DocsDirectEngineeringViewComponent,
+    DocsInverseEngineeringViewComponent,
   ],
   imports: [
       BrowserModule,
       AppRoutingModule,
+      ClipboardModule,
       BrowserAnimationsModule,
       DemoMaterialModule,
       FormsModule,

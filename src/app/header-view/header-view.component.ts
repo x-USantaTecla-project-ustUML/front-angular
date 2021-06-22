@@ -3,7 +3,7 @@ import {LoginDialogComponent} from './dialogs/login-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../shared/auth.service';
 import {RegisterDialogComponent} from './dialogs/register-dialog.component';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,12 @@ export class HeaderViewComponent {
 
   public isCollapsed = true;
 
-  constructor(private dialog: MatDialog, private authService: AuthService) {
+  constructor(private dialog: MatDialog, private authService: AuthService, private router: Router) {
+  }
+
+  navigate(url: string): void{
+    this.router.navigateByUrl(url);
+    this.isCollapsed = true;
   }
 
   login(): void {
