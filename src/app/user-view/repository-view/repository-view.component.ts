@@ -35,8 +35,8 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
     this.dataSource.data = this.directoryTree;
     this.treeControl.expandAll();
     setTimeout(() => {
-      this.setUserIcon();
       if (document.getElementById(this.activeMemberID) !== null) {
+        this.setUserIcon();
         document.getElementById(this.activeMemberID).style.color = 'dimgrey';
       }
     }, 1);
