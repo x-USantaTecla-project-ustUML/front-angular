@@ -1,59 +1,73 @@
 <h2 style="font-weight: bold; font-size: 38px">Direct Engineering</h2>
 <br>
 <br>
-<div>
-  <pre class="code">
-    <code>
-      add:
-        members:
-          - project: Project1
-          - project: Project2
-            members:
-              - package: package
-                members:
-                - class: class
-    </code>
-  </pre>
-
-  <svg [cdkCopyToClipboard]="addAccountContext" (click)="openSnackBar()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 488.3 488.3" width="16px" height="16px" xml:space="preserve">
-        <g>
-          <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
-          <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
-        </g>
-  </svg>
-</div>
-
-<div>
-  <pre class="code">
-    <code>
-      modify:
-        members:
-          - project: Project
-            set: NewProject
-    </code>
-  </pre>
-
-  <svg [cdkCopyToClipboard]="modifyAccountContext" (click)="openSnackBar()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 488.3 488.3" width="16px" height="16px" xml:space="preserve">
-        <g>
-          <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
-          <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
-        </g>
-  </svg>
-</div>
-
-<div>
-  <pre class="code">
-    <code>
-      delete:
-        members:
-          - project: Project
-    </code>
-  </pre>
-
-  <svg [cdkCopyToClipboard]="deleteAccountContext" (click)="openSnackBar()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 488.3 488.3" width="16px" height="16px" xml:space="preserve">
-        <g>
-          <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
-          <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
-        </g>
-  </svg>
+<div class="card-container">
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:user-context)')"
+            style="cursor: pointer; display: flex; flex-direction: column;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Account context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Get an overview of the account context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Account<p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:project-context)')"
+            style="cursor: pointer; display: flex; flex-direction: column;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Project context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Learn the different commands of project context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Project<p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:class-context)')"
+            style="display: flex; flex-direction: column; cursor: pointer;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Class context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Get an overview of the class context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Class<p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:enum-context)')"
+            style="display: flex; flex-direction: column; cursor: pointer;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Enum context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Learn the different commands of enum context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Enum<p>
+    </mat-card-footer>
+  </mat-card>
 </div>

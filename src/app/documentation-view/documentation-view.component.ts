@@ -36,13 +36,13 @@ const TREE_DATA: DocNode[] = [
             href: 'direct-engineering',
             children: [
               {name: 'User account context',
-                href: ''},
+                href: 'user-context'},
               {name: 'Project & Package context',
-                href: ''},
+                href: 'project-context'},
               {name: 'Class & Interface context',
                 href: ''},
               {name: 'Enum context',
-                href: ''},
+                href: 'enum-context'},
             ]
           },
           {name: 'Inverse engineering',

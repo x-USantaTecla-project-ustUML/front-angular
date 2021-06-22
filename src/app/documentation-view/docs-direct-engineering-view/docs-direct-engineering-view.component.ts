@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-docs-direct-engineering-view',
@@ -8,28 +8,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class DocsDirectEngineeringViewComponent {
 
-  addAccountContext = ' add:\n' +
-    '   members:\n' +
-    '     - project: Project1\n' +
-    '     - project: Project2\n' +
-    '       members: \n' +
-    '         - package: package\n' +
-    '           members:\n' +
-    '             - class: class';
-  modifyAccountContext = 'modify:\n' +
-    '  members:\n' +
-    '    - project: Project\n' +
-    '      set: NewProject';
-  deleteAccountContext = 'delete:\n' +
-    '  members:\n' +
-    '    - project: Project';
-  message = 'Code copied';
-  action = 'Ok';
+  constructor(private router: Router) { }
 
-  constructor(private _snackBar: MatSnackBar) {}
-
-  openSnackBar(): void {
-    this._snackBar.open(this.message, this.action);
+  navigate(url: string): void{
+    this.router.navigateByUrl(url);
   }
 
 }

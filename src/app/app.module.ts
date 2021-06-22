@@ -35,6 +35,10 @@ import { DocsCommonCommandsViewComponent } from './documentation-view/docs-commo
 import { DocsDirectEngineeringViewComponent } from './documentation-view/docs-direct-engineering-view/docs-direct-engineering-view.component';
 import { DocsInverseEngineeringViewComponent } from './documentation-view/docs-inverse-engineering-view/docs-inverse-engineering-view.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { DocsUserAccountContextViewComponent } from './documentation-view/docs-user-account-context-view/docs-user-account-context-view.component';
+import { ProjectPackageContextViewComponent } from './documentation-view/project-package-context-view/project-package-context-view.component';
+import { ClassInterfaceContextViewComponent } from './documentation-view/class-interface-context-view/class-interface-context-view.component';
+import { EnumContextViewComponent } from './documentation-view/enum-context-view/enum-context-view.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,10 @@ import { ClipboardModule } from 'ngx-clipboard';
     DocsCommonCommandsViewComponent,
     DocsDirectEngineeringViewComponent,
     DocsInverseEngineeringViewComponent,
+    DocsUserAccountContextViewComponent,
+    ProjectPackageContextViewComponent,
+    ClassInterfaceContextViewComponent,
+    EnumContextViewComponent,
   ],
   imports: [
       BrowserModule,

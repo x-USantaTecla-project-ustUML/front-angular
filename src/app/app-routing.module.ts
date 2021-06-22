@@ -11,6 +11,10 @@ import {DocsCommandSemanticViewComponent} from './documentation-view/docs-comman
 import {DocsInverseEngineeringViewComponent} from './documentation-view/docs-inverse-engineering-view/docs-inverse-engineering-view.component';
 import {DocsDirectEngineeringViewComponent} from './documentation-view/docs-direct-engineering-view/docs-direct-engineering-view.component';
 import {DocsCommonCommandsViewComponent} from './documentation-view/docs-common-commands-view/docs-common-commands-view.component';
+import {DocsUserAccountContextViewComponent} from './documentation-view/docs-user-account-context-view/docs-user-account-context-view.component';
+import {EnumContextViewComponent} from './documentation-view/enum-context-view/enum-context-view.component';
+import {ProjectPackageContextViewComponent} from './documentation-view/project-package-context-view/project-package-context-view.component';
+import {ClassInterfaceContextViewComponent} from './documentation-view/class-interface-context-view/class-interface-context-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeViewComponent },
@@ -23,6 +27,10 @@ const routes: Routes = [
       { path: 'common-commands', component: DocsCommonCommandsViewComponent, outlet: 'intro'},
       { path: 'inverse-engineering', component: DocsInverseEngineeringViewComponent, outlet: 'intro'},
       { path: 'direct-engineering', component: DocsDirectEngineeringViewComponent, outlet: 'intro'},
+      { path: 'user-context', component: DocsUserAccountContextViewComponent, outlet: 'intro'},
+      { path: 'enum-context', component: EnumContextViewComponent, outlet: 'intro'},
+      { path: 'project-context', component: ProjectPackageContextViewComponent, outlet: 'intro'},
+      { path: 'class-context', component: ClassInterfaceContextViewComponent, outlet: 'intro'},
     ]},
   { path: 'notFound', component: NotFoundViewComponent },
   { path: '', redirectTo: 'home-view', pathMatch: 'full' },
