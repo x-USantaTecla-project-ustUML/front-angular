@@ -1,5 +1,10 @@
+.btn:hover {
+  text-decoration: underline;
+}
+
 #diagramView{
   max-height: 60vh;
+  margin: 0 auto;
 }
 @media (max-width: 1030px) {
   #diagramView {
