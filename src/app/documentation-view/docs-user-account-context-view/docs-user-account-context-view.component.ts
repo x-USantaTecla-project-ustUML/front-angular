@@ -26,10 +26,10 @@ export class DocsUserAccountContextViewComponent {
   message = 'Code copied';
   action = 'Ok';
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this._snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action);
   }
 
 }
