@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocsIntroViewComponent } from './docs-intro-view.component';
+import { EnumContextViewComponent } from './enum-context-view.component';
 
-describe('DocsLanguageViewComponent', () => {
-  /*let component: DocsIntroViewComponent;
-  let fixture: ComponentFixture<DocsIntroViewComponent>;
+describe('EnumContextViewComponent', () => {
+  /*let component: EnumContextViewComponent;
+  let fixture: ComponentFixture<EnumContextViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DocsIntroViewComponent ]
+      declarations: [ EnumContextViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocsIntroViewComponent);
+    fixture = TestBed.createComponent(EnumContextViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

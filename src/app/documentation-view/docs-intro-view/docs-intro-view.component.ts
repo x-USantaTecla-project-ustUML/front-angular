@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-docs-language-view',
   templateUrl: './docs-intro-view.component.html',
   styleUrls: ['./docs-intro-view.component.css']
 })
-export class DocsIntroViewComponent implements OnInit {
+export class DocsIntroViewComponent {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  navigate(): void{
+    this.router.navigateByUrl('/docs-view/(intro:language)');
   }
 
 }

@@ -28,7 +28,7 @@ mat-tree-node:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: 0px 3rem 2rem 4rem;
-  max-width: 50em;
+  max-width: 80em;
   margin: 0 auto;
 }
 

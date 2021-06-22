@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-docs-introduction-view',
-  templateUrl: './docs-language-view.component.html',
-  styleUrls: ['./docs-language-view.component.css']
+  selector: 'app-docs-command-semantic-view',
+  templateUrl: './docs-command-semantic-view.component.html',
+  styleUrls: ['./docs-command-semantic-view.component.css']
 })
-export class DocsLanguageViewComponent {
+export class DocsCommandSemanticViewComponent {
 
   constructor(private router: Router) { }
 

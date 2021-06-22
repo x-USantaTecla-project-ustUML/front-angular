@@ -22,7 +22,7 @@
               </h1>
               <p class="lead  text-white">Tool that allows you to organize and design your projects in a very simple and intuitive way.</p>
               <div class="btn-wrapper">
-                <a [routerLink]="['/docs-view']" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                <a (click)="navigate('/docs-view/(intro:introduction)')" class="btn btn-info btn-icon mb-3 mb-sm-0">
                   <span class="btn-inner--icon"><i class="fa fa-code"></i></span>
                   <span class="btn-inner--text">Docs</span>
                 </a>

@@ -34,6 +34,7 @@
     "moment": "^2.29.1",
     "mouse-wheel-zoom": "^1.1.5",
     "ng2-nouislider": "1.8.2",
+    "ngx-clipboard": "^14.0.1",
     "ngx-monaco-editor": "^6.0.0",
     "nouislider": "14.6.3",
     "pako": "^1.0.11",

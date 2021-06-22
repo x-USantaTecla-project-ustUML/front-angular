@@ -1,15 +1,19 @@
 <h2 style="font-weight: bold; font-size: 38px">UstUML Language</h2>
 <br>
-<ul>
-  <li>All commands developed are self-explanatory and structured</li>
-  <li>They follow a systematic composition</li>
-</ul>
+<div class="alert is-helpful">
+  <ul>
+    <li>All commands developed are self-explanatory and structured</li>
+    <br>
+    <li>They follow a systematic composition</li>
+  </ul>
+</div>
 <br>
 <div class="card-container">
-  <mat-card class="example-card"
-            style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; padding: 0;">
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:language-grammar)')"
+            style="cursor: pointer; display: flex; flex-direction: column;
+            justify-content: space-around; align-items: center; padding: 0;">
     <mat-card-header style="margin: 20px 0 20px 0">
-      <mat-card-title style="color: #1fa2ff"><a [routerLink]="['/docs-view',{outlets:{intro:+'language-grammar'}}]">Language Grammar</a></mat-card-title>
+      <mat-card-title style="color: #1fa2ff">Language Grammar</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -22,8 +26,9 @@
       <p style="margin: 0">Grammar overview<p>
     </mat-card-footer>
   </mat-card>
-  <mat-card class="example-card"
-            style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; padding: 0;">
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:command-semantic)')"
+            style="display: flex; flex-direction: column; cursor: pointer;
+            justify-content: space-around; align-items: center; padding: 0;">
     <mat-card-header style="margin: 20px 0 20px 0">
       <mat-card-title style="color: #1fa2ff">Command Semantic</mat-card-title>
     </mat-card-header>
