@@ -78,7 +78,7 @@ describe('HttpService', () => {
 
   it('given httpService when post custom error then catch error', (done) => {
     service.post('custom_error').subscribe(response => {}, error => {
-      expect(error).toBe('Bad Request (400): Test');
+      expect(error).toBe('Test');
       done();
     });
   });
