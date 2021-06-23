@@ -1,14 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DocsDirectEngineeringViewComponent } from './docs-direct-engineering-view.component';
+import {Router} from '@angular/router';
+
+class MockRouter {
+  constructor() {
+  }
+
+  navigateByUrl(url: string): void {
+  }
+}
 
 describe('DocsDirectEngineeringViewComponent', () => {
- /* let component: DocsDirectEngineeringViewComponent;
+  let component: DocsDirectEngineeringViewComponent;
   let fixture: ComponentFixture<DocsDirectEngineeringViewComponent>;
+  let mockRouter: MockRouter;
 
   beforeEach(async () => {
+    mockRouter = new MockRouter();
     await TestBed.configureTestingModule({
-      declarations: [ DocsDirectEngineeringViewComponent ]
+      declarations: [ DocsDirectEngineeringViewComponent ],
+      providers: [
+        { provide: Router, useValue: mockRouter }
+      ]
     })
     .compileComponents();
   });
@@ -21,5 +35,12 @@ describe('DocsDirectEngineeringViewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
+
+  it('should navigateByUrl', () => {
+    spyOn(mockRouter, 'navigateByUrl');
+    component.navigate('mockURL');
+    expect(mockRouter.navigateByUrl).toHaveBeenCalled();
+  });
+
 });

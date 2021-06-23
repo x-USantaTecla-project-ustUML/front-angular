@@ -2,8 +2,6 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {MatDrawer} from '@angular/material/sidenav';
-import {PackageNode} from '../user-view/package-node.model';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 interface DocNode {
   name: string;
@@ -67,13 +65,12 @@ interface ExampleFlatNode {
 })
 export class DocumentationViewComponent implements OnInit {
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {
+  constructor() {
   }
   treeControl: FlatTreeControl<ExampleFlatNode>;
   public innerWidth: any;
   treeFlattener: MatTreeFlattener<DocNode, ExampleFlatNode, any>;
   dataSource: MatTreeFlatDataSource<DocNode, ExampleFlatNode, any>;
-  showFiller = false;
   mode = 'side';
   text = 'close';
 
@@ -100,7 +97,7 @@ export class DocumentationViewComponent implements OnInit {
     }
   }
 
-  expand(drawer: MatDrawer): void{
+  expand(drawer): void{
     if (this.text === 'close') {
       this.text = 'menu';
     } else if (this.mode !== 'over') { this.text = 'close'; }
