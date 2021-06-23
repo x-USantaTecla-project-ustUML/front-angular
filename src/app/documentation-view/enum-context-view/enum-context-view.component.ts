@@ -24,7 +24,9 @@ export class EnumContextViewComponent {
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this.snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action, {
+      duration: 2000
+    });
   }
 
 }
