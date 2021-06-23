@@ -96,7 +96,7 @@ export class DocumentationViewComponent implements OnInit {
       this.text = 'menu';
     } else {
       this.mode = 'side';
-      this.text = 'menu';
+      this.text = 'close';
     }
   }
 
