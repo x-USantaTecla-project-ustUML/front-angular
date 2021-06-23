@@ -85,10 +85,11 @@ export class DocumentationViewComponent implements OnInit {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = TREE_DATA;
     this.innerWidth = window.innerWidth;
+    this.onResize();
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event): void {
+  onResize(): void {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth < 720) {
       this.mode = 'over';
