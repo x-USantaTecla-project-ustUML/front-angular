@@ -1,6 +1,8 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned" style="position: relative;height:80px; padding: 0">
+<nav id="navbar-main"
+     class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned"
+     style="position: relative;height:80px; padding: 0">
   <div class="container">
-    <a  [routerLink]="['/']">
+    <a [routerLink]="['/']">
       <img src="assets/ustUML.png" height="60px">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
@@ -11,8 +13,9 @@
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a [routerLink]="['/']">
-              <span class="nav-link-inner--text">UST_UML</span>
+            <a [routerLink]="['/']" (click)="isCollapsed=true">
+              <img src="assets/ustUML.png" height="60px">
+              <span style="color: black;margin-left: 3px;">USTUML</span>
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -26,28 +29,29 @@
       </div>
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
-          <a [routerLink]="['/']" class="nav-link no-caret" data-toggle="dropdown" role="button">
+          <a [routerLink]="['/']" class="nav-link no-caret" data-toggle="dropdown" role="button"
+             (click)="this.isCollapsed=true">
             <span class="nav-link-inner--text">Home</span>
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a [routerLink]="['/docs-view']" class="nav-link no-caret" data-toggle="dropdown" role="button">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+             (click)="navigate('/docs-view/(intro:introduction)')">
             <span class="nav-link-inner--text">Docs</span>
           </a>
         </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated()">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+          <a [routerLink]="['/user-view']" class="nav-link no-caret" data-toggle="dropdown" role="button"
+             (click)="isCollapsed=true">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Sections</span>
+            <span class="nav-link-inner--text">User View</span>
           </a>
-          <div class="dropdown-menu">
-            <a [routerLink]="['/user-view']" class="dropdown-item" *ngIf="isAuthenticated()">User View</a>
-          </div>
         </li>
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://github.com/USantaTecla-tool-ustUML" target="_blank" data-toggle="tooltip" title="Star us on Github">
+          <a class="nav-link nav-link-icon" href="https://github.com/USantaTecla-tool-ustUML" target="_blank"
+             data-toggle="tooltip" title="Star us on Github" (click)="isCollapsed=true">
             <i class="fa fa-github"></i>
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
@@ -75,7 +79,9 @@
           <button (click)="login()" class="btn btn-1 btn-primary" type="button">Login</button>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isAuthenticated()">
-          <button (click)="logout()" *ngIf="isAuthenticated()" class="btn btn-1 btn-outline-primary" type="button">Logout</button>
+          <button (click)="logout()" *ngIf="isAuthenticated()" class="btn btn-1 btn-outline-primary" type="button">
+            Logout
+          </button>
         </li>
       </ul>
     </div>

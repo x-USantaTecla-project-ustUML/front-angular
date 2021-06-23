@@ -75,6 +75,13 @@ export class CommandViewComponent {
     this.terminal.nativeElement.scrollTop = this.terminal.nativeElement.scrollHeight;
   }
 
+  executeCommandByButton(): void {
+    if (this.input.content !== '') {
+      this.input.content += '\r\n';
+      this.executeCommand();
+    }
+  }
+
   public executeCommand(): void {
     const previousCommand = this.previousCommandBuilder();
     this.input.previousCommands.push(previousCommand);
@@ -159,7 +166,7 @@ export class CommandViewComponent {
     }
   }
 
-  private loadPreviousCommand(increment: number): void {
+  public loadPreviousCommand(increment: number): void {
     const previousCommand = this.input.selectedCommand + increment;
     if (previousCommand >= 0 && previousCommand < this.input.previousCommands.length) {
       this.input.content = this.input.previousCommands[previousCommand];

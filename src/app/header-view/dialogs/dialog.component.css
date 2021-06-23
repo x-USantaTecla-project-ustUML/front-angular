@@ -76,6 +76,7 @@ a{color:inherit;text-decoration:none}
   width:100%;
   color:#fff;
   display:block;
+  outline: 0px;
 }
 .login-form .group .input,
 .login-form .group .button{

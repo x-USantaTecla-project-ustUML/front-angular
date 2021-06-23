@@ -26,7 +26,20 @@ import {TokenInterceptor} from './shared/token.interceptor';
 import {HomeViewComponent} from './home-view/home-view.component';
 import { ResizableDirective } from './shared/Directives/resizable.directive';
 import { DocumentationViewComponent } from './documentation-view/documentation-view.component';
+import { DocsLanguageViewComponent } from './documentation-view/docs-language-view/docs-language-view.component';
+import { DocsLanguageGrammarViewComponent } from './documentation-view/docs-language-grammar-view/docs-language-grammar-view.component';
+import { DocsIntroViewComponent } from './documentation-view/docs-intro-view/docs-intro-view.component';
 import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expanded-image.component';
+import { DocsCommandSemanticViewComponent } from './documentation-view/docs-command-semantic-view/docs-command-semantic-view.component';
+import { DocsCommonCommandsViewComponent } from './documentation-view/docs-common-commands-view/docs-common-commands-view.component';
+import { DocsDirectEngineeringViewComponent } from './documentation-view/docs-direct-engineering-view/docs-direct-engineering-view.component';
+import { DocsInverseEngineeringViewComponent } from './documentation-view/docs-inverse-engineering-view/docs-inverse-engineering-view.component';
+import { ClipboardModule } from 'ngx-clipboard';
+import { DocsUserAccountContextViewComponent } from './documentation-view/docs-user-account-context-view/docs-user-account-context-view.component';
+import { ProjectPackageContextViewComponent } from './documentation-view/project-package-context-view/project-package-context-view.component';
+import { ClassInterfaceContextViewComponent } from './documentation-view/class-interface-context-view/class-interface-context-view.component';
+import { EnumContextViewComponent } from './documentation-view/enum-context-view/enum-context-view.component';
+import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -44,18 +57,32 @@ import { ExpandedImageComponent } from './user-view/dialogs/expanded-image/expan
     HomeViewComponent,
     ResizableDirective,
     DocumentationViewComponent,
-    ExpandedImageComponent
+    ExpandedImageComponent,
+    DocumentationViewComponent,
+    DocsLanguageViewComponent,
+    DocsLanguageGrammarViewComponent,
+    DocsIntroViewComponent,
+    DocsCommandSemanticViewComponent,
+    DocsCommonCommandsViewComponent,
+    DocsDirectEngineeringViewComponent,
+    DocsInverseEngineeringViewComponent,
+    DocsUserAccountContextViewComponent,
+    ProjectPackageContextViewComponent,
+    ClassInterfaceContextViewComponent,
+    EnumContextViewComponent,
   ],
-  imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      DemoMaterialModule,
-      FormsModule,
-      HttpClientModule,
-      NgbModule,
-      MonacoEditorModule.forRoot()
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ClipboardModule,
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        MonacoEditorModule.forRoot(),
+        CodemirrorModule
+    ],
   providers: [
     AuthService,
     HttpService,

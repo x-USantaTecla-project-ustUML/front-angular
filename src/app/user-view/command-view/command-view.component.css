@@ -123,6 +123,16 @@ p {
   transform: rotate(40deg);
 }
 
+.wrapper {
+  padding-top: 10px;
+  width: 37em;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(00px, 1fr) 240px 200px;
+  background-color: #fff;
+  color: #444;
+}
+
 #terminal {
   width: 70%;
   float: left;
@@ -150,6 +160,9 @@ p {
     -moz-border-radius: 11px;
     border-radius: 11px;
   }
+  .wrapper{
+    grid-template-columns: minmax(0px, 1fr) 200px 0px 230px;
+  }
 }
 @media (max-width: 991.98px) {
   #terminal {
@@ -172,10 +185,16 @@ p {
   #terminal {
     min-width: 33em;
   }
+  .wrapper {
+    grid-template-columns: minmax(00px, 1fr) 285px 00px 146px;
+  }
 }
 @media (max-width: 600px) {
   #terminal {
     min-width: 22em;
+  }
+  .wrapper{
+    grid-template-columns: minmax(0px, 1fr) 185px 0px 246px;
   }
 }
 @media (max-width: 500px) {
@@ -194,13 +213,14 @@ p {
     border-radius: 11px;
   }
 }
-@media (max-width: 300px) {
+
+@media (max-width: 325px) {
   #terminal {
     margin-top: 43vh;
-    width: 70%;
+    width: 50%;
     float: left;
     min-width: 20em;
-    max-width: 37em;
+    max-width: 20em;
     position: relative;
     height: 18em;
     background-color: #1e1e1e;
@@ -208,6 +228,10 @@ p {
     -webkit-border-radius: 11px;
     -moz-border-radius: 11px;
     border-radius: 11px;
+  }
+  .wrapper{
+    margin-left: 40px;
+    grid-template-columns: minmax(0px, 1fr) 16px 33px 380px;
   }
 }
 #header {

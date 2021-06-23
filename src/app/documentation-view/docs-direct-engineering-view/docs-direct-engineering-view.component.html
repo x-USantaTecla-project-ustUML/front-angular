@@ -1,0 +1,94 @@
+<h2 style="font-weight: bold; font-size: 38px">Direct Engineering</h2>
+<br>
+<div class="alert is-important">
+  <p>
+    The commands vary depending on the context you are in.
+    For example, if you are in the Account context,
+    you can only <a href='/docs-view/(intro:user-context)'><code>add:</code></a> projects.
+  </p>
+  <p>
+    A context refers to the level of the project you are in:
+  </p>
+  <ul style="margin: 0">
+    <li><a (click)="navigate('/docs-view/(intro:user-context)')">Account</a></li>
+    <li><a (click)="navigate('/docs-view/(intro:project-context)')">Package & Project</a></li>
+    <li><a (click)="navigate('/docs-view/(intro:class-context)')">Class & Interface</a></li>
+    <li><a (click)="navigate('/docs-view/(intro:enum-context)')">Enum</a></li>
+
+  </ul>
+</div>
+<br>
+<div class="card-container">
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:user-context)')"
+            style="cursor: pointer; display: flex; flex-direction: column;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Account context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Get an overview of the account context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Account
+      <p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:project-context)')"
+            style="cursor: pointer; display: flex; flex-direction: column;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Project context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Learn the different commands of project context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Project
+      <p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:class-context)')"
+            style="display: flex; flex-direction: column; cursor: pointer;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Class context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Get an overview of the class context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Class
+      <p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card" (click)="navigate('/docs-view/(intro:enum-context)')"
+            style="display: flex; flex-direction: column; cursor: pointer;
+            justify-content: space-around; align-items: center; padding: 0;">
+    <mat-card-header style="margin: 20px 0 20px 0">
+      <mat-card-title style="color: #1fa2ff">Enum context</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text">
+        Learn the different commands of enum context.
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="margin: 0; border-top: .5px solid #dbdbdb; color: #1669bb;
+      background-color: rgba(25,118,210,.1);display: flex;
+    justify-content: right; align-items: center; width: 100%; padding: 10px">
+      <p style="margin: 0">Enum
+      <p>
+    </mat-card-footer>
+  </mat-card>
+</div>

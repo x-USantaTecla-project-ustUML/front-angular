@@ -1,0 +1,54 @@
+div {
+  position: relative;
+  width: 60%;
+  min-width: 248px;
+  overflow: auto;
+}
+
+div > svg {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+svg {
+  cursor: pointer;
+}
+
+.code {
+  width: 100%;
+  height: max-content;
+  background-color: #312e2e;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+pre {
+  color: #b0c681;
+  font-size: medium;
+}
+
+svg {
+  fill: #8c937d !important;
+  font-size: larger;
+}
+
+svg:hover {
+  fill: #c1cea4 !important;
+}
+
+.alert.is-helpful {
+  border-left: 8px solid #1976d2;
+  background-color: rgba(25,118,210,.05);
+}
+
+.alert {
+  padding: 10px;
+  font-size: 1rem;
+  width: 60%;
+  box-sizing: border-box;
+  clear: both;
+}
+
+ul {
+  margin: 0;
+}

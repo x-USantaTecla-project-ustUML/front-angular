@@ -4,10 +4,13 @@
 }
 
 .example-sidenav-content {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   width: min-content;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
 }
 
 mat-tree-node {
@@ -20,3 +23,20 @@ mat-tree-node:hover {
   color: #1669bb;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 3rem 2rem 4rem;
+  max-width: 80em;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: darkslateblue;
+}
