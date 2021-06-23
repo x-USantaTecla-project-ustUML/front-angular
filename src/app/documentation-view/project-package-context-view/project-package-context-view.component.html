@@ -6,19 +6,21 @@
     <code>
       add:
         members:
-           - package: package
-           - class: class
+           - package: Package1
+           - actor: Actor1
+           - usecase: UseCase1
+           - class: Class1
              modifiers: public abstract
-           - enum: enum
-           - interface: interface
+           - enum: Enum1
+           - interface: Interface1
         relations:
-           - inheritance: Member
+           - inheritance: (relative path from project separated by '.').Member1
              role: role
-           - composition: Member
-           - aggregation: Member
+           - composition: (relative path from project separated by '.').Member2
+           - aggregation: (relative path from project separated by '.').Member3
              role: role
-           - association: Member
-           - use: Member
+           - association: (relative path from project separated by '.').Member4
+           - use: (relative path from project separated by '.').Member5
     </code>
   </pre>
 
@@ -35,10 +37,10 @@
     <code>
       modify:
         members:
-          - class: Class
+          - class: Class1
             set: NewClass
         relations:
-          - inheritance: Member
+          - inheritance: (relative path from project separated by '.').Member1
             set: NewMember
             role: newRole
     </code>
@@ -57,9 +59,9 @@
     <code>
       delete:
         members:
-          - interface: Interface
+          - interface: Interface1
         relations:
-          - composition: Member
+          - composition: (relative path from project separated by '.').Member1
     </code>
   </pre>
 

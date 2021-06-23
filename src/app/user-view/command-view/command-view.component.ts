@@ -113,7 +113,7 @@ export class CommandViewComponent {
       'import:': 'Imported successfully.'
     };
     const command = this.input.content.split('\r\n')[0].split(' ')[0].split('\n')[0];
-    this.output.style = 'margin-block-start: 2em;';
+    this.output.style = 'margin-block-start: 2em; padding: 8px;';
     if (commands[command]) {
       if (command === 'help') {
         this.output.content = '<p>' + commands[command] + '</p>';
