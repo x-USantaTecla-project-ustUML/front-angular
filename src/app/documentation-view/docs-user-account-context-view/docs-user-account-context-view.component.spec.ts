@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsUserAccountContextViewComponent } from './docs-user-account-context-view.component';
+import {DocsUserAccountContextViewComponent} from './docs-user-account-context-view.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 class MockMatSnackBar {

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsCommandSemanticViewComponent } from './docs-command-semantic-view.component';
+import {DocsCommandSemanticViewComponent} from './docs-command-semantic-view.component';
 import {Router} from '@angular/router';
 
 class MockRouter {

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsCommonCommandsViewComponent } from './docs-common-commands-view.component';
+import {DocsCommonCommandsViewComponent} from './docs-common-commands-view.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 class MockMatSnackBar {

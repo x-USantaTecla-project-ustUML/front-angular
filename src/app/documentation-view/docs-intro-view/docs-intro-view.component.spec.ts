@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsIntroViewComponent } from './docs-intro-view.component';
+import {DocsIntroViewComponent} from './docs-intro-view.component';
 import {Router} from '@angular/router';
 
 class MockRouter {

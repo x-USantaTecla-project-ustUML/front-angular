@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ClassInterfaceContextViewComponent } from './class-interface-context-view.component';
+import {ClassInterfaceContextViewComponent} from './class-interface-context-view.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 class MockMatSnackBar {

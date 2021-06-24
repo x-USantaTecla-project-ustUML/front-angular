@@ -1,7 +1,7 @@
 import { Directive, ElementRef, OnInit, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appResizable]' // Attribute selector
+  selector: '[appResizable]'
 })
 
 export class ResizableDirective implements OnInit {
@@ -13,10 +13,6 @@ export class ResizableDirective implements OnInit {
   dragging = false;
 
   constructor(private el: ElementRef) {
-
-    const self = this;
-
-    const EventListenerMode = { capture: true };
 
     function preventGlobalMouseEvents(): void {
       document.body.style['pointer-events'] = 'none';
@@ -38,15 +34,6 @@ export class ResizableDirective implements OnInit {
         return;
       }
       newWidth(evt.clientX - el.nativeElement.offsetLeft);
-      evt.stopPropagation();
-    };
-
-    const dragMoveG = (evt) => {
-      if (!this.dragging) {
-        return;
-      }
-      const width = Math.max(this.resizableMinWidth, (evt.clientX - el.nativeElement.offsetLeft)) + 'px';
-      el.nativeElement.style.width = (evt.clientX - el.nativeElement.offsetLeft) + 'px';
       evt.stopPropagation();
     };
 
