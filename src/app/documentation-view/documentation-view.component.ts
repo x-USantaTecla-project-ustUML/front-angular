@@ -1,7 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import {MatDrawer} from '@angular/material/sidenav';
 
 interface DocNode {
   name: string;
@@ -65,8 +64,6 @@ interface ExampleFlatNode {
 })
 export class DocumentationViewComponent implements OnInit {
 
-  constructor() {
-  }
   treeControl: FlatTreeControl<ExampleFlatNode>;
   public innerWidth: any;
   treeFlattener: MatTreeFlattener<DocNode, ExampleFlatNode, any>;

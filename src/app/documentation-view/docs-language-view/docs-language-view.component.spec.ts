@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsLanguageViewComponent } from './docs-language-view.component';
+import {DocsLanguageViewComponent} from './docs-language-view.component';
 import {Router} from '@angular/router';
 
 class MockRouter {
