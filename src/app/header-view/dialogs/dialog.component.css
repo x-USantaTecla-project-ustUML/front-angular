@@ -49,7 +49,6 @@ a{color:inherit;text-decoration:none}
 }
 .login-html .tab{
   font-size:22px;
-  margin-right:15px;
   padding-bottom:5px;
   margin:0 15px 10px 0;
   display:inline-block;
@@ -86,7 +85,6 @@ a{color:inherit;text-decoration:none}
   background:rgba(255,255,255,.1);
 }
 .login-form .group input[data-type="password"]{
-  text-security:circle;
   -webkit-text-security:circle;
 }
 .login-form .group .label{

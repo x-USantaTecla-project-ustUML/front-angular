@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -8,14 +8,14 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ClassInterfaceContextViewComponent {
 
-  addAccountContext = 'add:\n' +
-    '    members:\n' +
-    '      - member: private static int attribute\n' +
-    '      - member: public abstract String method(int param1, String param2)\n' +
-    '    relations:\n' +
-    '      - association: Member \n';
-  modifyAccountContext = 'modify:\n' +
-    '  modifiers: package\n' +
+  addClassContext = 'add:\n' +
+    '  members:\n' +
+    '    - member: private static int attribute\n' +
+    '    - member: public abstract String method(int param1, String param2)\n' +
+    '  relations:\n' +
+    '    - association: (relative path from project separated by \'.\').Member1';
+  modifyClassContext = 'modify:\n' +
+    '  modifiers: Package1\n' +
     '  set: public abstract\n' +
     '  members:\n' +
     '    - member: private static int attribute\n' +
@@ -23,22 +23,24 @@ export class ClassInterfaceContextViewComponent {
     '    - member: public abstract String method(int param1, String param2)\n' +
     '      set: private int newMethod()\n' +
     '  relations:\n' +
-    '    - use: Member\n' +
-    '      set: NewMember\n' +
-    '      role: newRole\n';
-  deleteAccountContext = 'delete:\n' +
+    '    - use: (relative path from project separated by \'.\').Member1\n' +
+    '      set: (relative path from project separated by \'.\').NewMember\n' +
+    '      role: newRole';
+  deleteClassContext = 'delete:\n' +
     '  members:\n' +
     '    - member: public String newAttribute\n' +
     '    - member: private int newMethod()\n' +
     '  relations:\n' +
-    '    - composition: Member \n';
+    '    - composition: (relative path from project separated by \'.\').Member1';
   message = 'Code copied';
   action = 'Ok';
 
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this.snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action, {
+      duration: 2000
+    });
   }
 
 }

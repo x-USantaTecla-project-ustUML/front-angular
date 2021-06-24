@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocsLanguageGrammarViewComponent } from './docs-language-grammar-view.component';
+import {DocsLanguageGrammarViewComponent} from './docs-language-grammar-view.component';
 
 describe('DocsLanguageGrammarViewComponent', () => {
-  /*let component: DocsLanguageGrammarViewComponent;
+  let component: DocsLanguageGrammarViewComponent;
   let fixture: ComponentFixture<DocsLanguageGrammarViewComponent>;
 
   beforeEach(async () => {
@@ -21,5 +21,6 @@ describe('DocsLanguageGrammarViewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
+  });
+
 });

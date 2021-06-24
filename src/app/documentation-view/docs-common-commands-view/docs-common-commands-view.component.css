@@ -1,7 +1,7 @@
 div {
   position: relative;
   width: 60%;
-  min-width: 248px;
+  min-width: 280px;
   overflow: auto;
 }
 
@@ -9,9 +9,6 @@ div > svg {
   position: absolute;
   top: 8px;
   right: 8px;
-}
-svg {
-  cursor: pointer;
 }
 
 .code {
@@ -28,6 +25,7 @@ pre {
 }
 
 svg {
+  cursor: pointer;
   fill: #8c937d !important;
   font-size: larger;
 }

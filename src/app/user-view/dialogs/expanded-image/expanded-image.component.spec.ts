@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ExpandedImageComponent } from './expanded-image.component';
+import {ExpandedImageComponent} from './expanded-image.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 describe('ExpandedImageComponent', () => {

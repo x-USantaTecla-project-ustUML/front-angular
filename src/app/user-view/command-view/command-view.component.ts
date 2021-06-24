@@ -2,8 +2,8 @@ import {Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from 
 import * as yaml from 'js-yaml';
 import {CommandViewService} from './command-view.service';
 import {CommandResponse} from '../command-response.model';
-import ICodeEditor = monaco.editor.ICodeEditor;
 import {AuthService} from '../../shared/auth.service';
+import ICodeEditor = monaco.editor.ICodeEditor;
 
 @Component({
   selector: 'app-command-view',
@@ -113,7 +113,7 @@ export class CommandViewComponent {
       'import:': 'Imported successfully.'
     };
     const command = this.input.content.split('\r\n')[0].split(' ')[0].split('\n')[0];
-    this.output.style = 'margin-block-start: 2em;';
+    this.output.style = 'margin-block-start: 2em; padding: 8px;';
     if (commands[command]) {
       if (command === 'help') {
         this.output.content = '<p>' + commands[command] + '</p>';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -15,7 +15,9 @@ export class DocsInverseEngineeringViewComponent {
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this.snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action, {
+      duration: 2000
+    });
   }
 
 }

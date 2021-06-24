@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -9,27 +9,29 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class DocsUserAccountContextViewComponent {
 
   addAccountContext = ' add:\n' +
-    '   members:\n' +
-    '     - project: Project1\n' +
-    '     - project: Project2\n' +
-    '       members: \n' +
-    '         - package: package\n' +
-    '           members:\n' +
-    '             - class: class';
+    '  members:\n' +
+    '    - project: Project1\n' +
+    '    - project: Project2\n' +
+    '      members: \n' +
+    '        - package: Package1\n' +
+    '          members:\n' +
+    '            - class: Class1';
   modifyAccountContext = 'modify:\n' +
     '  members:\n' +
-    '    - project: Project\n' +
+    '    - project: Project1\n' +
     '      set: NewProject';
   deleteAccountContext = 'delete:\n' +
     '  members:\n' +
-    '    - project: Project';
+    '    - project: Project1';
   message = 'Code copied';
   action = 'Ok';
 
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this.snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action, {
+      duration: 2000
+    });
   }
 
 }

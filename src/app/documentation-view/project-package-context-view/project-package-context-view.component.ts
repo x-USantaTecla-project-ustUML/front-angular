@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -8,41 +8,45 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProjectPackageContextViewComponent {
 
-  addAccountContext = 'add:\n' +
-    '    members:\n' +
-    '       - package: package\n' +
-    '       - class: class\n' +
-    '         modifiers: public abstract\n' +
-    '       - enum: enum\n' +
-    '       - interface: interface\n' +
-    '    relations:\n' +
-    '       - inheritance: Member\n' +
-    '         role: role\n' +
-    '       - composition: Member\n' +
-    '       - aggregation: Member\n' +
-    '         role: role\n' +
-    '       - association: Member\n' +
-    '       - use: Member\n';
-  modifyAccountContext = 'modify:\n' +
+  addPackageContext = 'add:\n' +
     '  members:\n' +
-    '    - class: Class\n' +
+    '     - package: Package1\n' +
+    '     - actor: Actor1\n' +
+    '     - usecase: UseCase1\n' +
+    '     - class: Class1\n' +
+    '       modifiers: public abstract\n' +
+    '     - enum: Enum1\n' +
+    '     - interface: Interface1\n' +
+    '  relations:\n' +
+    '     - inheritance: (relative path from project separated by \'.\').Member1\n' +
+    '       role: role\n' +
+    '     - composition: (relative path from project separated by \'.\').Member2\n' +
+    '     - aggregation: (relative path from project separated by \'.\').Member3\n' +
+    '       role: role\n' +
+    '     - association: (relative path from project separated by \'.\').Member4\n' +
+    '     - use: (relative path from project separated by \'.\').Member5';
+  modifyPackageContext = 'modify:\n' +
+    '  members:\n' +
+    '    - class: Class1\n' +
     '      set: NewClass\n' +
     '  relations:\n' +
-    '    - inheritance: Member\n' +
+    '    - inheritance: (relative path from project separated by \'.\').Member1\n' +
     '      set: NewMember\n' +
-    '      role: newRole\n';
-  deleteAccountContext = 'delete:\n' +
+    '      role: newRole';
+  deletePackageContext = 'delete:\n' +
     '  members:\n' +
-    '    - interface: Interface\n' +
+    '    - interface: Interface1\n' +
     '  relations:\n' +
-    '    - composition: Member \n';
+    '    - composition: (relative path from project separated by \'.\').Member1';
   message = 'Code copied';
   action = 'Ok';
 
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(): void {
-    this.snackBar.open(this.message, this.action);
+    this.snackBar.open(this.message, this.action, {
+      duration: 2000
+    });
   }
 
 }

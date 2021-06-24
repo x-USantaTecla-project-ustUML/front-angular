@@ -1,9 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import {MatDrawer} from '@angular/material/sidenav';
-import {PackageNode} from '../user-view/package-node.model';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 interface DocNode {
   name: string;
@@ -67,13 +64,10 @@ interface ExampleFlatNode {
 })
 export class DocumentationViewComponent implements OnInit {
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {
-  }
   treeControl: FlatTreeControl<ExampleFlatNode>;
   public innerWidth: any;
   treeFlattener: MatTreeFlattener<DocNode, ExampleFlatNode, any>;
   dataSource: MatTreeFlatDataSource<DocNode, ExampleFlatNode, any>;
-  showFiller = false;
   mode = 'side';
   text = 'close';
 
@@ -85,21 +79,22 @@ export class DocumentationViewComponent implements OnInit {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = TREE_DATA;
     this.innerWidth = window.innerWidth;
+    this.onResize();
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event): void {
+  onResize(): void {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth < 720) {
       this.mode = 'over';
       this.text = 'menu';
     } else {
       this.mode = 'side';
-      this.text = 'menu';
+      this.text = 'close';
     }
   }
 
-  expand(drawer: MatDrawer): void{
+  expand(drawer): void{
     if (this.text === 'close') {
       this.text = 'menu';
     } else if (this.mode !== 'over') { this.text = 'close'; }
