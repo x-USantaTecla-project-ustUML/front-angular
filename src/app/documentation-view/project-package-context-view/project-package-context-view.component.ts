@@ -8,7 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProjectPackageContextViewComponent {
 
-  addAccountContext = 'add:\n' +
+  addPackageContext = 'add:\n' +
     '  members:\n' +
     '     - package: Package1\n' +
     '     - actor: Actor1\n' +
@@ -25,7 +25,7 @@ export class ProjectPackageContextViewComponent {
     '       role: role\n' +
     '     - association: (relative path from project separated by \'.\').Member4\n' +
     '     - use: (relative path from project separated by \'.\').Member5';
-  modifyAccountContext = 'modify:\n' +
+  modifyPackageContext = 'modify:\n' +
     '  members:\n' +
     '    - class: Class1\n' +
     '      set: NewClass\n' +
@@ -33,7 +33,7 @@ export class ProjectPackageContextViewComponent {
     '    - inheritance: (relative path from project separated by \'.\').Member1\n' +
     '      set: NewMember\n' +
     '      role: newRole';
-  deleteAccountContext = 'delete:\n' +
+  deletePackageContext = 'delete:\n' +
     '  members:\n' +
     '    - interface: Interface1\n' +
     '  relations:\n' +
