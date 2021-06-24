@@ -2,10 +2,10 @@
   <img id="diagram" class="img-fluid" data-wheel-zoom="" [src]=diagramRoute
        alt="This member is too big for PlantUML to draw a diagram." (error)="onError()">
   <div style="display: flex; flex-direction: row; align-items: center">
-    <a [href]="svgURL()" download="diagram.svg">
+    <a [href]="svgFileUrl" download="diagram.svg">
     <span class="btn"><em class="fa fa-download"></em> Download as SVG</span>
     </a>
-    <a [href]="pngURL()" download="diagram.png">
+    <a [href]="pngFileUrl" download="diagram.png">
     <span class="btn"><em class="fa fa-download"></em> Download as PNG</span>
     </a>
     <span (click)="openDialog()" class="material-icons" style="cursor: pointer;">
