@@ -8,13 +8,13 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ClassInterfaceContextViewComponent {
 
-  addAccountContext = 'add:\n' +
+  addClassContext = 'add:\n' +
     '  members:\n' +
     '    - member: private static int attribute\n' +
     '    - member: public abstract String method(int param1, String param2)\n' +
     '  relations:\n' +
     '    - association: (relative path from project separated by \'.\').Member1';
-  modifyAccountContext = 'modify:\n' +
+  modifyClassContext = 'modify:\n' +
     '  modifiers: Package1\n' +
     '  set: public abstract\n' +
     '  members:\n' +
@@ -26,7 +26,7 @@ export class ClassInterfaceContextViewComponent {
     '    - use: (relative path from project separated by \'.\').Member1\n' +
     '      set: (relative path from project separated by \'.\').NewMember\n' +
     '      role: newRole';
-  deleteAccountContext = 'delete:\n' +
+  deleteClassContext = 'delete:\n' +
     '  members:\n' +
     '    - member: public String newAttribute\n' +
     '    - member: private int newMethod()\n' +
