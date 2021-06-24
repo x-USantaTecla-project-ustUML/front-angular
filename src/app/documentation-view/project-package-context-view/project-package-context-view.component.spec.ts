@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProjectPackageContextViewComponent } from './project-package-context-view.component';
+import {ProjectPackageContextViewComponent} from './project-package-context-view.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 class MockMatSnackBar {

@@ -10,9 +10,6 @@ div > svg {
   top: 8px;
   right: 8px;
 }
-svg {
-  cursor: pointer;
-}
 
 .code {
   width: 100%;
@@ -28,6 +25,7 @@ pre {
 }
 
 svg {
+  cursor: pointer;
   fill: #8c937d !important;
   font-size: larger;
 }
@@ -43,9 +41,6 @@ svg:hover {
 
 .alert {
   color: #444;
-}
-
-.alert {
   padding: 16px;
   margin: 24px 0;
   font-size: 14px;

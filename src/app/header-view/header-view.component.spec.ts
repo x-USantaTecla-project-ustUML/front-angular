@@ -1,5 +1,3 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {HeaderViewComponent} from './header-view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DemoMaterialModule} from '../material-module';
@@ -8,6 +6,8 @@ import {Router} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Observable, of} from 'rxjs';
 import {HttpService} from '../shared/http.service';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+
 
 class MockAuthService {
   constructor() {

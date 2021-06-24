@@ -61,10 +61,10 @@ export class DiagramViewComponent implements OnChanges {
     }
     this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9}));
     this.toDataURL(this.diagramRoute).then((response) => {
-      this.svgFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(response);
+      this.svgFileUrl = this.sanitizer.bypassSecurityTrustUrl(response);
     });
     this.toDataURL(this.diagramRoute.replace('svg', 'png')).then((response) => {
-      this.pngFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(response);
+      this.pngFileUrl = this.sanitizer.bypassSecurityTrustUrl(response);
     });
   }
 

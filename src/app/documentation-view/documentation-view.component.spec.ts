@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DocumentationViewComponent } from './documentation-view.component';
+import {DocumentationViewComponent} from './documentation-view.component';
 
 class MockDrawer {
   constructor() {
