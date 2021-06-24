@@ -15,8 +15,8 @@ export class DiagramViewComponent implements OnChanges {
 
   @Input() plantUML: string;
   diagramRoute: string;
-  svgFileUrl: string;
-  pngFileUrl: string;
+  svgFileUrl: SafeResourceUrl;
+  pngFileUrl: SafeResourceUrl;
 
   constructor(public dialog: MatDialog, private sanitizer: DomSanitizer) {}
 
@@ -61,10 +61,10 @@ export class DiagramViewComponent implements OnChanges {
     }
     this.diagramRoute = 'https://www.plantuml.com/plantuml/svg/~1' + encode64(pako.deflate(this.plantUML, {level: 9}));
     this.toDataURL(this.diagramRoute).then((response) => {
-      this.svgFileUrl = response;
+      this.svgFileUrl = this.sanitizer.bypassSecurityTrustUrl(response);
     });
     this.toDataURL(this.diagramRoute.replace('svg', 'png')).then((response) => {
-      this.pngFileUrl = response;
+      this.pngFileUrl = this.sanitizer.bypassSecurityTrustUrl(response);
     });
   }
 
@@ -74,14 +74,6 @@ export class DiagramViewComponent implements OnChanges {
     }).then(blob => {
       return window.URL.createObjectURL(blob);
     });
-  }
-
-  svgURL(): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustUrl(this.svgFileUrl);
-  }
-
-  pngURL(): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustUrl(this.pngFileUrl);
   }
 
 }
