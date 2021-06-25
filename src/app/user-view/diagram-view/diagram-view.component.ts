@@ -51,7 +51,7 @@ export class DiagramViewComponent implements OnChanges {
   setDiagramRoutes(): void {
     if (this.plantUML === ''){
       this.plantUML = 'skinparam Handwritten true\n' +
-        'skinparam DefaultTextAlignment center\n' +
+        'skinparam DefaultTextAlignment left\n' +
         'skinparam NoteBackgroundColor lightyellow\n' +
         'skinparam NoteBorderColor darkgray\\n\' +\n' +
         'note "Introduce this command to create yout first project:\\n\\nadd:\\n  members:\\n    - project: MyProject\\n\\n ' +
