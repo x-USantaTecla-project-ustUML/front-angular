@@ -37,13 +37,18 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button"
              (click)="navigate('/docs-view/(intro:introduction)')">
-            <span class="nav-link-inner--text">Docs</span>
+            <span class="nav-link-inner--text">USTUML Language</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-icon" href="https://ust-uml-server-test.herokuapp.com/swagger-ui.html"
+             data-toggle="tooltip" title="Star us on Github" (click)="isCollapsed=true">
+            <span class="nav-link-inner--text">Api documentation</span>
           </a>
         </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated()">
           <a [routerLink]="['/user-view']" class="nav-link no-caret" data-toggle="dropdown" role="button"
              (click)="isCollapsed=true">
-            <em class="ni ni-collection d-lg-none"></em>
             <span class="nav-link-inner--text">Tool</span>
           </a>
         </li>
