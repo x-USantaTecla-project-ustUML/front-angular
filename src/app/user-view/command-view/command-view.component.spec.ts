@@ -123,6 +123,14 @@ describe('CommandViewComponent', () => {
     expect(component.output.content).toBe('<p>' + 'Executing...' + '</p>');
   });
 
+  it('given console with command when executeCommand with execute button then call service and return executing', () => {
+    component.input.content = 'add:\r\n' +
+      '\tmembers:\r\n' +
+      '\t\t- class: Name';
+    component.executeCommandByButton();
+    expect(component.output.content).toBe('<p>' + 'Executing...' + '</p>');
+  });
+
   it('given console with bad command when executeCommand then show error', () => {
     component.input.content = 'asfddfs';
     pressKey('Enter');

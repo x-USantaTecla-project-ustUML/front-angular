@@ -64,8 +64,12 @@ describe('AuthService', () => {
     service.login('prueba@gmail.com', 'prueba').subscribe(response => {
       expect(response).toEqual(serviceResponse);
       expect(service.getPassword()).toBe(user.password);
+      expect(service.getEmail()).toBe(user.email);
+      expect(service.getToken()).toBe(user.token);
       done();
     });
   });
+
+
 
 });

@@ -135,6 +135,32 @@
     <li><a title="addMembers">addMembers</a></li>
   </ul>
   <br>
+  <p style="font-size: 14px; font-weight:bold"><a>project:</a></p><img alt="" border="0"
+                                                                       src="../../assets/img/language-grammar/project.png"
+                                                                       height="37" width="227">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="project">project</a>&nbsp;&nbsp;::= 'project:' <a
+      title="identifier">identifier</a>
+    </div>
+  </code>
+  </div>
+
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="addProject">addProject</a></li>
+
+    <li><a title="deleteMembers">deleteMembers</a></li>
+
+    <li><a title="modifyMembers">modifyMembers</a></li>
+  </ul>
+
+  <br>
   <p style="font-size: 14px; font-weight:bold"><a>addPackage:</a></p><img alt="" border="0"
                                                                                             src="../../assets/img/language-grammar/addPackage.png"
                                                                                             height="69" width="429">
@@ -155,6 +181,34 @@
   <ul>
 
     <li><a title="addMembers">addMembers</a></li>
+  </ul>
+  <br>
+
+
+  <p style="font-size: 14px; font-weight:bold"><a>package:</a></p><img alt="" border="0"
+                                                                       src="../../assets/img/language-grammar/package.png"
+                                                                       height="37" width="235">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="package">package</a>&nbsp;&nbsp;::= 'package:' <a
+      title="identifier">identifier</a>
+    </div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="addPackage">addPackage</a></li>
+
+    <li><a title="deleteMembers">deleteMembers</a></li>
+
+    <li><a title="modifiers">modifiers</a></li>
+
+    <li><a title="modifyMembers">modifyMembers</a></li>
   </ul>
   <br>
   <p style="font-size: 14px; font-weight:bold"><a>addClass:</a></p><img alt="" border="0"
@@ -178,6 +232,83 @@
     <li><a title="addMembers">addMembers</a></li>
   </ul>
   <br>
+  <p style="font-size: 14px; font-weight:bold"><a>class:</a></p><img alt="" border="0" src="../../assets/img/language-grammar/class.png"
+                                                                     height="37" width="213">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="class">class</a>&nbsp;&nbsp;&nbsp;&nbsp;::= 'class:' <a
+      title="identifier">identifier</a>
+    </div>
+  </code>
+  </div>
+
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="addClass">addClass</a></li>
+
+    <li><a title="deleteMembers">deleteMembers</a></li>
+
+    <li><a title="modifyMembers">modifyMembers</a></li>
+  </ul>
+  <br>
+  <p style="font-size: 14px; font-weight:bold"><a>identifier:</a></p><img alt="" border="0"
+                                                                          src="../../assets/img/language-grammar/identifier.png"
+                                                                          height="229" width="323">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="identifier">identifier</a></div>
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= [$_a-zA-Z] [$_a-zA-Z0-9]+</div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="class">class</a></li>
+
+    <li><a title="definition">definition</a></li>
+
+    <li><a title="package">package</a></li>
+
+    <li><a title="project">project</a></li>
+
+    <li><a title="relations">relations</a></li>
+
+    <li><a title="type">type</a></li>
+  </ul>
+  <br>
+  <p style="font-size: 14px; font-weight:bold"><a>modifiers:</a></p><img alt="" border="0"
+                                                                         src="../../assets/img/language-grammar/modifiers.png"
+                                                                         height="113" width="413">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="modifiers">modifiers</a></div>
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'modifiers:' ( <a
+      title="public">public</a> | <a
+      title="package">package</a> )? 'abstract'?
+    </div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="addClass">addClass</a></li>
+  </ul>
+  <br>
   <p style="font-size: 14px; font-weight:bold"><a>classMembers:</a></p><img alt="" border="0"
                                                                                                 src="../../assets/img/language-grammar/classMembers.png"
                                                                                                 height="53" width="285">
@@ -197,6 +328,89 @@
   <ul>
 
     <li><a title="addClass">addClass</a></li>
+  </ul>
+
+  <br>
+  <p style="font-size: 14px; font-weight:bold"><a>definition:</a></p><img alt="" border="0"
+                                                                          src="../../assets/img/language-grammar/definition.png"
+                                                                          height="233" width="857">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="definition">definition</a></div>
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'public' | 'private' | 'package' | 'protected' )? (
+      'static'? 'final'?
+      <a title="type">type</a> <a title="identifier">identifier</a> | ( 'static' |
+      'abstract' )? <a title="type">type</a> <a title="identifier">identifier</a> '(' ( <a
+        title="type">type</a> <a title="identifier">identifier</a> ( ',' <a
+        title="type">type</a>
+      <a title="identifier">identifier</a> )* )? ')' )
+    </div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="classMembers">classMembers</a></li>
+  </ul>
+  <br>
+  <p style="font-size: 14px; font-weight:bold"><a>type:</a></p><img alt="" border="0" src="../../assets/img/language-grammar/type.png"
+                                                                    height="301" width="267">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'int' | 'float' | 'double' | 'boolean' |
+      'char' | 'string' | <a title="identifier">identifier</a> ) '[]'?
+    </div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="definition">definition</a></li>
+  </ul>
+  <br>
+  <p style="font-size: 14px; font-weight:bold"><a>relations:</a></p><img alt="" border="0"
+                                                                         src="../../assets/img/language-grammar/relations.png"
+                                                                         height="213" width="767">
+  <p>
+
+  <div class="ebnf"><code>
+
+    <div><a title="relations">relations</a></div>
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'base:' <a title="identifier">identifier</a>
+    </div>
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ( 'composition:' | 'aggregation:' | 'use:' |
+      'association:' ) <a title="identifier">identifier</a> ( 'cardinality:' 'string' )? ( 'role:'
+      'string' )?
+    </div>
+  </code>
+  </div>
+
+  <p>referenced by:
+
+  <ul>
+
+    <li><a title="addClass">addClass</a></li>
+
+    <li><a title="addCommand">addCommand</a></li>
+
+    <li><a title="addPackage">addPackage</a></li>
+
+    <li><a title="addProject">addProject</a></li>
+
+    <li><a title="deleteCommand">deleteCommand</a></li>
+
+    <li><a title="modifyCommand">modifyCommand</a></li>
   </ul>
   <hr>
   <br>
@@ -331,216 +545,11 @@
     <li><a title="UST_UML">UST_UML</a></li>
   </ul>
   <hr>
-  <br>
-  <h2 style="text-decoration: underline">Members</h2>
-  <p style="font-size: 14px; font-weight:bold"><a>project:</a></p><img alt="" border="0"
-                                                                                    src="../../assets/img/language-grammar/project.png"
-                                                                                    height="37" width="227">
-<p>
 
-<div class="ebnf"><code>
 
-  <div><a title="project">project</a>&nbsp;&nbsp;::= 'project:' <a
-                                                                                   title="identifier">identifier</a>
-  </div>
-</code>
-</div>
 
 
-<p>referenced by:
 
-<ul>
 
-  <li><a title="addProject">addProject</a></li>
-
-  <li><a title="deleteMembers">deleteMembers</a></li>
-
-  <li><a title="modifyMembers">modifyMembers</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>package:</a></p><img alt="" border="0"
-                                                                                    src="../../assets/img/language-grammar/package.png"
-                                                                                    height="37" width="235">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="package">package</a>&nbsp;&nbsp;::= 'package:' <a
-                                                                                   title="identifier">identifier</a>
-  </div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="addPackage">addPackage</a></li>
-
-  <li><a title="deleteMembers">deleteMembers</a></li>
-
-  <li><a title="modifiers">modifiers</a></li>
-
-  <li><a title="modifyMembers">modifyMembers</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>class:</a></p><img alt="" border="0" src="../../assets/img/language-grammar/class.png"
-                                                                                height="37" width="213">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="class">class</a>&nbsp;&nbsp;&nbsp;&nbsp;::= 'class:' <a
-                                                                                       title="identifier">identifier</a>
-  </div>
-</code>
-</div>
-
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="addClass">addClass</a></li>
-
-  <li><a title="deleteMembers">deleteMembers</a></li>
-
-  <li><a title="modifyMembers">modifyMembers</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>identifier:</a></p><img alt="" border="0"
-                                                                                          src="../../assets/img/language-grammar/identifier.png"
-                                                                                          height="229" width="323">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="identifier">identifier</a></div>
-
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= [$_a-zA-Z] [$_a-zA-Z0-9]+</div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="class">class</a></li>
-
-  <li><a title="definition">definition</a></li>
-
-  <li><a title="package">package</a></li>
-
-  <li><a title="project">project</a></li>
-
-  <li><a title="relations">relations</a></li>
-
-  <li><a title="type">type</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>modifiers:</a></p><img alt="" border="0"
-                                                                                        src="../../assets/img/language-grammar/modifiers.png"
-                                                                                        height="113" width="413">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="modifiers">modifiers</a></div>
-
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'modifiers:' ( <a
-                                                                                   title="public">public</a> | <a
-    title="package">package</a> )? 'abstract'?
-  </div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="addClass">addClass</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>definition:</a></p><img alt="" border="0"
-                                                                                          src="../../assets/img/language-grammar/definition.png"
-                                                                                          height="233" width="857">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="definition">definition</a></div>
-
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'public' | 'private' | 'package' | 'protected' )? (
-    'static'? 'final'?
-    <a title="type">type</a> <a title="identifier">identifier</a> | ( 'static' |
-    'abstract' )? <a title="type">type</a> <a title="identifier">identifier</a> '(' ( <a
-      title="type">type</a> <a title="identifier">identifier</a> ( ',' <a
-                                                                                                          title="type">type</a>
-    <a title="identifier">identifier</a> )* )? ')' )
-  </div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="classMembers">classMembers</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>type:</a></p><img alt="" border="0" src="../../assets/img/language-grammar/type.png"
-                                                                              height="301" width="267">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= ( 'int' | 'float' | 'double' | 'boolean' |
-    'char' | 'string' | <a title="identifier">identifier</a> ) '[]'?
-  </div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="definition">definition</a></li>
-</ul>
-<br>
-<p style="font-size: 14px; font-weight:bold"><a>relations:</a></p><img alt="" border="0"
-                                                                                        src="../../assets/img/language-grammar/relations.png"
-                                                                                        height="213" width="767">
-<p>
-
-<div class="ebnf"><code>
-
-  <div><a title="relations">relations</a></div>
-
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= 'base:' <a title="identifier">identifier</a>
-  </div>
-
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ( 'composition:' | 'aggregation:' | 'use:' |
-    'association:' ) <a title="identifier">identifier</a> ( 'cardinality:' 'string' )? ( 'role:'
-    'string' )?
-  </div>
-</code>
-</div>
-
-<p>referenced by:
-
-<ul>
-
-  <li><a title="addClass">addClass</a></li>
-
-  <li><a title="addCommand">addCommand</a></li>
-
-  <li><a title="addPackage">addPackage</a></li>
-
-  <li><a title="addProject">addProject</a></li>
-
-  <li><a title="deleteCommand">deleteCommand</a></li>
-
-  <li><a title="modifyCommand">modifyCommand</a></li>
-</ul>
 <p>
 </div>

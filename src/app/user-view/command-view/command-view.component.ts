@@ -15,8 +15,6 @@ export class CommandViewComponent {
   editorOptions = {theme: 'vs-dark', language: 'yaml', cursorWidth: 7};
 
   @Output() serverResponse = new EventEmitter<CommandResponse>();
-  @Output() selectedNodeId = new EventEmitter<string>();
-  lastSelectedNodeId: string;
 
   @ViewChild('terminal') terminal: ElementRef;
 
@@ -133,7 +131,6 @@ export class CommandViewComponent {
       this.userViewService.sendCommand(commandObject)
         .subscribe((response) => {
           this.serverResponse.emit(response);
-          this.setSelectedNodeStyle(command, response);
           this.output.content = '<p>' + consoleResponse + '</p>';
         }, error => {
           this.output.content = '<p>' + error + '</p>';
@@ -141,28 +138,6 @@ export class CommandViewComponent {
       this.output.content = '<p>Executing...</p>';
     } catch (e) {
       this.output.content = '<p>' + e.name + ': Yaml syntax is not correct.</p>';
-    }
-  }
-
-  private setSelectedNodeStyle(command: string, response: CommandResponse): void {
-    if (command === 'open:') {
-      if (response.ustUML.split(':')[0] === 'project' || response.ustUML.split(':')[0] === 'package') {
-        let selectedNodeId = this.input.previousCommands[this.input.previousCommands.length - 1].replace('open: ', '');
-        selectedNodeId = selectedNodeId.substring(0, selectedNodeId.length - 2);
-        this.lastSelectedNodeId = selectedNodeId;
-        this.selectedNodeId.emit(selectedNodeId);
-      } else {
-        this.selectedNodeId.emit(this.lastSelectedNodeId);
-      }
-    } else if (command === 'close:') {
-      let selectedNodeId = response.ustUML.split('members')[0].split(':')[1];
-      if (selectedNodeId !== undefined) {
-        selectedNodeId = selectedNodeId.substring(1, selectedNodeId.length - 1);
-        this.lastSelectedNodeId = selectedNodeId;
-        this.selectedNodeId.emit(selectedNodeId);
-      } else {
-        this.selectedNodeId.emit(this.authService.getEmail());
-      }
     }
   }
 
