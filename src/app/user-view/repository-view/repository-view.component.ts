@@ -68,12 +68,14 @@ export class RepositoryViewComponent implements OnInit, OnChanges {
   }
 
   setProjectIconsAndPaint(): void {
-    this.directoryTree[0].children.forEach(value => {
-      if (document.getElementById(value.id) !== null) {
-        document.getElementById('em' + value.id).className = 'material-icons';
-        document.getElementById('em' + value.id).innerHTML = 'folder_special';
-      }
-    });
+    if (this.directoryTree[0].children !== undefined) {
+      this.directoryTree[0].children.forEach(value => {
+        if (document.getElementById(value.id) !== null) {
+          document.getElementById('em' + value.id).className = 'material-icons';
+          document.getElementById('em' + value.id).innerHTML = 'folder_special';
+        }
+      });
+    }
   }
 
   paintSelectedNode(): void {
