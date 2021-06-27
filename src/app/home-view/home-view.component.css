@@ -266,6 +266,9 @@ a > code {
   .functionalities{
     width: 327px;
   }
+  #functions{
+    font-size: 22px;
+  }
 
   .responsive1{
     height: 200px;
