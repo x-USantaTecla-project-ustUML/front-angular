@@ -197,6 +197,36 @@ p {
     grid-template-columns: minmax(0px, 1fr) 185px 0px 246px;
   }
 }
+
+@media (max-width: 550px) {
+  #terminal {
+    margin-top: 43vh;
+    width: 90%;
+    float: left;
+    min-width: 28em;
+    max-width:40em;
+    position: relative;
+    height: 18em;
+    background-color: #1e1e1e;
+    color: white;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    margin-left: 11px;
+  }
+
+  .wrapper{
+    padding-left: 15px;
+  }
+
+  #down{
+    margin-left: 20px;
+  }
+
+  #exec{
+    margin-left: 109.5px;
+  }
+}
 @media (max-width: 500px) {
   #terminal {
     margin-top: 43vh;

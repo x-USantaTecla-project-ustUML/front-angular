@@ -284,6 +284,13 @@ a > code {
 
 }
 
+@media (max-width: 290px) {
+
+  #functions {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 380px){
   .functionalities{
     width: 287px;

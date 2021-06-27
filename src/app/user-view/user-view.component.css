@@ -69,6 +69,11 @@
     flex-direction: row-reverse;
   }
 }
+@media (max-width: 545px) {
+  #repository{
+    display: none;
+  }
+}
 @media (max-width: 500px) {
   #repository {
     width: 25%;
