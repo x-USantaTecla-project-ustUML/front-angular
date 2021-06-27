@@ -10,7 +10,7 @@ describe('RepositoryViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ RepositoryViewComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

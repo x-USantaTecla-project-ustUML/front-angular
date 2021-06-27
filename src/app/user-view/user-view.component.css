@@ -14,6 +14,11 @@
 #middle{
   padding-left: 20px;
 }
+@media (max-width: 1030px) {
+  #repository {
+    min-width: 220px;
+  }
+}
 @media (max-width: 991.98px) {
   #repository {
     width: 25%;
@@ -39,6 +44,10 @@
     margin-left: 2px;
     display: block;
   }
+  #responsiveMobile2{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
 }
 @media (max-width: 600px) {
   #repository {
@@ -55,6 +64,14 @@
   #middle{
     margin-left: -17px;
     padding-left: 0;
+  }
+  #responsiveMobile{
+    flex-direction: row-reverse;
+  }
+}
+@media (max-width: 545px) {
+  #repository{
+    display: none;
   }
 }
 @media (max-width: 500px) {
