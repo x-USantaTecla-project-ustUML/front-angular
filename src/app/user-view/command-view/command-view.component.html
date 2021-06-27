@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="wrapper">
-    <div style="text-align: left;">
+    <div id="up" style="text-align: left;">
       <a id="btnPreviousCommandUp" type="button" title="Ctrl+ArrowUp" (click)="loadPreviousCommand(-1)"
          class="btn effect01" target="_blank"
          style="height: 30px; width: 40px">
@@ -19,7 +19,7 @@
         </div>
       </a>
     </div>
-    <div style="text-align: left;">
+    <div id="down" style="text-align: left;">
       <a id="btnPreviousCommandDown" type="button" title="Ctrl+ArrowDown" (click)="loadPreviousCommand(1)"
          class="btn effect01" target="_blank"
          style=" height: 30px; width: 40px; margin-left: -25px;">
@@ -28,7 +28,7 @@
         </div>
       </a>
     </div>
-    <div style="text-align: right;">
+    <div id="exec" style="text-align: right;">
       <a id="btnExecute" type="button" title="Ctrl+Enter" (click)="executeCommandByButton()" class="btn effect01"
          target="_blank"
          style="height: 30px; width: 100px;">
