@@ -42,7 +42,7 @@ const TREE_DATA: DocNode[] = [
                 href: 'enum-context'},
             ]
           },
-          {name: 'Inverse engineering',
+          {name: 'Reverse engineering',
             href: 'inverse-engineering'},
         ],
       },
